@@ -1,0 +1,29 @@
+[gd_scene load_steps=4 format=3 uid="uid://dyxl1rl5r1lbt"]
+
+[ext_resource type="Script" path="res://Scripts/Airport/airport_node.gd" id="1_a28fk"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_xd41e"]
+load_path = "res://.godot/imported/T_HIKOKI.png-929252937599432f91132192e0af3d27.ctex"
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_siewn"]
+radius = 0.01
+
+[node name="Airport" type="Node3D" groups=["airport"]]
+script = ExtResource("1_a28fk")
+
+[node name="Icon" type="TextureRect" parent="."]
+offset_left = -40.0
+offset_top = -40.0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = SubResource("CompressedTexture2D_xd41e")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" groups=["airport"]]
+shape = SubResource("SphereShape3D_siewn")
+
+[connection signal="mouse_entered" from="Icon" to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="Icon" to="." method="_on_mouse_exited"]

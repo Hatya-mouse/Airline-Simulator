@@ -1,0 +1,6 @@
+[gd_resource type="Sky" load_steps=2 format=3 uid="uid://dwofeq8if2uqi"]
+
+[ext_resource type="Material" uid="uid://c4ucntfaukhjk" path="res://Materials/Planet/star_material.tres" id="1_4ipvn"]
+
+[resource]
+sky_material = ExtResource("1_4ipvn")

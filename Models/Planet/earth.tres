@@ -1,0 +1,10 @@
+[gd_resource type="SphereMesh" load_steps=2 format=3 uid="uid://bj7ujmyj2mcbk"]
+
+[ext_resource type="Material" uid="uid://c2j0d64a514o3" path="res://Materials/Planet/earth_material.tres" id="1_go74y"]
+
+[resource]
+material = ExtResource("1_go74y")
+radius = 100.0
+height = 200.0
+radial_segments = 2048
+rings = 1024

@@ -1,0 +1,51 @@
+[gd_scene load_steps=7 format=3 uid="uid://cgk540t4auo0p"]
+
+[ext_resource type="PackedScene" uid="uid://wjce8al7mtv2" path="res://Scenes/Planet/earth.tscn" id="1_hlgix"]
+[ext_resource type="PackedScene" uid="uid://boc8olnjbkk4r" path="res://Scenes/Planet/sun.tscn" id="2_7vqee"]
+[ext_resource type="Script" path="res://Scripts/Game/camera_controller.gd" id="2_qh8ec"]
+[ext_resource type="Sky" uid="uid://dwofeq8if2uqi" path="res://Materials/Planet/space.tres" id="3_d3hiu"]
+[ext_resource type="Script" path="res://Scripts/Airport/airport_controller.gd" id="3_pkbvg"]
+
+[sub_resource type="Environment" id="Environment_g0u8n"]
+background_mode = 2
+sky = ExtResource("3_d3hiu")
+glow_enabled = true
+glow_bloom = 0.1
+glow_blend_mode = 0
+volumetric_fog_enabled = true
+volumetric_fog_density = 0.0
+
+[node name="Node3D" type="Node3D"]
+
+[node name="EarthRevolution" type="Node3D" parent="."]
+
+[node name="Earth" parent="EarthRevolution" node_paths=PackedStringArray("sun") instance=ExtResource("1_hlgix")]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 0.917755, -0.397148, 0, 0.397148, 0.917755, 23156, 0, 0)
+sun = NodePath("../../Sun")
+
+[node name="CameraPivot" type="Node3D" parent="EarthRevolution/Earth"]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 0.917755, 0.397148, 0, -0.397148, 0.917755, 0, 0, 0)
+
+[node name="MainCamera" type="Camera3D" parent="EarthRevolution/Earth/CameraPivot"]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 200)
+near = 0.03
+far = 25000.0
+script = ExtResource("2_qh8ec")
+
+[node name="Sun" parent="." instance=ExtResource("2_7vqee")]
+
+[node name="AirportController" type="Node3D" parent="."]
+script = ExtResource("3_pkbvg")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_g0u8n")
+
+[node name="Label" type="Label" parent="."]
+unique_name_in_owner = true
+offset_right = 40.0
+offset_bottom = 23.0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 50

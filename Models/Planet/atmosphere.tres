@@ -1,0 +1,24 @@
+[gd_resource type="SphereMesh" load_steps=3 format=3 uid="uid://ct6v4stgov5q2"]
+
+[ext_resource type="Shader" path="res://Addons/godot_atmosphere_shader-18378add88641971320537f7621db58c9ab7d874/addons/zylann.atmosphere/shaders/planet_atmosphere_no_clouds.gdshader" id="1_neobb"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_pwjjb"]
+render_priority = 0
+shader = ExtResource("1_neobb")
+shader_parameter/u_planet_radius = 1.0
+shader_parameter/u_atmosphere_height = 0.1
+shader_parameter/u_sun_position = Vector3(0, 0, 0)
+shader_parameter/u_density = 0.2
+shader_parameter/u_scattering_strength = 20.0
+shader_parameter/u_scattering_wavelengths = Vector3(700, 530, 440)
+shader_parameter/u_atmosphere_modulate = Color(1, 1, 1, 1)
+shader_parameter/u_atmosphere_ambient_color = Color(0, 0, 0.002, 1)
+shader_parameter/u_clip_mode = false
+shader_parameter/u_sphere_depth_factor = 0.0
+
+[resource]
+material = SubResource("ShaderMaterial_pwjjb")
+radius = 0.55
+height = 1.1
+radial_segments = 128
+rings = 64
