@@ -1,0 +1,5 @@
+# Godot 4+ specific ignores
+.godot/
+/android/
+Resources/Airport_Database/
+Resources/Country_Database/
