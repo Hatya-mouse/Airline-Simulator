@@ -1,0 +1,13 @@
+keys,en,ja
+LARGE_AIRPORT_VISIBILITY,"Large Airport Visibility","大規模空港を表示"
+MEDIUM_AIRPORT_VISIBILITY,"Medium Airport Visibility","中規模空港を表示"
+SMALL_AIRPORT_VISIBILITY,"Small Airport Visibility","小規模空港を表示"
+LARGE_AIRPORT_VISIBILITY_DESCRIPTION,"Show/hide large airports.","大規模空港を表示/非表示。"
+MEDIUM_AIRPORT_VISIBILITY_DESCRIPTION,"Show/hide medium airports.","中規模空港を表示/非表示。"
+SMALL_AIRPORT_VISIBILITY_DESCRIPTION,"Show/hide small airports.","小規模空港を表示/非表示。"
+ICAO_CODE,"ICAO Airport Code","ICAO空港コード"
+IATA_CODE,"IATA Airport Code","IATA空港コード"
+COUNTRY,"Country","国"
+REGION,"Region Name","都市"
+LATITUDE,"Latitude","緯度"
+LONGITUDE,"Longitude","経度"

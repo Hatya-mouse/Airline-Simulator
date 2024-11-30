@@ -1,10 +1,23 @@
-[gd_scene load_steps=7 format=3 uid="uid://cgk540t4auo0p"]
+[gd_scene load_steps=23 format=3 uid="uid://cgk540t4auo0p"]
 
 [ext_resource type="PackedScene" uid="uid://wjce8al7mtv2" path="res://Scenes/Planet/earth.tscn" id="1_hlgix"]
 [ext_resource type="PackedScene" uid="uid://boc8olnjbkk4r" path="res://Scenes/Planet/sun.tscn" id="2_7vqee"]
 [ext_resource type="Script" path="res://Scripts/Game/camera_controller.gd" id="2_qh8ec"]
 [ext_resource type="Sky" uid="uid://dwofeq8if2uqi" path="res://Materials/Planet/space.tres" id="3_d3hiu"]
 [ext_resource type="Script" path="res://Scripts/Airport/airport_controller.gd" id="3_pkbvg"]
+[ext_resource type="Material" uid="uid://xtwaepa7vuh" path="res://Materials/UI/menu_blur_background.tres" id="6_rtyom"]
+[ext_resource type="Theme" uid="uid://drekqoieprg23" path="res://UIResources/Theme/normal_theme.tres" id="7_56s7v"]
+[ext_resource type="LabelSettings" uid="uid://cen8j3djydtij" path="res://UIResources/LabelSettings/normal_label.tres" id="7_js0yx"]
+[ext_resource type="Shader" uid="uid://c7g12r270a1br" path="res://Shaders/UI/blur.tres" id="7_ki63p"]
+[ext_resource type="PackedScene" uid="uid://bbmofpjeuig28" path="res://Scenes/UI/texture_toggle_button.tscn" id="9_fwkja"]
+[ext_resource type="PackedScene" uid="uid://c13yba8b6c7cx" path="res://Scenes/UI/hint_box.tscn" id="10_pxk6u"]
+[ext_resource type="Texture2D" uid="uid://djuk5npx1qpby" path="res://Textures/Icon/Airport/large_airport_button.png" id="11_4nhsm"]
+[ext_resource type="Texture2D" uid="uid://cv7t0gv48mx31" path="res://Textures/Icon/Airport/large_airport_button_pressed.png" id="12_1ikr6"]
+[ext_resource type="Texture2D" uid="uid://w7txf38k4th" path="res://Textures/Icon/Airport/medium_airport_button.png" id="14_c4du8"]
+[ext_resource type="Texture2D" uid="uid://xmqp3ra5482u" path="res://Textures/Icon/Airport/medium_airport_button_pressed.png" id="15_ke3lb"]
+[ext_resource type="Texture2D" uid="uid://1g57fv72jkts" path="res://Textures/Icon/Airport/small_airport_button.png" id="17_v6pip"]
+[ext_resource type="PackedScene" uid="uid://doajni6v2crx0" path="res://Scenes/UI/info_box.tscn" id="18_dbcpe"]
+[ext_resource type="Texture2D" uid="uid://djfx75vp7r8pa" path="res://Textures/Icon/Airport/small_airport_button_pressed.png" id="18_xm5er"]
 
 [sub_resource type="Environment" id="Environment_g0u8n"]
 background_mode = 2
@@ -14,6 +27,27 @@ glow_bloom = 0.1
 glow_blend_mode = 0
 volumetric_fog_enabled = true
 volumetric_fog_density = 0.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_wwmwi"]
+shader = ExtResource("7_ki63p")
+shader_parameter/base_color = Color(0.2, 0.2, 0.2, 1)
+shader_parameter/blur_strength = 5.0
+shader_parameter/color_blend = 0.5
+shader_parameter/alpha = 1.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_e2phm"]
+shader = ExtResource("7_ki63p")
+shader_parameter/base_color = Color(0.2, 0.2, 0.2, 1)
+shader_parameter/blur_strength = 5.0
+shader_parameter/color_blend = 0.5
+shader_parameter/alpha = 1.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_gccf2"]
+shader = ExtResource("7_ki63p")
+shader_parameter/base_color = Color(0.2, 0.2, 0.2, 1)
+shader_parameter/blur_strength = 5.0
+shader_parameter/color_blend = 0.5
+shader_parameter/alpha = 1.0
 
 [node name="Node3D" type="Node3D"]
 
@@ -28,24 +62,119 @@ sun = NodePath("../../Sun")
 unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 0.917755, 0.397148, 0, -0.397148, 0.917755, 0, 0, 0)
 
-[node name="MainCamera" type="Camera3D" parent="EarthRevolution/Earth/CameraPivot"]
+[node name="MainCamera" type="Camera3D" parent="EarthRevolution/Earth/CameraPivot" node_paths=PackedStringArray("info_box")]
 unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 200)
 near = 0.03
 far = 25000.0
 script = ExtResource("2_qh8ec")
+info_box = NodePath("../../../../HUD/InfoBox")
 
 [node name="Sun" parent="." instance=ExtResource("2_7vqee")]
-
-[node name="AirportController" type="Node3D" parent="."]
-script = ExtResource("3_pkbvg")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_g0u8n")
 
-[node name="Label" type="Label" parent="."]
+[node name="AirportController" type="Node3D" parent="." node_paths=PackedStringArray("large_airport_button", "medium_airport_button", "small_airport_button", "info_box")]
+unique_name_in_owner = true
+script = ExtResource("3_pkbvg")
+large_airport_button = NodePath("../HUD/TopPanel/HBoxContainer/LargeAirportVisibility")
+medium_airport_button = NodePath("../HUD/TopPanel/HBoxContainer/MediumAirportVisibility")
+small_airport_button = NodePath("../HUD/TopPanel/HBoxContainer/SmallAirportVisibility")
+info_box = NodePath("../HUD/InfoBox")
+
+[node name="HUD" type="CanvasLayer" parent="."]
+
+[node name="AirportNameLabel" type="Label" parent="HUD"]
 unique_name_in_owner = true
 offset_right = 40.0
-offset_bottom = 23.0
+offset_bottom = 69.0
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 50
+
+[node name="HintBox" type="Node" parent="HUD"]
+
+[node name="LargeAirportVisibility" parent="HUD/HintBox" instance=ExtResource("10_pxk6u")]
+material = SubResource("ShaderMaterial_wwmwi")
+title_key = "LARGE_AIRPORT_VISIBILITY"
+description_key = "LARGE_AIRPORT_VISIBILITY_DESCRIPTION"
+
+[node name="MediumAirportVisibility" parent="HUD/HintBox" instance=ExtResource("10_pxk6u")]
+material = SubResource("ShaderMaterial_e2phm")
+title_key = "MEDIUM_AIRPORT_VISIBILITY"
+description_key = "MEDIUM_AIRPORT_VISIBILITY_DESCRIPTION"
+
+[node name="SmallAirprotVisibility" parent="HUD/HintBox" instance=ExtResource("10_pxk6u")]
+material = SubResource("ShaderMaterial_gccf2")
+title_key = "SMALL_AIRPORT_VISIBILITY"
+description_key = "SMALL_AIRPORT_VISIBILITY_DESCRIPTION"
+
+[node name="TopPanel" type="Panel" parent="HUD"]
+material = ExtResource("6_rtyom")
+custom_minimum_size = Vector2(0, 120)
+anchors_preset = 10
+anchor_right = 1.0
+grow_horizontal = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="HUD/TopPanel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("7_56s7v")
+alignment = 2
+
+[node name="VisibilityLabel" type="Label" parent="HUD/TopPanel/HBoxContainer"]
+visible = false
+layout_mode = 2
+text = "Visibility:"
+label_settings = ExtResource("7_js0yx")
+vertical_alignment = 1
+
+[node name="LargeAirportVisibility" parent="HUD/TopPanel/HBoxContainer" node_paths=PackedStringArray("hint_box") instance=ExtResource("9_fwkja")]
+custom_minimum_size = Vector2(120, 120)
+layout_mode = 2
+button_pressed = true
+texture_normal = ExtResource("11_4nhsm")
+default_texture = ExtResource("11_4nhsm")
+pressed_texture = ExtResource("12_1ikr6")
+hint_box = NodePath("../../../HintBox/LargeAirportVisibility")
+hint_offset = Vector2(0, 80)
+
+[node name="MediumAirportVisibility" parent="HUD/TopPanel/HBoxContainer" node_paths=PackedStringArray("hint_box") instance=ExtResource("9_fwkja")]
+custom_minimum_size = Vector2(120, 120)
+layout_mode = 2
+button_pressed = true
+texture_normal = ExtResource("14_c4du8")
+default_texture = ExtResource("14_c4du8")
+pressed_texture = ExtResource("15_ke3lb")
+hint_box = NodePath("../../../HintBox/MediumAirportVisibility")
+hint_offset = Vector2(0, 80)
+
+[node name="SmallAirportVisibility" parent="HUD/TopPanel/HBoxContainer" node_paths=PackedStringArray("hint_box") instance=ExtResource("9_fwkja")]
+custom_minimum_size = Vector2(120, 120)
+layout_mode = 2
+button_pressed = true
+texture_normal = ExtResource("17_v6pip")
+default_texture = ExtResource("17_v6pip")
+pressed_texture = ExtResource("18_xm5er")
+hint_box = NodePath("../../../HintBox/SmallAirprotVisibility")
+hint_offset = Vector2(0, 80)
+
+[node name="HSeparator" type="HSeparator" parent="HUD/TopPanel"]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -4.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="InfoBox" parent="HUD" instance=ExtResource("18_dbcpe")]
+offset_left = 20.0
+offset_top = 139.0
+offset_right = 420.0
+offset_bottom = -21.0

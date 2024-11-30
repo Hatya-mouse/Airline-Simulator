@@ -1,0 +1,113 @@
+[gd_resource type="VisualShader" load_steps=10 format=3 uid="uid://c7g12r270a1br"]
+
+[sub_resource type="VisualShaderNodeFloatParameter" id="VisualShaderNodeFloatParameter_rlicu"]
+parameter_name = "alpha"
+
+[sub_resource type="VisualShaderNodeVectorCompose" id="VisualShaderNodeVectorCompose_fi52o"]
+default_input_values = [0, 0.0, 1, 0.0, 2, 0.0, 3, 0.0]
+op_type = 2
+
+[sub_resource type="VisualShaderNodeTexture2DParameter" id="VisualShaderNodeTexture2DParameter_f4tja"]
+parameter_name = "ScreenTexture"
+texture_filter = 4
+texture_source = 1
+
+[sub_resource type="VisualShaderNodeTexture" id="VisualShaderNodeTexture_jgqjt"]
+source = 5
+
+[sub_resource type="VisualShaderNodeInput" id="VisualShaderNodeInput_ogxhj"]
+input_name = "screen_uv"
+
+[sub_resource type="VisualShaderNodeFloatParameter" id="VisualShaderNodeFloatParameter_hg0ie"]
+parameter_name = "blur_strength"
+hint = 2
+max = 5.0
+default_value_enabled = true
+default_value = 5.0
+
+[sub_resource type="VisualShaderNodeColorParameter" id="VisualShaderNodeColorParameter_xa3co"]
+parameter_name = "base_color"
+default_value_enabled = true
+
+[sub_resource type="VisualShaderNodeMix" id="VisualShaderNodeMix_3ay46"]
+default_input_values = [0, Quaternion(0, 0, 0, 0), 1, Quaternion(1, 1, 1, 1), 2, Quaternion(0.5, 0.5, 0.5, 0.5)]
+op_type = 5
+
+[sub_resource type="VisualShaderNodeFloatParameter" id="VisualShaderNodeFloatParameter_7bf6j"]
+parameter_name = "color_blend"
+
+[resource]
+code = "shader_type canvas_item;
+render_mode blend_mix;
+
+uniform vec4 base_color : source_color = vec4(1.000000, 1.000000, 1.000000, 1.000000);
+uniform float blur_strength : hint_range(0, 5, 0.10000000149012) = 5;
+uniform sampler2D ScreenTexture : filter_linear_mipmap, hint_screen_texture;
+uniform float color_blend;
+uniform float alpha;
+
+
+
+void fragment() {
+// ColorParameter:7
+	vec4 n_out7p0 = base_color;
+
+
+// Input:4
+	vec2 n_out4p0 = SCREEN_UV;
+
+
+// FloatParameter:5
+	float n_out5p0 = blur_strength;
+
+
+	vec4 n_out3p0;
+// Texture2D:3
+	n_out3p0 = textureLod(ScreenTexture, n_out4p0, n_out5p0);
+
+
+// FloatParameter:9
+	float n_out9p0 = color_blend;
+
+
+// VectorCompose:11
+	vec4 n_out11p0 = vec4(n_out9p0, n_out9p0, n_out9p0, n_out9p0);
+
+
+// Mix:8
+	vec4 n_out8p0 = mix(n_out7p0, n_out3p0, n_out11p0);
+
+
+// FloatParameter:10
+	float n_out10p0 = alpha;
+
+
+// Output:0
+	COLOR.rgb = vec3(n_out8p0.xyz);
+	COLOR.a = n_out10p0;
+
+
+}
+"
+mode = 1
+flags/light_only = false
+nodes/fragment/0/position = Vector2(1740, 260)
+nodes/fragment/2/node = SubResource("VisualShaderNodeTexture2DParameter_f4tja")
+nodes/fragment/2/position = Vector2(-1400, 680)
+nodes/fragment/3/node = SubResource("VisualShaderNodeTexture_jgqjt")
+nodes/fragment/3/position = Vector2(-240, 260)
+nodes/fragment/4/node = SubResource("VisualShaderNodeInput_ogxhj")
+nodes/fragment/4/position = Vector2(-1420, -220)
+nodes/fragment/5/node = SubResource("VisualShaderNodeFloatParameter_hg0ie")
+nodes/fragment/5/position = Vector2(-1300, 0)
+nodes/fragment/7/node = SubResource("VisualShaderNodeColorParameter_xa3co")
+nodes/fragment/7/position = Vector2(220, -200)
+nodes/fragment/8/node = SubResource("VisualShaderNodeMix_3ay46")
+nodes/fragment/8/position = Vector2(1140, 200)
+nodes/fragment/9/node = SubResource("VisualShaderNodeFloatParameter_7bf6j")
+nodes/fragment/9/position = Vector2(-380, 680)
+nodes/fragment/10/node = SubResource("VisualShaderNodeFloatParameter_rlicu")
+nodes/fragment/10/position = Vector2(1000, 620)
+nodes/fragment/11/node = SubResource("VisualShaderNodeVectorCompose_fi52o")
+nodes/fragment/11/position = Vector2(360, 620)
+nodes/fragment/connections = PackedInt32Array(2, 0, 3, 2, 4, 0, 3, 0, 5, 0, 3, 1, 8, 0, 0, 0, 3, 0, 8, 1, 7, 0, 8, 0, 10, 0, 0, 1, 9, 0, 11, 0, 11, 0, 8, 2, 9, 0, 11, 1, 9, 0, 11, 2, 9, 0, 11, 3)
