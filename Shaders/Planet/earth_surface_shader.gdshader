@@ -28,7 +28,7 @@ void fragment() {
 	vec3 world_normal = (INV_VIEW_MATRIX * vec4(NORMAL, 0.0)).xyz;
 	float dot_product = dot(sun_direction, world_normal);
 	float angle = acos(dot_product) * 180.0 / PI;
-	float nightlight_factor = (clamp(angle, 80.0, 85.0) - 80.0) / 5.0;
+	float nightlight_factor = (clamp(angle, 83.0, 91.0) - 83.0) / 8.0;
 	nightlight_factor = 1.0 - nightlight_factor;
 	vec3 nightlight = nightlight_color * textureLod(nightlight_texture, UV, 0.0).r;
 

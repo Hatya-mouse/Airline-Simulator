@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://cp616hfmd7raq"]
+
+[ext_resource type="Script" path="res://Scripts/Controller/airline_controller.gd" id="1_50j6j"]
+[ext_resource type="AudioStream" uid="uid://b0lijxw8e6nn1" path="res://Audio/SFX/UI/cancel.wav" id="2_dd1tp"]
+[ext_resource type="AudioStream" uid="uid://nui4utagj265" path="res://Audio/SFX/Game/airway_complete.wav" id="3_lf1q1"]
+
+[node name="AirlineController" type="Node3D"]
+script = ExtResource("1_50j6j")
+remove_airport_sound = ExtResource("2_dd1tp")
+complete_airline_sound = ExtResource("3_lf1q1")
+
+[node name="Preview" type="Node3D" parent="."]
+
+[node name="SFX" type="Node" parent="."]
+
+[node name="RemoveAirportAudioPlayer" type="AudioStreamPlayer" parent="SFX"]
+
+[node name="CompleteAirlineAudioPlayer" type="AudioStreamPlayer" parent="SFX"]

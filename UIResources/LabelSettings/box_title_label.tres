@@ -1,17 +1,8 @@
-[gd_resource type="LabelSettings" load_steps=5 format=3 uid="uid://dyn75pi86acbl"]
+[gd_resource type="LabelSettings" load_steps=2 format=3 uid="uid://dyn75pi86acbl"]
 
-[ext_resource type="FontFile" uid="uid://imjex7en4d66" path="res://Fonts/Roboto/Roboto-Bold.ttf" id="1_30g44"]
-[ext_resource type="FontFile" uid="uid://uw6qqn6rgb20" path="res://Fonts/NotoSansJP/NotoSansJP-Bold.ttf" id="2_a86h1"]
-
-[sub_resource type="SystemFont" id="SystemFont_n70wq"]
-font_names = PackedStringArray("Sans-Serif")
-font_weight = 700
-
-[sub_resource type="FontVariation" id="FontVariation_jmhjl"]
-fallbacks = Array[Font]([ExtResource("2_a86h1"), SubResource("SystemFont_n70wq")])
-base_font = ExtResource("1_30g44")
+[ext_resource type="FontVariation" uid="uid://bun4qhcccla0f" path="res://UIResources/Fonts/bold_font.tres" id="1_7rgat"]
 
 [resource]
 line_spacing = 0.0
-font = SubResource("FontVariation_jmhjl")
+font = ExtResource("1_7rgat")
 font_size = 32

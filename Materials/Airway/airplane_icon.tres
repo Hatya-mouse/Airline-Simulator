@@ -1,0 +1,14 @@
+[gd_resource type="ShaderMaterial" load_steps=3 format=3 uid="uid://cggn71l1gmmf4"]
+
+[ext_resource type="Shader" path="res://Shaders/Airway/airplane_icon.gdshader" id="1_kqaes"]
+[ext_resource type="Texture2D" uid="uid://dr632irkujlsm" path="res://Textures/Experience_Japan_Pictogram/T_HIKOKI.png" id="2_66yrj"]
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_kqaes")
+shader_parameter/color = Color(1, 1, 1, 1)
+shader_parameter/scale_factor = 0.03
+shader_parameter/min_depth = 0.1
+shader_parameter/max_depth = 1.0
+shader_parameter/depth = null
+shader_parameter/alpha_texture = ExtResource("2_66yrj")

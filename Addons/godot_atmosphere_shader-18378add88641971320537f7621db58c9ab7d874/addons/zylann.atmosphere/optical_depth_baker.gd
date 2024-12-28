@@ -64,7 +64,7 @@ func _setup_bake(atmosphere_material):
 	_state = STATE_PENDING_RENDER
 
 
-func _process(delta):
+func _process(_delta):
 #	print("_process ", Engine.get_frames_drawn())
 	if _state == STATE_REQUEST_BAKE:
 		_setup_bake(_atmosphere_material)
@@ -83,4 +83,3 @@ func _process(delta):
 		_viewport.render_target_update_mode = SubViewport.UPDATE_DISABLED
 		_state = STATE_IDLE
 		set_process(false)
-

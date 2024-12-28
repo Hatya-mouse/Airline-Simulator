@@ -1,6 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://dyxl1rl5r1lbt"]
+[gd_scene load_steps=9 format=3 uid="uid://dyxl1rl5r1lbt"]
 
 [ext_resource type="Script" path="res://Scripts/Airport/airport_node.gd" id="1_a28fk"]
+[ext_resource type="AudioStream" uid="uid://cjbnjqybw4nag" path="res://Audio/SFX/UI/click.wav" id="2_lplos"]
+[ext_resource type="AudioStream" uid="uid://deafa8faxbvde" path="res://Audio/SFX/Game/add_airport.wav" id="3_nm7o8"]
+[ext_resource type="BitMap" uid="uid://cl6n663t3t7lm" path="res://Textures/Icon/Airport/click_mask.png" id="4_ais0v"]
 
 [sub_resource type="Animation" id="Animation_2hnye"]
 length = 0.001
@@ -94,8 +97,12 @@ _data = {
 
 [node name="Airport" type="Node3D" groups=["airport"]]
 script = ExtResource("1_a28fk")
+airport_info_sound = ExtResource("2_lplos")
+add_airport_sound = ExtResource("3_nm7o8")
+texture_click_mask = ExtResource("4_ais0v")
 
 [node name="Icon" type="TextureButton" parent="."]
+custom_minimum_size = Vector2(100, 100)
 offset_right = 80.0
 offset_bottom = 80.0
 mouse_filter = 1
@@ -107,6 +114,10 @@ root_node = NodePath("../..")
 libraries = {
 "": SubResource("AnimationLibrary_bxinm")
 }
+
+[node name="AirportInfo" type="AudioStreamPlayer" parent="."]
+
+[node name="AddAirport" type="AudioStreamPlayer" parent="."]
 
 [connection signal="mouse_entered" from="Icon" to="." method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="Icon" to="." method="_on_mouse_exited"]

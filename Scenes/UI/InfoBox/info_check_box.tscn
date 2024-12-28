@@ -1,0 +1,35 @@
+[gd_scene load_steps=8 format=3 uid="uid://che3u5j56ymei"]
+
+[ext_resource type="Script" path="res://Scripts/UI/InfoBox/info_check_box.gd" id="1_rc0ka"]
+[ext_resource type="PackedScene" uid="uid://bbmofpjeuig28" path="res://Scenes/UI/texture_toggle_button.tscn" id="2_37vjf"]
+[ext_resource type="AudioStream" uid="uid://cjbnjqybw4nag" path="res://Audio/SFX/UI/click.wav" id="2_p20r0"]
+[ext_resource type="Texture2D" uid="uid://d0f1g0jysic6c" path="res://Textures/Icon/Control/checkbox_off.svg" id="3_076tk"]
+[ext_resource type="LabelSettings" uid="uid://cen8j3djydtij" path="res://UIResources/LabelSettings/normal_label.tres" id="3_u4vmp"]
+[ext_resource type="Texture2D" uid="uid://b0on3i1olq2fv" path="res://Textures/Icon/Control/checkbox_on.svg" id="4_bm0gl"]
+[ext_resource type="AudioStream" uid="uid://f3biq7gur0mb" path="res://Audio/SFX/UI/checkbox.wav" id="6_cd423"]
+
+[node name="InfoProperty" type="HBoxContainer"]
+theme_override_constants/separation = 16
+script = ExtResource("1_rc0ka")
+click_sound = ExtResource("2_p20r0")
+
+[node name="TextureToggleButton" parent="." instance=ExtResource("2_37vjf")]
+custom_minimum_size = Vector2(34, 34)
+layout_mode = 2
+texture_normal = ExtResource("3_076tk")
+default_texture = ExtResource("3_076tk")
+pressed_texture = ExtResource("4_bm0gl")
+hide_default_texture = true
+click_sound = ExtResource("6_cd423")
+
+[node name="Label" type="Label" parent="."]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+label_settings = ExtResource("3_u4vmp")
+vertical_alignment = 1
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]
+[connection signal="toggled" from="TextureToggleButton" to="." method="_on_button_toggled"]

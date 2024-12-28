@@ -12,17 +12,18 @@ config_version=5
 
 config/name="Air International Inc."
 run/main_scene="res://Scenes/Game/solar_system.tscn"
+config/use_custom_user_dir=true
 config/features=PackedStringArray("4.3", "Forward Plus")
 config/icon="res://icon.svg"
+
+[audio]
+
+buses/default_bus_layout="res://Audio/Bus/default_bus_layout.tres"
 
 [display]
 
 window/size/viewport_width=1920
 window/size/viewport_height=1080
-
-[global_group]
-
-airport="airport group."
 
 [input]
 
@@ -42,3 +43,8 @@ camera_zoom_out={
 "events": [Object(InputEventMouseButton,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"button_mask":16,"position":Vector2(373, 37),"global_position":Vector2(392, 128),"factor":0.355586,"button_index":5,"canceled":false,"pressed":true,"double_click":false,"script":null)
 ]
 }
+
+[internationalization]
+
+locale/translations=PackedStringArray("res://Translation/UI/menu.en.translation", "res://Translation/UI/menu.ja.translation")
+locale/locale_filter_mode=0

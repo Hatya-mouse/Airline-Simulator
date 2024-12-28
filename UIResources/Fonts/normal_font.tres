@@ -1,0 +1,11 @@
+[gd_resource type="FontVariation" load_steps=4 format=3 uid="uid://cltucxgwyjki3"]
+
+[ext_resource type="FontFile" uid="uid://bqfbhfdqcp021" path="res://Fonts/Roboto/Roboto-Regular.ttf" id="1_6xjak"]
+[ext_resource type="FontFile" uid="uid://bg5sb26ar4ld" path="res://Fonts/NotoSansJP/NotoSansJP-Regular.ttf" id="2_ecda5"]
+
+[sub_resource type="SystemFont" id="SystemFont_n70wq"]
+font_names = PackedStringArray("Sans-Serif")
+
+[resource]
+fallbacks = Array[Font]([ExtResource("2_ecda5"), SubResource("SystemFont_n70wq")])
+base_font = ExtResource("1_6xjak")

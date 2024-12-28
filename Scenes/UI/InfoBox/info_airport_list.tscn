@@ -1,0 +1,92 @@
+[gd_scene load_steps=16 format=3 uid="uid://bfshul7pgy04j"]
+
+[ext_resource type="Script" path="res://Scripts/UI/InfoBox/info_airport_list.gd" id="1_8oscd"]
+[ext_resource type="LabelSettings" uid="uid://dyn75pi86acbl" path="res://UIResources/LabelSettings/box_title_label.tres" id="1_gxx4w"]
+[ext_resource type="LabelSettings" uid="uid://c88bauj8uwi8e" path="res://UIResources/LabelSettings/bold_big.tres" id="2_bx1k7"]
+[ext_resource type="LabelSettings" uid="uid://bv66h2w5oyetn" path="res://UIResources/LabelSettings/box_property_label.tres" id="3_nrwot"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_88uin"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_pqg32"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_uf1ht"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_17bus"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_8f7nx"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_cwg2s"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_hq84m"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_0hpr8"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_bcuil"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_7jh3q"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_27ri5"]
+
+[node name="InfoAirportList" type="MarginContainer"]
+offset_left = 378.0
+offset_right = 378.0
+offset_bottom = 96.0
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_bottom = 10
+script = ExtResource("1_8oscd")
+
+[node name="HStack" type="HBoxContainer" parent="."]
+layout_mode = 2
+size_flags_vertical = 4
+theme_override_constants/separation = 16
+
+[node name="Color" type="PanelContainer" parent="HStack"]
+layout_mode = 2
+
+[node name="NumberMargin" type="MarginContainer" parent="HStack/Color"]
+layout_mode = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_right = 8
+
+[node name="Number" type="Label" parent="HStack/Color/NumberMargin"]
+layout_mode = 2
+text = "1"
+label_settings = ExtResource("2_bx1k7")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="AirportInfo" type="VBoxContainer" parent="HStack"]
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="Name" type="Label" parent="HStack/AirportInfo"]
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+text = "Gibraltar Airport"
+label_settings = ExtResource("1_gxx4w")
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="Code" type="Label" parent="HStack/AirportInfo"]
+layout_mode = 2
+text = "LXGB, GIB"
+label_settings = ExtResource("3_nrwot")
+vertical_alignment = 1
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 2
+theme_override_styles/focus = SubResource("StyleBoxEmpty_88uin")
+theme_override_styles/disabled_mirrored = SubResource("StyleBoxEmpty_pqg32")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_uf1ht")
+theme_override_styles/hover_pressed_mirrored = SubResource("StyleBoxEmpty_17bus")
+theme_override_styles/hover_pressed = SubResource("StyleBoxEmpty_8f7nx")
+theme_override_styles/hover_mirrored = SubResource("StyleBoxEmpty_cwg2s")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_hq84m")
+theme_override_styles/pressed_mirrored = SubResource("StyleBoxEmpty_0hpr8")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_bcuil")
+theme_override_styles/normal_mirrored = SubResource("StyleBoxEmpty_7jh3q")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_27ri5")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

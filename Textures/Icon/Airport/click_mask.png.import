@@ -1,0 +1,16 @@
+[remap]
+
+importer="bitmap"
+type="BitMap"
+uid="uid://cl6n663t3t7lm"
+path="res://.godot/imported/click_mask.png-3a5d4d8390f6c51df2661d661051850f.res"
+
+[deps]
+
+source_file="res://Textures/Icon/Airport/click_mask.png"
+dest_files=["res://.godot/imported/click_mask.png-3a5d4d8390f6c51df2661d661051850f.res"]
+
+[params]
+
+create_from=0
+threshold=0.5

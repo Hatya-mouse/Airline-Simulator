@@ -1,23 +1,30 @@
-[gd_scene load_steps=23 format=3 uid="uid://cgk540t4auo0p"]
+[gd_scene load_steps=30 format=3 uid="uid://cgk540t4auo0p"]
 
 [ext_resource type="PackedScene" uid="uid://wjce8al7mtv2" path="res://Scenes/Planet/earth.tscn" id="1_hlgix"]
 [ext_resource type="PackedScene" uid="uid://boc8olnjbkk4r" path="res://Scenes/Planet/sun.tscn" id="2_7vqee"]
 [ext_resource type="Script" path="res://Scripts/Game/camera_controller.gd" id="2_qh8ec"]
 [ext_resource type="Sky" uid="uid://dwofeq8if2uqi" path="res://Materials/Planet/space.tres" id="3_d3hiu"]
-[ext_resource type="Script" path="res://Scripts/Airport/airport_controller.gd" id="3_pkbvg"]
+[ext_resource type="Script" path="res://Scripts/Controller/airport_controller.gd" id="3_pkbvg"]
+[ext_resource type="PackedScene" uid="uid://cp616hfmd7raq" path="res://Scenes/Controller/airline_controller.tscn" id="5_fejir"]
 [ext_resource type="Material" uid="uid://xtwaepa7vuh" path="res://Materials/UI/menu_blur_background.tres" id="6_rtyom"]
 [ext_resource type="Theme" uid="uid://drekqoieprg23" path="res://UIResources/Theme/normal_theme.tres" id="7_56s7v"]
-[ext_resource type="LabelSettings" uid="uid://cen8j3djydtij" path="res://UIResources/LabelSettings/normal_label.tres" id="7_js0yx"]
 [ext_resource type="Shader" uid="uid://c7g12r270a1br" path="res://Shaders/UI/blur.tres" id="7_ki63p"]
+[ext_resource type="Script" path="res://Scripts/Controller/airplane_controller.gd" id="7_n3qqb"]
+[ext_resource type="Script" path="res://Scripts/Controller/game_controller.gd" id="7_sv0ig"]
+[ext_resource type="Script" path="res://Scripts/Controller/file_controller.gd" id="8_kxyn5"]
 [ext_resource type="PackedScene" uid="uid://bbmofpjeuig28" path="res://Scenes/UI/texture_toggle_button.tscn" id="9_fwkja"]
 [ext_resource type="PackedScene" uid="uid://c13yba8b6c7cx" path="res://Scenes/UI/hint_box.tscn" id="10_pxk6u"]
 [ext_resource type="Texture2D" uid="uid://djuk5npx1qpby" path="res://Textures/Icon/Airport/large_airport_button.png" id="11_4nhsm"]
+[ext_resource type="Texture2D" uid="uid://dybuar28go5ms" path="res://Textures/Icon/Airline/add_airline.png" id="11_be0b3"]
 [ext_resource type="Texture2D" uid="uid://cv7t0gv48mx31" path="res://Textures/Icon/Airport/large_airport_button_pressed.png" id="12_1ikr6"]
+[ext_resource type="Texture2D" uid="uid://lyu5a5uuc10u" path="res://Textures/Icon/Airline/add_airline_pressed.png" id="12_30fse"]
+[ext_resource type="LabelSettings" uid="uid://c88bauj8uwi8e" path="res://UIResources/LabelSettings/bold_big.tres" id="12_bch0m"]
 [ext_resource type="Texture2D" uid="uid://w7txf38k4th" path="res://Textures/Icon/Airport/medium_airport_button.png" id="14_c4du8"]
 [ext_resource type="Texture2D" uid="uid://xmqp3ra5482u" path="res://Textures/Icon/Airport/medium_airport_button_pressed.png" id="15_ke3lb"]
 [ext_resource type="Texture2D" uid="uid://1g57fv72jkts" path="res://Textures/Icon/Airport/small_airport_button.png" id="17_v6pip"]
 [ext_resource type="PackedScene" uid="uid://doajni6v2crx0" path="res://Scenes/UI/info_box.tscn" id="18_dbcpe"]
 [ext_resource type="Texture2D" uid="uid://djfx75vp7r8pa" path="res://Textures/Icon/Airport/small_airport_button_pressed.png" id="18_xm5er"]
+[ext_resource type="PackedScene" uid="uid://b8tyc1r6evk1s" path="res://Scenes/UI/label_box.tscn" id="19_wai4l"]
 
 [sub_resource type="Environment" id="Environment_g0u8n"]
 background_mode = 2
@@ -25,7 +32,6 @@ sky = ExtResource("3_d3hiu")
 glow_enabled = true
 glow_bloom = 0.1
 glow_blend_mode = 0
-volumetric_fog_enabled = true
 volumetric_fog_density = 0.0
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_wwmwi"]
@@ -49,69 +55,70 @@ shader_parameter/blur_strength = 5.0
 shader_parameter/color_blend = 0.5
 shader_parameter/alpha = 1.0
 
-[node name="Node3D" type="Node3D"]
+[node name="GameScene" type="Node3D"]
 
-[node name="EarthRevolution" type="Node3D" parent="."]
+[node name="Sun" parent="." instance=ExtResource("2_7vqee")]
 
-[node name="Earth" parent="EarthRevolution" node_paths=PackedStringArray("sun") instance=ExtResource("1_hlgix")]
+[node name="Earth" parent="." node_paths=PackedStringArray("sun") instance=ExtResource("1_hlgix")]
 unique_name_in_owner = true
-transform = Transform3D(1, 0, 0, 0, 0.917755, -0.397148, 0, 0.397148, 0.917755, 23156, 0, 0)
-sun = NodePath("../../Sun")
+transform = Transform3D(1, 0, 0, 0, 0.917755, -0.397148, 0, 0.397148, 0.917755, 23156, 0, -22889.2)
+skeleton = NodePath("..")
+sun = NodePath("../Sun")
 
-[node name="CameraPivot" type="Node3D" parent="EarthRevolution/Earth"]
+[node name="CameraPivot" type="Node3D" parent="Earth"]
 unique_name_in_owner = true
-transform = Transform3D(1, 0, 0, 0, 0.917755, 0.397148, 0, -0.397148, 0.917755, 0, 0, 0)
+transform = Transform3D(0.644091, 0, 0.764949, -1.49012e-08, 1, -2.98023e-08, -0.764948, 1.49012e-08, 0.644092, 0, 0, 0)
 
-[node name="MainCamera" type="Camera3D" parent="EarthRevolution/Earth/CameraPivot" node_paths=PackedStringArray("info_box")]
+[node name="MainCamera" type="Camera3D" parent="Earth/CameraPivot" node_paths=PackedStringArray("info_box")]
 unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 200)
 near = 0.03
 far = 25000.0
 script = ExtResource("2_qh8ec")
-info_box = NodePath("../../../../HUD/InfoBox")
+info_box = NodePath("../../../HUD/InfoBox")
 
-[node name="Sun" parent="." instance=ExtResource("2_7vqee")]
+[node name="AirportController" type="Node3D" parent="Earth"]
+unique_name_in_owner = true
+script = ExtResource("3_pkbvg")
+
+[node name="AirlineController" parent="Earth" instance=ExtResource("5_fejir")]
+unique_name_in_owner = true
+
+[node name="AirplaneController" type="Node3D" parent="Earth"]
+unique_name_in_owner = true
+script = ExtResource("7_n3qqb")
+
+[node name="GameController" type="Node3D" parent="." node_paths=PackedStringArray("earth", "info_box", "camera", "money_label", "large_airport_button", "medium_airport_button", "small_airport_button", "airport_name_label", "add_airline_button")]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 0.917755, -0.397148, 0, 0.397148, 0.917755, 23156, 0, 0)
+script = ExtResource("7_sv0ig")
+earth = NodePath("../Earth")
+info_box = NodePath("../HUD/InfoBox")
+camera = NodePath("../Earth/CameraPivot/MainCamera")
+money_label = NodePath("../HUD/TopPanel/HBoxContainer/Money")
+large_airport_button = NodePath("../HUD/TopPanel/HBoxContainer/LargeAirportVisibility")
+medium_airport_button = NodePath("../HUD/TopPanel/HBoxContainer/MediumAirportVisibility")
+small_airport_button = NodePath("../HUD/TopPanel/HBoxContainer/SmallAirportVisibility")
+airport_name_label = NodePath("../HUD/LabelBox")
+add_airline_button = NodePath("../HUD/TopPanel/HBoxContainer/AddAirline")
+
+[node name="FileController" type="Node3D" parent="."]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 0.917755, -0.397148, 0, 0.397148, 0.917755, 23156, 144.414, 69.12)
+script = ExtResource("8_kxyn5")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_g0u8n")
 
-[node name="AirportController" type="Node3D" parent="." node_paths=PackedStringArray("large_airport_button", "medium_airport_button", "small_airport_button", "info_box")]
-unique_name_in_owner = true
-script = ExtResource("3_pkbvg")
-large_airport_button = NodePath("../HUD/TopPanel/HBoxContainer/LargeAirportVisibility")
-medium_airport_button = NodePath("../HUD/TopPanel/HBoxContainer/MediumAirportVisibility")
-small_airport_button = NodePath("../HUD/TopPanel/HBoxContainer/SmallAirportVisibility")
-info_box = NodePath("../HUD/InfoBox")
-
 [node name="HUD" type="CanvasLayer" parent="."]
 
-[node name="AirportNameLabel" type="Label" parent="HUD"]
-unique_name_in_owner = true
-offset_right = 40.0
-offset_bottom = 69.0
-theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 50
-
-[node name="HintBox" type="Node" parent="HUD"]
-
-[node name="LargeAirportVisibility" parent="HUD/HintBox" instance=ExtResource("10_pxk6u")]
-material = SubResource("ShaderMaterial_wwmwi")
-title_key = "LARGE_AIRPORT_VISIBILITY"
-description_key = "LARGE_AIRPORT_VISIBILITY_DESCRIPTION"
-
-[node name="MediumAirportVisibility" parent="HUD/HintBox" instance=ExtResource("10_pxk6u")]
-material = SubResource("ShaderMaterial_e2phm")
-title_key = "MEDIUM_AIRPORT_VISIBILITY"
-description_key = "MEDIUM_AIRPORT_VISIBILITY_DESCRIPTION"
-
-[node name="SmallAirprotVisibility" parent="HUD/HintBox" instance=ExtResource("10_pxk6u")]
-material = SubResource("ShaderMaterial_gccf2")
-title_key = "SMALL_AIRPORT_VISIBILITY"
-description_key = "SMALL_AIRPORT_VISIBILITY_DESCRIPTION"
+[node name="LabelBox" parent="HUD" instance=ExtResource("19_wai4l")]
+offset_right = 216.0
+offset_bottom = 58.0
 
 [node name="TopPanel" type="Panel" parent="HUD"]
 material = ExtResource("6_rtyom")
-custom_minimum_size = Vector2(0, 120)
+custom_minimum_size = Vector2(0, 100)
 anchors_preset = 10
 anchor_right = 1.0
 grow_horizontal = 2
@@ -126,42 +133,91 @@ grow_vertical = 2
 theme = ExtResource("7_56s7v")
 alignment = 2
 
-[node name="VisibilityLabel" type="Label" parent="HUD/TopPanel/HBoxContainer"]
-visible = false
+[node name="Spacer3" type="Control" parent="HUD/TopPanel/HBoxContainer"]
+custom_minimum_size = Vector2(40, 0)
 layout_mode = 2
-text = "Visibility:"
-label_settings = ExtResource("7_js0yx")
+
+[node name="Money" type="Label" parent="HUD/TopPanel/HBoxContainer"]
+layout_mode = 2
+text = "10000"
+label_settings = ExtResource("12_bch0m")
 vertical_alignment = 1
 
-[node name="LargeAirportVisibility" parent="HUD/TopPanel/HBoxContainer" node_paths=PackedStringArray("hint_box") instance=ExtResource("9_fwkja")]
-custom_minimum_size = Vector2(120, 120)
+[node name="Spacer2" type="Control" parent="HUD/TopPanel/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Spacer" type="Control" parent="HUD/TopPanel/HBoxContainer"]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+
+[node name="AddAirline" parent="HUD/TopPanel/HBoxContainer" instance=ExtResource("9_fwkja")]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+default_texture = ExtResource("11_be0b3")
+pressed_texture = ExtResource("12_30fse")
+hide_default_texture = true
+
+[node name="HintBox" parent="HUD/TopPanel/HBoxContainer/AddAirline" node_paths=PackedStringArray("collider") instance=ExtResource("10_pxk6u")]
+layout_mode = 0
+title_key = "CREATE_AIRLINE"
+description_key = "CREATE_AIRLINE_DESCRIPTION"
+collider = NodePath("..")
+offset = Vector2(0, 60)
+
+[node name="LargeAirportVisibility" parent="HUD/TopPanel/HBoxContainer" instance=ExtResource("9_fwkja")]
+custom_minimum_size = Vector2(100, 100)
 layout_mode = 2
 button_pressed = true
 texture_normal = ExtResource("11_4nhsm")
 default_texture = ExtResource("11_4nhsm")
 pressed_texture = ExtResource("12_1ikr6")
-hint_box = NodePath("../../../HintBox/LargeAirportVisibility")
-hint_offset = Vector2(0, 80)
 
-[node name="MediumAirportVisibility" parent="HUD/TopPanel/HBoxContainer" node_paths=PackedStringArray("hint_box") instance=ExtResource("9_fwkja")]
-custom_minimum_size = Vector2(120, 120)
+[node name="LargeAirportVisibility" parent="HUD/TopPanel/HBoxContainer/LargeAirportVisibility" node_paths=PackedStringArray("collider") instance=ExtResource("10_pxk6u")]
+material = SubResource("ShaderMaterial_wwmwi")
+layout_mode = 0
+offset_left = -1620.0
+offset_right = -1356.0
+title_key = "LARGE_AIRPORT_VISIBILITY"
+description_key = "LARGE_AIRPORT_VISIBILITY_DESCRIPTION"
+collider = NodePath("..")
+offset = Vector2(0, 60)
+
+[node name="MediumAirportVisibility" parent="HUD/TopPanel/HBoxContainer" instance=ExtResource("9_fwkja")]
+custom_minimum_size = Vector2(100, 100)
 layout_mode = 2
 button_pressed = true
 texture_normal = ExtResource("14_c4du8")
 default_texture = ExtResource("14_c4du8")
 pressed_texture = ExtResource("15_ke3lb")
-hint_box = NodePath("../../../HintBox/MediumAirportVisibility")
-hint_offset = Vector2(0, 80)
 
-[node name="SmallAirportVisibility" parent="HUD/TopPanel/HBoxContainer" node_paths=PackedStringArray("hint_box") instance=ExtResource("9_fwkja")]
-custom_minimum_size = Vector2(120, 120)
+[node name="MediumAirportVisibility" parent="HUD/TopPanel/HBoxContainer/MediumAirportVisibility" node_paths=PackedStringArray("collider") instance=ExtResource("10_pxk6u")]
+material = SubResource("ShaderMaterial_e2phm")
+layout_mode = 0
+offset_left = -1720.0
+offset_right = -1456.0
+title_key = "MEDIUM_AIRPORT_VISIBILITY"
+description_key = "MEDIUM_AIRPORT_VISIBILITY_DESCRIPTION"
+collider = NodePath("..")
+offset = Vector2(0, 60)
+
+[node name="SmallAirportVisibility" parent="HUD/TopPanel/HBoxContainer" instance=ExtResource("9_fwkja")]
+custom_minimum_size = Vector2(100, 100)
 layout_mode = 2
 button_pressed = true
 texture_normal = ExtResource("17_v6pip")
 default_texture = ExtResource("17_v6pip")
 pressed_texture = ExtResource("18_xm5er")
-hint_box = NodePath("../../../HintBox/SmallAirprotVisibility")
-hint_offset = Vector2(0, 80)
+
+[node name="SmallAirprotVisibility" parent="HUD/TopPanel/HBoxContainer/SmallAirportVisibility" node_paths=PackedStringArray("collider") instance=ExtResource("10_pxk6u")]
+material = SubResource("ShaderMaterial_gccf2")
+layout_mode = 0
+offset_left = -1820.0
+offset_right = -1556.0
+title_key = "SMALL_AIRPORT_VISIBILITY"
+description_key = "SMALL_AIRPORT_VISIBILITY_DESCRIPTION"
+collider = NodePath("..")
+offset = Vector2(0, 60)
 
 [node name="HSeparator" type="HSeparator" parent="HUD/TopPanel"]
 layout_mode = 1
@@ -174,7 +230,10 @@ grow_horizontal = 2
 grow_vertical = 0
 
 [node name="InfoBox" parent="HUD" instance=ExtResource("18_dbcpe")]
+custom_minimum_size = Vector2(440, 0)
+anchors_preset = -1
 offset_left = 20.0
-offset_top = 139.0
-offset_right = 420.0
-offset_bottom = -21.0
+offset_top = 120.0
+offset_bottom = -20.0
+
+[node name="HintBox" type="Node" parent="HUD"]
