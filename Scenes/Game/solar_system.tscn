@@ -1,30 +1,45 @@
-[gd_scene load_steps=30 format=3 uid="uid://cgk540t4auo0p"]
+[gd_scene load_steps=45 format=3 uid="uid://cgk540t4auo0p"]
 
 [ext_resource type="PackedScene" uid="uid://wjce8al7mtv2" path="res://Scenes/Planet/earth.tscn" id="1_hlgix"]
 [ext_resource type="PackedScene" uid="uid://boc8olnjbkk4r" path="res://Scenes/Planet/sun.tscn" id="2_7vqee"]
 [ext_resource type="Script" path="res://Scripts/Game/camera_controller.gd" id="2_qh8ec"]
 [ext_resource type="Sky" uid="uid://dwofeq8if2uqi" path="res://Materials/Planet/space.tres" id="3_d3hiu"]
 [ext_resource type="Script" path="res://Scripts/Controller/airport_controller.gd" id="3_pkbvg"]
-[ext_resource type="PackedScene" uid="uid://cp616hfmd7raq" path="res://Scenes/Controller/airline_controller.tscn" id="5_fejir"]
+[ext_resource type="PackedScene" uid="uid://c5xx2o7etpvpg" path="res://Scenes/Controller/game_controller.tscn" id="6_1sm1c"]
 [ext_resource type="Material" uid="uid://xtwaepa7vuh" path="res://Materials/UI/menu_blur_background.tres" id="6_rtyom"]
 [ext_resource type="Theme" uid="uid://drekqoieprg23" path="res://UIResources/Theme/normal_theme.tres" id="7_56s7v"]
 [ext_resource type="Shader" uid="uid://c7g12r270a1br" path="res://Shaders/UI/blur.tres" id="7_ki63p"]
 [ext_resource type="Script" path="res://Scripts/Controller/airplane_controller.gd" id="7_n3qqb"]
-[ext_resource type="Script" path="res://Scripts/Controller/game_controller.gd" id="7_sv0ig"]
+[ext_resource type="Script" path="res://Scripts/Controller/airline_controller.gd" id="7_qo2lf"]
 [ext_resource type="Script" path="res://Scripts/Controller/file_controller.gd" id="8_kxyn5"]
-[ext_resource type="PackedScene" uid="uid://bbmofpjeuig28" path="res://Scenes/UI/texture_toggle_button.tscn" id="9_fwkja"]
-[ext_resource type="PackedScene" uid="uid://c13yba8b6c7cx" path="res://Scenes/UI/hint_box.tscn" id="10_pxk6u"]
+[ext_resource type="AudioStream" uid="uid://b0lijxw8e6nn1" path="res://Audio/SFX/UI/cancel.wav" id="8_n815h"]
+[ext_resource type="PackedScene" uid="uid://bbmofpjeuig28" path="res://Scenes/Control/texture_toggle_button.tscn" id="9_fwkja"]
+[ext_resource type="AudioStream" uid="uid://nui4utagj265" path="res://Audio/SFX/Game/airway_complete.wav" id="9_of5ne"]
+[ext_resource type="Texture2D" uid="uid://du8yq74suaot0" path="res://Textures/Icon/Airport/small_airport.png" id="9_sgeam"]
+[ext_resource type="Texture2D" uid="uid://jpfedyac8lng" path="res://Textures/Icon/Airport/small_airport_pressed.png" id="10_hw3rj"]
+[ext_resource type="PackedScene" uid="uid://c13yba8b6c7cx" path="res://Scenes/Control/hint_box.tscn" id="10_pxk6u"]
 [ext_resource type="Texture2D" uid="uid://djuk5npx1qpby" path="res://Textures/Icon/Airport/large_airport_button.png" id="11_4nhsm"]
 [ext_resource type="Texture2D" uid="uid://dybuar28go5ms" path="res://Textures/Icon/Airline/add_airline.png" id="11_be0b3"]
+[ext_resource type="Texture2D" uid="uid://bj50xbx6uqsyf" path="res://Textures/Icon/Airport/large_airport_with_airline_pressed.png" id="11_po2iw"]
+[ext_resource type="Texture2D" uid="uid://hqi2nlrslne2" path="res://Textures/Icon/Airport/small_airport_with_airline.png" id="11_poobi"]
 [ext_resource type="Texture2D" uid="uid://cv7t0gv48mx31" path="res://Textures/Icon/Airport/large_airport_button_pressed.png" id="12_1ikr6"]
 [ext_resource type="Texture2D" uid="uid://lyu5a5uuc10u" path="res://Textures/Icon/Airline/add_airline_pressed.png" id="12_30fse"]
 [ext_resource type="LabelSettings" uid="uid://c88bauj8uwi8e" path="res://UIResources/LabelSettings/bold_big.tres" id="12_bch0m"]
+[ext_resource type="Texture2D" uid="uid://d3pb4tnnq0uld" path="res://Textures/Icon/Airport/medium_airport.png" id="12_qspcu"]
+[ext_resource type="Texture2D" uid="uid://bq0fvriqjlsds" path="res://Textures/Icon/Airport/medium_airport_pressed.png" id="13_pcfqi"]
+[ext_resource type="Texture2D" uid="uid://dv7x23hsl0ne0" path="res://Textures/Icon/Airport/medium_airport_with_airline.png" id="14_0sy8h"]
 [ext_resource type="Texture2D" uid="uid://w7txf38k4th" path="res://Textures/Icon/Airport/medium_airport_button.png" id="14_c4du8"]
+[ext_resource type="Texture2D" uid="uid://1h8x4rvu3osu" path="res://Textures/Icon/Airport/large_airport.png" id="15_a0k3u"]
 [ext_resource type="Texture2D" uid="uid://xmqp3ra5482u" path="res://Textures/Icon/Airport/medium_airport_button_pressed.png" id="15_ke3lb"]
+[ext_resource type="Texture2D" uid="uid://dy6yo6mxckmq" path="res://Textures/Icon/Airport/medium_airport_with_airline_pressed.png" id="16_bbbel"]
+[ext_resource type="Texture2D" uid="uid://dnqag1xfvhtwr" path="res://Textures/Icon/Airport/large_airport_pressed.png" id="16_qpjcd"]
+[ext_resource type="Texture2D" uid="uid://behyyb85w0w20" path="res://Textures/Icon/Airport/large_airport_with_airline.png" id="17_20tkx"]
 [ext_resource type="Texture2D" uid="uid://1g57fv72jkts" path="res://Textures/Icon/Airport/small_airport_button.png" id="17_v6pip"]
-[ext_resource type="PackedScene" uid="uid://doajni6v2crx0" path="res://Scenes/UI/info_box.tscn" id="18_dbcpe"]
+[ext_resource type="PackedScene" uid="uid://doajni6v2crx0" path="res://Scenes/Control/info_box.tscn" id="18_dbcpe"]
 [ext_resource type="Texture2D" uid="uid://djfx75vp7r8pa" path="res://Textures/Icon/Airport/small_airport_button_pressed.png" id="18_xm5er"]
-[ext_resource type="PackedScene" uid="uid://b8tyc1r6evk1s" path="res://Scenes/UI/label_box.tscn" id="19_wai4l"]
+[ext_resource type="PackedScene" uid="uid://b8tyc1r6evk1s" path="res://Scenes/Control/label_box.tscn" id="19_wai4l"]
+[ext_resource type="Texture2D" uid="uid://0jd2dsja4bak" path="res://Textures/Icon/Airport/small_airport_with_airline_pressed.png" id="20_v5bvg"]
+[ext_resource type="PackedScene" uid="uid://c1xc0vb5rp5od" path="res://Scenes/Editor/airline_editor.tscn" id="23_qwg2y"]
 
 [sub_resource type="Environment" id="Environment_g0u8n"]
 background_mode = 2
@@ -57,58 +72,103 @@ shader_parameter/alpha = 1.0
 
 [node name="GameScene" type="Node3D"]
 
-[node name="Sun" parent="." instance=ExtResource("2_7vqee")]
+[node name="Environment" type="Node3D" parent="."]
 
-[node name="Earth" parent="." node_paths=PackedStringArray("sun") instance=ExtResource("1_hlgix")]
+[node name="Sun" parent="Environment" instance=ExtResource("2_7vqee")]
+skeleton = NodePath("../..")
+
+[node name="Earth" parent="Environment" node_paths=PackedStringArray("sun") instance=ExtResource("1_hlgix")]
 unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 0.917755, -0.397148, 0, 0.397148, 0.917755, 23156, 0, -22889.2)
-skeleton = NodePath("..")
 sun = NodePath("../Sun")
 
-[node name="CameraPivot" type="Node3D" parent="Earth"]
+[node name="CameraPivot" type="Node3D" parent="Environment/Earth"]
 unique_name_in_owner = true
 transform = Transform3D(0.644091, 0, 0.764949, -1.49012e-08, 1, -2.98023e-08, -0.764948, 1.49012e-08, 0.644092, 0, 0, 0)
 
-[node name="MainCamera" type="Camera3D" parent="Earth/CameraPivot" node_paths=PackedStringArray("info_box")]
+[node name="MainCamera" type="Camera3D" parent="Environment/Earth/CameraPivot" node_paths=PackedStringArray("info_box")]
 unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 200)
 near = 0.03
 far = 25000.0
 script = ExtResource("2_qh8ec")
+info_box = NodePath("../../../../HUD/InfoBox")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="Environment"]
+environment = SubResource("Environment_g0u8n")
+
+[node name="Controllers" type="Node" parent="."]
+
+[node name="Core" type="Node" parent="Controllers"]
+
+[node name="GameController" parent="Controllers/Core" node_paths=PackedStringArray("earth", "info_box", "camera", "money_label", "hint_box_parent") instance=ExtResource("6_1sm1c")]
+unique_name_in_owner = true
+earth = NodePath("../../../Environment/Earth")
 info_box = NodePath("../../../HUD/InfoBox")
+camera = NodePath("../../../Environment/Earth/CameraPivot/MainCamera")
+money_label = NodePath("../../../HUD/TopPanel/HBoxContainer/Money")
+hint_box_parent = NodePath("../../../HUD/HintBox")
 
-[node name="AirportController" type="Node3D" parent="Earth"]
+[node name="FileController" type="Node" parent="Controllers/Core"]
 unique_name_in_owner = true
-script = ExtResource("3_pkbvg")
-
-[node name="AirlineController" parent="Earth" instance=ExtResource("5_fejir")]
-unique_name_in_owner = true
-
-[node name="AirplaneController" type="Node3D" parent="Earth"]
-unique_name_in_owner = true
-script = ExtResource("7_n3qqb")
-
-[node name="GameController" type="Node3D" parent="." node_paths=PackedStringArray("earth", "info_box", "camera", "money_label", "large_airport_button", "medium_airport_button", "small_airport_button", "airport_name_label", "add_airline_button")]
-unique_name_in_owner = true
-transform = Transform3D(1, 0, 0, 0, 0.917755, -0.397148, 0, 0.397148, 0.917755, 23156, 0, 0)
-script = ExtResource("7_sv0ig")
-earth = NodePath("../Earth")
-info_box = NodePath("../HUD/InfoBox")
-camera = NodePath("../Earth/CameraPivot/MainCamera")
-money_label = NodePath("../HUD/TopPanel/HBoxContainer/Money")
-large_airport_button = NodePath("../HUD/TopPanel/HBoxContainer/LargeAirportVisibility")
-medium_airport_button = NodePath("../HUD/TopPanel/HBoxContainer/MediumAirportVisibility")
-small_airport_button = NodePath("../HUD/TopPanel/HBoxContainer/SmallAirportVisibility")
-airport_name_label = NodePath("../HUD/LabelBox")
-add_airline_button = NodePath("../HUD/TopPanel/HBoxContainer/AddAirline")
-
-[node name="FileController" type="Node3D" parent="."]
-unique_name_in_owner = true
-transform = Transform3D(1, 0, 0, 0, 0.917755, -0.397148, 0, 0.397148, 0.917755, 23156, 144.414, 69.12)
 script = ExtResource("8_kxyn5")
 
-[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
-environment = SubResource("Environment_g0u8n")
+[node name="Airlines" type="Node" parent="Controllers"]
+
+[node name="AirlineController" type="Node" parent="Controllers/Airlines" node_paths=PackedStringArray("airline_parent", "preview_airline_parent")]
+unique_name_in_owner = true
+script = ExtResource("7_qo2lf")
+airline_parent = NodePath("../../../Objects/Airlines")
+preview_airline_parent = NodePath("../../../Objects/PreviewAirlines")
+
+[node name="Airports" type="Node" parent="Controllers"]
+
+[node name="AirportController" type="Node" parent="Controllers/Airports" node_paths=PackedStringArray("airport_parent", "large_airport_button", "medium_airport_button", "small_airport_button", "airport_name_label")]
+unique_name_in_owner = true
+script = ExtResource("3_pkbvg")
+airport_parent = NodePath("../../../Objects/Airports")
+large_airport_icon = ExtResource("15_a0k3u")
+large_airport_pressed_icon = ExtResource("16_qpjcd")
+large_airport_with_airline_icon = ExtResource("17_20tkx")
+large_airport_with_airline_pressed_icon = ExtResource("11_po2iw")
+medium_airport_icon = ExtResource("12_qspcu")
+medium_airport_pressed_icon = ExtResource("13_pcfqi")
+medium_airport_with_airline_icon = ExtResource("14_0sy8h")
+medium_airport_with_airline_pressed_icon = ExtResource("16_bbbel")
+small_airport_icon = ExtResource("9_sgeam")
+small_airport_pressed_icon = ExtResource("10_hw3rj")
+small_airport_with_airline_icon = ExtResource("11_poobi")
+small_airport_with_airline_pressed_icon = ExtResource("20_v5bvg")
+large_airport_button = NodePath("../../../HUD/TopPanel/HBoxContainer/LargeAirportVisibility")
+medium_airport_button = NodePath("../../../HUD/TopPanel/HBoxContainer/MediumAirportVisibility")
+small_airport_button = NodePath("../../../HUD/TopPanel/HBoxContainer/SmallAirportVisibility")
+airport_name_label = NodePath("../../../HUD/LabelBox")
+
+[node name="Airplanes" type="Node" parent="Controllers"]
+
+[node name="AirplaneController" type="Node" parent="Controllers/Airplanes" node_paths=PackedStringArray("airplane_parent")]
+unique_name_in_owner = true
+script = ExtResource("7_n3qqb")
+airplane_parent = NodePath("../../../Objects/Airplanes")
+
+[node name="Editors" type="Node" parent="."]
+
+[node name="AirlineEditor" parent="Editors" node_paths=PackedStringArray("create_airline_button") instance=ExtResource("23_qwg2y")]
+unique_name_in_owner = true
+create_airline_button = NodePath("../../HUD/TopPanel/HBoxContainer/AddAirline")
+remove_airport_sound = ExtResource("8_n815h")
+complete_airline_sound = ExtResource("9_of5ne")
+
+[node name="Objects" type="Node3D" parent="."]
+unique_name_in_owner = true
+
+[node name="Airlines" type="Node3D" parent="Objects"]
+
+[node name="PreviewAirlines" type="Node3D" parent="Objects"]
+
+[node name="Airports" type="Node3D" parent="Objects"]
+
+[node name="Airplanes" type="Node3D" parent="Objects"]
 
 [node name="HUD" type="CanvasLayer" parent="."]
 
@@ -230,7 +290,6 @@ grow_horizontal = 2
 grow_vertical = 0
 
 [node name="InfoBox" parent="HUD" instance=ExtResource("18_dbcpe")]
-custom_minimum_size = Vector2(440, 0)
 anchors_preset = -1
 offset_left = 20.0
 offset_top = 120.0

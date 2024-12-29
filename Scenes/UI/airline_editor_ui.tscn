@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://cklof4m7ffkeq"]
+
+[ext_resource type="PackedScene" uid="uid://che3u5j56ymei" path="res://Scenes/Control/InfoBox/info_check_box.tscn" id="1_3vxqi"]
+[ext_resource type="Script" path="res://Scripts/Editor/airline_editor_ui.gd" id="1_72idd"]
+[ext_resource type="PackedScene" uid="uid://ccc3cg3iby6sp" path="res://Scenes/Control/InfoBox/info_button.tscn" id="2_kr7g5"]
+
+[node name="AirlineEditorUI" type="VBoxContainer"]
+offset_right = 40.0
+offset_bottom = 40.0
+theme_override_constants/separation = 0
+script = ExtResource("1_72idd")
+
+[node name="BackToFirstAirport" parent="." instance=ExtResource("1_3vxqi")]
+layout_mode = 2
+
+[node name="OneWay" parent="." instance=ExtResource("1_3vxqi")]
+layout_mode = 2
+
+[node name="NextButton" parent="." instance=ExtResource("2_kr7g5")]
+layout_mode = 2

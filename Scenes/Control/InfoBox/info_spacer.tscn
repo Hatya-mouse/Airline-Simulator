@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://dxexvip67vw1x"]
+
+[node name="InfoSpacer" type="Control"]
+custom_minimum_size = Vector2(0, 10)
+layout_mode = 3
+anchors_preset = 0

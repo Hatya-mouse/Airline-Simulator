@@ -17,7 +17,11 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:
-	pass
+	label.text = text
+	
+
+func toggle(on: bool) -> void:
+	toggle_button.toggle(on)
 
 func _gui_input(event: InputEvent) -> void:
 	if event == InputEventMouseButton:

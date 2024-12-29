@@ -1,7 +1,8 @@
 extends ScrollContainer
 
 @onready var animation_player = $AnimationPlayer
-@onready var info_container: VBoxContainer = $MarginContainer/InfoContainer
+@onready var info_container: VBoxContainer = $MarginContainer/VStack/InfoContainer
+@onready var last_content_container: VBoxContainer = $MarginContainer/VStack/LastContentContainer
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:

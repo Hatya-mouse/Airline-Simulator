@@ -1,8 +1,7 @@
-[gd_scene load_steps=8 format=3 uid="uid://che3u5j56ymei"]
+[gd_scene load_steps=7 format=3 uid="uid://che3u5j56ymei"]
 
 [ext_resource type="Script" path="res://Scripts/UI/InfoBox/info_check_box.gd" id="1_rc0ka"]
-[ext_resource type="PackedScene" uid="uid://bbmofpjeuig28" path="res://Scenes/UI/texture_toggle_button.tscn" id="2_37vjf"]
-[ext_resource type="AudioStream" uid="uid://cjbnjqybw4nag" path="res://Audio/SFX/UI/click.wav" id="2_p20r0"]
+[ext_resource type="PackedScene" uid="uid://bbmofpjeuig28" path="res://Scenes/Control/texture_toggle_button.tscn" id="2_37vjf"]
 [ext_resource type="Texture2D" uid="uid://d0f1g0jysic6c" path="res://Textures/Icon/Control/checkbox_off.svg" id="3_076tk"]
 [ext_resource type="LabelSettings" uid="uid://cen8j3djydtij" path="res://UIResources/LabelSettings/normal_label.tres" id="3_u4vmp"]
 [ext_resource type="Texture2D" uid="uid://b0on3i1olq2fv" path="res://Textures/Icon/Control/checkbox_on.svg" id="4_bm0gl"]
@@ -11,7 +10,7 @@
 [node name="InfoProperty" type="HBoxContainer"]
 theme_override_constants/separation = 16
 script = ExtResource("1_rc0ka")
-click_sound = ExtResource("2_p20r0")
+click_sound = ExtResource("6_cd423")
 
 [node name="TextureToggleButton" parent="." instance=ExtResource("2_37vjf")]
 custom_minimum_size = Vector2(34, 34)

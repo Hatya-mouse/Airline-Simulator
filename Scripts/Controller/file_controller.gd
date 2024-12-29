@@ -1,7 +1,7 @@
-extends Node3D
+extends Node
 class_name FileController
 
-@onready var airline_controller: Node3D = %AirlineController
+@onready var airline_controller: Node = %AirlineController
 
 @export var save_path := "user://save_data.save"
 

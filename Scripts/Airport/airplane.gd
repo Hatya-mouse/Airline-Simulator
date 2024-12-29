@@ -96,21 +96,17 @@ func depart(delay: float = 0.0) -> void:
 		# Play the depart sfx.
 		$Audio/DepartureSFX.play()
 
-		print("Depart!!!")
-
 ## Called when arrived at any airport
 func arrive() -> void:
 	$Audio/ArriveSFX.play()
 	depart(5)
 	arrived.emit(self)
-	print("Arrive!!!")
 
 ## Called when finished the airline
 func finish() -> void:
 	$Audio/ArriveSFX.play()
 	despawn(5)
 	finished.emit(self)
-	print("Finish!!!")
 
 ## Despawn
 func despawn(delay: float = 0.0) -> void:
@@ -119,7 +115,6 @@ func despawn(delay: float = 0.0) -> void:
 		timer.start(delay)
 	else:
 		animation_player.play("hide")
-		print("Despawn!!!")
 
 ## Move the airplane.
 func move_forward(t: float):

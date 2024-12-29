@@ -7,6 +7,8 @@ extends MeshInstance3D
 @onready var atmos: Node3D = %PlanetAtmosphere
 @onready var game_controller: GameController = %GameController
 
+@onready var objects_parent: Node3D = %Objects
+
 const material = preload("res://Materials/Planet/earth_material.tres")
 
 var day: float = 0.0
@@ -29,3 +31,5 @@ func _process(delta: float) -> void:
 	revolution_position = revolution_position.rotated(Vector3.UP, deg_to_rad(day))
 	position = revolution_position
 	rotation.y = fmod(time, 360.0)
+
+	objects_parent.transform = transform

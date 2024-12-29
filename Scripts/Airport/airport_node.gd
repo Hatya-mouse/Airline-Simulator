@@ -1,6 +1,8 @@
 extends Node3D
 class_name Airport
 
+signal clicked(Airport)
+
 @onready var icon_control: TextureButton = $Icon
 @onready var animation_player: AnimationPlayer = $Icon/AnimationPlayer
 @onready var add_airport_audio_player: AudioStreamPlayer = $AddAirport
@@ -16,7 +18,7 @@ class_name Airport
 
 @export var texture_click_mask: BitMap
 
-var airport_controller: Node3D
+var airport_controller: Node
 var game_controller: GameController
 var camera: Camera3D
 var earth: Node3D
@@ -33,16 +35,12 @@ var airport_data: Dictionary = {}
 var old_mouse_movement := Vector2()
 var is_dragging := false
 
-var airlines: Array[Dictionary] = []
 var has_airlines = false
 
 var has_visibility_changed := false
 var viewport_size_just_changed := false
 # If this is true, make brighter:
 var airline_editor_selected := false
-
-# Index in Parent node
-var original_child_index: int = 0
 
 func _ready() -> void:
 	# Set textures
@@ -54,7 +52,6 @@ func _ready() -> void:
 	icon_control.hide()
 
 	# Set controller and camera
-	airport_controller = get_parent_node_3d()
 	camera = get_viewport().get_camera_3d()
 
 	# Connect viewport size signal
@@ -69,7 +66,7 @@ func _ready() -> void:
 	airport_info_audio_player.stream = airport_info_sound
 
 	# Update airline state
-	update_airlines_state()
+	update_icon()
 
 func _process(_delta: float) -> void:
 	if should_update_visibility():
@@ -107,10 +104,10 @@ func is_airport_type_visible() -> bool:
 func _update_visibility(camera_vector: Vector3):
 	# Check if the airport is behind or front of the earth.
 	var angle = offset.angle_to(camera_vector)
-	var is_in_front = not angle > PI * (0.0001 * camera.position.z + 0.45)
+	var is_in_front = angle < PI * (0.0001 * camera.position.z + 0.45)
 
 	# Set airport visibility
-	var visibility = not camera.is_position_behind(global_position) and is_in_front
+	var visibility = (not camera.is_position_behind(global_position)) and is_in_front
 
 	# If there's any airline in this airport, show the airport
 	if not has_airlines:
@@ -126,38 +123,55 @@ func _update_visibility(camera_vector: Vector3):
 		animation_player.play("show" if visibility else "hide")
 	old_visibility = visibility
 
-	# Update color
-	update_airlines_state()
-
 func _update_position():
 	# Set position
 	icon_control.position = camera.unproject_position(global_position) - Vector2(50, 50)
 
-func update_airlines_state():
-	has_airlines = not airlines.is_empty()
-	update_self_modulate()
+## Change has_airlines
+func update_airline_state(value: bool) -> void:
+	has_airlines = value
+	update_icon()
 
 func set_airline_editor_selected(value: bool) -> void:
 	airline_editor_selected = value
-	update_self_modulate()
+	update_icon()
 
 ## Make brighter (which means selected) if this airport is a part of the airline(s).
-func update_self_modulate() -> void:
+func update_icon() -> void:
 	if has_airlines or airline_editor_selected:
 		icon_control.texture_normal = normal_with_airline_icon
 		icon_control.texture_pressed = pressed_with_airline_icon
-		icon_control.z_index = 1
-		original_child_index = get_index()
-		airport_controller.move_child(self, airport_controller.get_child_count() - 1)
+		airport_controller.move_forward(self)
 	else:
 		icon_control.texture_normal = normal_icon
 		icon_control.texture_pressed = pressed_icon
-		icon_control.z_index = 0
-		airport_controller.move_child(self, original_child_index)
+
+## Return IATA code.
+## Fallback to ICAO code if IATA code is unavailable.
+func get_iata_code() -> String:
+	# Use ICAO code if IATA code is unavailable
+	var code = airport_data.get("iata_code", "")
+	if code.is_empty():
+		code = airport_data.get("gps_code", "")
+	if code.is_empty():
+		code = airport_data.get("ident", "")
+	return code
+
+## Return airport's ICAO code.
+## Fallback to ident if ICAO code is unavailable.
+func get_icao_code() -> String:
+	var code = airport_data.get("gps_code", "")
+	if code.is_empty():
+		code = airport_data.get("ident", "")
+	return code
+
+## Return airport's ident.
+func get_ident() -> String:
+	return airport_data.get("ident", "")
 
 func _input(event: InputEvent) -> void:
 	if event is InputEventMouseMotion:
-		if abs(event.relative - old_mouse_movement) < Vector2(5, 5):
+		if abs(event.relative - old_mouse_movement) < Vector2(10, 10):
 			is_dragging = false
 		else:
 			is_dragging = true
@@ -174,12 +188,8 @@ func _on_mouse_exited() -> void:
 
 func _on_pressed() -> void:
 	if not is_dragging:
-		if game_controller.mode == GameController.InGameMode.NORMAL:
-			airport_controller.show_info(airport_data)
-			airport_info_audio_player.play()
-		else:
-			airport_controller.add_airway(self)
-			add_airport_audio_player.play()
+		clicked.emit(self)
+		airport_info_audio_player.play()
 
 func _viewport_size_changed() -> void:
 	viewport_size_just_changed = true

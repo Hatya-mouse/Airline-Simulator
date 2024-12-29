@@ -1,0 +1,9 @@
+[gd_resource type="LabelSettings" load_steps=2 format=3 uid="uid://cdywhvbe7nuf1"]
+
+[ext_resource type="FontVariation" uid="uid://bun4qhcccla0f" path="res://UIResources/Fonts/bold_font.tres" id="1_44n3g"]
+
+[resource]
+line_spacing = 0.0
+font = ExtResource("1_44n3g")
+font_size = 32
+font_color = Color(0.741385, 0.741385, 0.741385, 1)

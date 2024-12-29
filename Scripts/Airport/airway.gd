@@ -126,18 +126,24 @@ func add_path(start_lat: float, start_lon: float, end_lat: float, end_lon: float
 	surface_array[Mesh.ARRAY_NORMAL] = normals
 	surface_array[Mesh.ARRAY_INDEX] = indices
 
-	# Commit the mesh to MeshInstance
+	# Set surface array
 	mesh.add_surface_from_arrays(Mesh.PRIMITIVE_TRIANGLES, surface_array)
+
+	# Set up the shader material
 	var material = shader_material.duplicate()
 	material.set_shader_parameter("line_texture", airway_texture)
 	material.set_shader_parameter("arrow_texture", arrow_texture)
 	material.set_shader_parameter("color", color)
 	material.set_shader_parameter("move_direction", Vector2(0.0, 0.15))
+	material.set_shader_parameter("is_preview", is_editing)
 	mesh_material = material
+
+	# Commit the material
 	for c in mesh.get_surface_count():
 		mesh.surface_set_material(c, material)
-	mesh_instance.mesh = mesh
 
+	# Commit the mesh to the MeshInstance
+	mesh_instance.mesh = mesh
 	airway_mesh = mesh
 
 	# Set airway length

@@ -10,5 +10,7 @@ shader_parameter/alpha = 1.0
 shader_parameter/move_direction = Vector2(0, 0.5)
 shader_parameter/scale_factor = 0.6
 shader_parameter/arrow_density = 0.1
+shader_parameter/arrow_show_distance = 0.5
 shader_parameter/line_width_decay = 2.0
+shader_parameter/is_preview = false
 shader_parameter/depth = null

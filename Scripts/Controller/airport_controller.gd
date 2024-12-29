@@ -1,38 +1,45 @@
-extends Node3D
+extends Node
 
 signal airport_visibility_changed(airport_type: bool)
 
 const database_path = "res://Resources/Airport_Database/airports.txt"
 
 const airport_scene = preload("res://Scenes/Airport/airport.tscn")
-const info_property_scene = preload("res://Scenes/UI/InfoBox/info_property.tscn")
+
+@onready var game_controller: GameController = %GameController
+@onready var airline_controller: AirlineController = %AirlineController
+@onready var airline_editor: AirlineEditor = %AirlineEditor
+
+@export_category("Airport Node")
+@export var airport_parent: Node3D
 
 # Airport Icons
 # Large airport
-const large_airport_icon = preload("res://Textures/Icon/Airport/large_airport.png")
-const large_airport_pressed_icon = preload("res://Textures/Icon/Airport/large_airport_pressed.png")
-const large_airport_with_airline_icon = preload("res://Textures/Icon/Airport/large_airport_with_airline.png")
-const large_airport_pressed_with_airline_icon = preload("res://Textures/Icon/Airport/large_airport_with_airline_pressed.png")
+@export_category("Large Airports")
+@export var large_airport_icon: Texture2D
+@export var large_airport_pressed_icon: Texture2D
+@export var large_airport_with_airline_icon: Texture2D
+@export var large_airport_with_airline_pressed_icon: Texture2D
 # Medium airport
-const medium_airport_icon = preload("res://Textures/Icon/Airport/medium_airport.png")
-const medium_airport_pressed_icon = preload("res://Textures/Icon/Airport/medium_airport_pressed.png")
-const medium_airport_with_airline_icon = preload("res://Textures/Icon/Airport/medium_airport_with_airline.png")
-const medium_airport_pressed_with_airline_icon = preload("res://Textures/Icon/Airport/medium_airport_with_airline_pressed.png")
+@export_category("Medium Airports")
+@export var medium_airport_icon: Texture2D
+@export var medium_airport_pressed_icon: Texture2D
+@export var medium_airport_with_airline_icon: Texture2D
+@export var medium_airport_with_airline_pressed_icon: Texture2D
 # Small airport
-const small_airport_icon = preload("res://Textures/Icon/Airport/small_airport.png")
-const small_airport_pressed_icon = preload("res://Textures/Icon/Airport/small_airport_pressed.png")
-const small_airport_with_airline_icon = preload("res://Textures/Icon/Airport/small_airport_with_airline.png")
-const small_airport_pressed_with_airline_icon = preload("res://Textures/Icon/Airport/small_airport_with_airline_pressed.png")
+@export_category("Small Airports")
+@export var small_airport_icon: Texture2D
+@export var small_airport_pressed_icon: Texture2D
+@export var small_airport_with_airline_icon: Texture2D
+@export var small_airport_with_airline_pressed_icon: Texture2D
 
-@onready var earth: MeshInstance3D = %Earth
-@onready var airline_controller: Node3D = %AirlineController
-@onready var game_controller: GameController = %GameController
+@export_category("Controls")
+@export var large_airport_button: TextureButton
+@export var medium_airport_button: TextureButton
+@export var small_airport_button: TextureButton
+@export var airport_name_label: LabelBox
 
-var large_airport_button: TextureButton
-var medium_airport_button: TextureButton
-var small_airport_button: TextureButton
 var info_box: InfoBox
-var airport_name_label: LabelBox
 
 var large_airport_visibility := false
 var medium_airport_visibility := false
@@ -40,20 +47,21 @@ var small_airport_visibility := false
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	large_airport_button = game_controller.large_airport_button
-	medium_airport_button = game_controller.medium_airport_button
-	small_airport_button = game_controller.small_airport_button
 	info_box = game_controller.info_box
-	airport_name_label = game_controller.airport_name_label
 
 	var airports = load_database(database_path)
 	for airport in airports:
-		add_airport(airport)
+		spawn_airport(airport)
 
 	# Connect signals
 	small_airport_button.pressed.connect(_small_airport_button_pressed)
 	medium_airport_button.pressed.connect(_medium_airport_button_pressed)
 	large_airport_button.pressed.connect(_large_airport_button_pressed)
+
+func _process(_delta: float) -> void:
+	large_airport_visibility = not large_airport_button.button_pressed
+	medium_airport_visibility = not medium_airport_button.button_pressed
+	small_airport_visibility = not small_airport_button.button_pressed
 
 func _small_airport_button_pressed() -> void:
 	airport_visibility_changed.emit("small_airport")
@@ -64,33 +72,9 @@ func _medium_airport_button_pressed() -> void:
 func _large_airport_button_pressed() -> void:
 	airport_visibility_changed.emit("large_airport")
 
-func _process(_delta: float) -> void:
-	large_airport_visibility = not large_airport_button.button_pressed
-	medium_airport_visibility = not medium_airport_button.button_pressed
-	small_airport_visibility = not small_airport_button.button_pressed
-
-func show_info(data: Dictionary) -> void:
-	info_box.remove_all_information_controls()
-	info_box.add_information_control(info_node("ICAO_CODE", data["ident"]))
-	info_box.add_information_control(info_node("IATA_CODE", data["iata_code"]))
-	#info_box.add_information_control(info_node("COUNTRY", get_country_name_from_alpha_2(data["iso_country"])))
-	info_box.add_information_control(info_node("LATITUDE", data["latitude_deg"]))
-	info_box.add_information_control(info_node("LONGITUDE", data["longitude_deg"]))
-	info_box.set_title(data["name"])
-	info_box.show_animation()
-
-func info_node(tr_key: String, content: String) -> HBoxContainer:
-	var node = info_property_scene.instantiate()
-	node.label_text = tr(tr_key)
-	node.content_text = content
-	return node
-
-func add_airway(airport: Airport) -> void:
-	airline_controller.add_airport(airport)
-
 ## Add airport node from airport data dictionary.
-func add_airport(airport: Dictionary) -> void:
-	var airport_node = airport_scene.instantiate() as Node3D
+func spawn_airport(airport: Dictionary) -> void:
+	var airport_node = airport_scene.instantiate() as Airport
 	airport_node.name = airport["ident"]
 
 	var latitude := float(airport["latitude_deg"])
@@ -104,26 +88,65 @@ func add_airport(airport: Dictionary) -> void:
 	airport_node.longitude = longitude
 	airport_node.airport_data = airport
 
-	airport_node.earth = earth
+	airport_node.earth = game_controller.earth
 	airport_node.game_controller = game_controller
+	airport_node.airport_controller = self
+
+	# Connect the "clicked" signal
+	airport_node.clicked.connect(_on_airport_clicked)
 
 	if airport["type"].contains("large"):
 		airport_node.normal_icon = large_airport_icon
 		airport_node.normal_with_airline_icon = large_airport_with_airline_icon
 		airport_node.pressed_icon = large_airport_pressed_icon
-		airport_node.pressed_with_airline_icon = large_airport_pressed_with_airline_icon
+		airport_node.pressed_with_airline_icon = large_airport_with_airline_pressed_icon
 	elif airport["type"].contains("medium"):
 		airport_node.normal_icon = medium_airport_icon
 		airport_node.normal_with_airline_icon = medium_airport_with_airline_icon
 		airport_node.pressed_icon = medium_airport_pressed_icon
-		airport_node.pressed_with_airline_icon = medium_airport_pressed_with_airline_icon
+		airport_node.pressed_with_airline_icon = medium_airport_with_airline_pressed_icon
 	elif airport["type"].contains("small"):
 		airport_node.normal_icon = small_airport_icon
 		airport_node.normal_with_airline_icon = small_airport_with_airline_icon
 		airport_node.pressed_icon = small_airport_pressed_icon
-		airport_node.pressed_with_airline_icon = small_airport_pressed_with_airline_icon
+		airport_node.pressed_with_airline_icon = small_airport_with_airline_pressed_icon
 
-	add_child(airport_node)
+	airport_parent.add_child(airport_node)
+
+func _on_airport_clicked(airport: Airport) -> void:
+	if game_controller.mode == GameController.InGameMode.NORMAL:
+		show_info(airport)
+	elif game_controller.mode == GameController.InGameMode.AIRLINE:
+		airline_editor.add_airport_to_airline(airport)
+
+func show_info(airport: Airport) -> void:
+	var airport_data = airport.airport_data
+
+	# Add airport data text information control
+	info_box.clear_information_controls()
+	info_box.set_title(airport_data["name"])
+	info_box.add_information_control(info_box.get_property_label("ICAO_CODE", airport.get_icao_code()))
+	info_box.add_information_control(info_box.get_property_label("IATA_CODE", airport.get_iata_code()))
+	info_box.add_information_control(info_box.get_property_label("LATITUDE", airport_data["latitude_deg"]))
+	info_box.add_information_control(info_box.get_property_label("LONGITUDE", airport_data["longitude_deg"]))
+
+	# Add airline list header
+	var header_contents: PackedStringArray = ["Airline", "Passengers"]
+	var header_alignment: Array[HorizontalAlignment] = [HORIZONTAL_ALIGNMENT_LEFT, HORIZONTAL_ALIGNMENT_RIGHT]
+	info_box.add_information_control(info_box.get_list_header(header_contents, header_alignment))
+
+	# Add airline list
+	for airline in airline_controller.get_airlines_for_airport(airport.airport_data["ident"]):
+		var airline_list_item = info_box.get_airline_list_node(airline, 0)
+		airline_list_item.selected_airport = airport
+		info_box.add_information_control(airline_list_item)
+
+	# Play show animation
+	info_box.show_animation()
+
+## Move the airport control forward.
+func move_forward(airport: Airport) -> void:
+	airport_parent.move_child(airport, airport_parent.get_child_count())
 
 # CSV reading utility functions
 func load_database(path: String) -> Array:

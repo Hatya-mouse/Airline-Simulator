@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ch7qqg78en4l6"
-path="res://.godot/imported/large_airport_pressed_with_airline.png-e320eb6688e59af744fc1a7dc9486b21.ctex"
+uid="uid://dt55c11e2led6"
+path="res://.godot/imported/large_airport_with_airline.png-fae11ad961e7684fa3a19a6b5d7e156e.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Textures/Icon/Airport/large_airport_pressed_with_airline.png"
-dest_files=["res://.godot/imported/large_airport_pressed_with_airline.png-e320eb6688e59af744fc1a7dc9486b21.ctex"]
+source_file="res://Textures/Icon/large_airport_with_airline.png"
+dest_files=["res://.godot/imported/large_airport_with_airline.png-fae11ad961e7684fa3a19a6b5d7e156e.ctex"]
 
 [params]
 

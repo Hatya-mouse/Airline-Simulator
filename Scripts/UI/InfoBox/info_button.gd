@@ -1,4 +1,5 @@
 extends MarginContainer
+class_name InfoButton
 
 signal pressed
 
