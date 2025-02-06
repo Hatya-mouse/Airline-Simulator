@@ -149,6 +149,39 @@ func update_list() -> void:
 			var last_airport_list_item = get_airport_control(editing_airline[0], counter, true)
 			info_box.add_information_control(last_airport_list_item)
 
+func item_dropped(old_index: int, mouse_position: Vector2):
+	var index = get_index_from_position(mouse_position)
+	# Move the item in editing_airline array
+	var dropped_airport = editing_airline[old_index]
+	editing_airline.remove_at(old_index)
+	editing_airline.insert(index, dropped_airport)
+	# Update UIs
+	update_list()
+	update_preview()
+
+func get_index_from_position(mouse_position: Vector2) -> int:
+	# Get the vertical scroll position from the scroll bar
+	var vertical_scroll = info_box.scroll_container.get_v_scroll_bar().value
+	# Adjust the mouse Y position by considering the scroll amount
+	var adjusted_y = (mouse_position.y - info_box.scroll_container.global_position.y) + vertical_scroll
+	# Get the total number of items in the list
+	var item_count = info_box.information_controls.size()
+	# Variable to track the cumulative height of all items
+	var total_height = 0.0
+	# Loop through all items in the list
+	for counter in range(item_count):
+		# Get the current item in the list
+		var item = info_box.information_controls[counter]
+		# Add half of the item height to total_height
+		total_height += item.size.y / 2
+		# If the adjusted mouse Y position is less than the total height, return the current item index
+		if adjusted_y < total_height:
+			return counter
+		# Add the other half of the item height (completing the item's full height in total_height)
+		total_height += item.size.y / 2
+	# If no index was found, return the last index (i.e., the last item in the list)
+	return item_count - 1
+
 # Signals
 
 func _on_remove_airport(index: int) -> void:
@@ -244,18 +277,10 @@ func create_airline() -> Airline:
 ## Return airport control (which is used in airport list).
 func get_airport_control(airport: Airport, index: int, auto_added: bool = false) -> Control:
 	# Instantiate the airport list scene
-	var airport_list = airport_list_scene.instantiate()
-
-	# Set the properties
-	airport_list.airport_name = airport.airport_data["name"]
-	airport_list.airport_type = airport.airport_data["type"]
-	airport_list.airport_icao = airport.get_icao_code()
-	airport_list.airport_iata = airport.get_iata_code()
-	airport_list.auto_added = auto_added
-	airport_list.airport_index = index
-
+	var airport_list = info_box.get_airport_list_node(airport, index, auto_added)
 	# Connect the clicked signal
 	airport_list.connect("clicked", _on_remove_airport)
-
+	# Pass the airline editor instance
+	airport_list.airline_editor = self
 	# Return the generated airport
 	return airport_list

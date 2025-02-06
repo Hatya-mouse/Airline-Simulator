@@ -76,6 +76,8 @@ func _process(_delta: float) -> void:
 
 	viewport_size_just_changed = false
 
+	is_dragging = camera.is_moved
+
 ## Check if visibility needs to be updated based on various conditions.
 func should_update_visibility() -> bool:
 	return has_visibility_changed or should_update_due_to_camera()
@@ -168,14 +170,6 @@ func get_icao_code() -> String:
 ## Return airport's ident.
 func get_ident() -> String:
 	return airport_data.get("ident", "")
-
-func _input(event: InputEvent) -> void:
-	if event is InputEventMouseMotion:
-		if abs(event.relative - old_mouse_movement) < Vector2(10, 10):
-			is_dragging = false
-		else:
-			is_dragging = true
-		old_mouse_movement = event.relative
 
 func _on_mouse_entered() -> void:
 	if not camera.is_position_behind(global_position):

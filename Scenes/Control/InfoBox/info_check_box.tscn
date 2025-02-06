@@ -2,9 +2,9 @@
 
 [ext_resource type="Script" path="res://Scripts/UI/InfoBox/info_check_box.gd" id="1_rc0ka"]
 [ext_resource type="PackedScene" uid="uid://bbmofpjeuig28" path="res://Scenes/Control/texture_toggle_button.tscn" id="2_37vjf"]
-[ext_resource type="Texture2D" uid="uid://d0f1g0jysic6c" path="res://Textures/Icon/Control/checkbox_off.svg" id="3_076tk"]
+[ext_resource type="Texture2D" uid="uid://d0f1g0jysic6c" path="res://Textures/Control/Icon/Control/checkbox_off.svg" id="3_076tk"]
 [ext_resource type="LabelSettings" uid="uid://cen8j3djydtij" path="res://UIResources/LabelSettings/normal_label.tres" id="3_u4vmp"]
-[ext_resource type="Texture2D" uid="uid://b0on3i1olq2fv" path="res://Textures/Icon/Control/checkbox_on.svg" id="4_bm0gl"]
+[ext_resource type="Texture2D" uid="uid://b0on3i1olq2fv" path="res://Textures/Control/Icon/Control/checkbox_on.svg" id="4_bm0gl"]
 [ext_resource type="AudioStream" uid="uid://f3biq7gur0mb" path="res://Audio/SFX/UI/checkbox.wav" id="6_cd423"]
 
 [node name="InfoProperty" type="HBoxContainer"]

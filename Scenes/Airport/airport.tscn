@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://Scripts/Airport/airport_node.gd" id="1_a28fk"]
 [ext_resource type="AudioStream" uid="uid://cjbnjqybw4nag" path="res://Audio/SFX/UI/click.wav" id="2_lplos"]
 [ext_resource type="AudioStream" uid="uid://deafa8faxbvde" path="res://Audio/SFX/Game/add_airport.wav" id="3_nm7o8"]
-[ext_resource type="BitMap" uid="uid://cl6n663t3t7lm" path="res://Textures/Icon/Airport/click_mask.png" id="4_ais0v"]
+[ext_resource type="BitMap" uid="uid://cl6n663t3t7lm" path="res://Textures/Control/Icon/Airport/click_mask.png" id="4_ais0v"]
 
 [sub_resource type="Animation" id="Animation_2hnye"]
 length = 0.001

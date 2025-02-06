@@ -12,6 +12,8 @@ var new_rotation := Vector3()
 
 var old_position := Vector3()
 var old_rotation := Vector3()
+ 
+var old_mouse_movement := Vector2()
 
 var is_moved := false
 
@@ -21,8 +23,6 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:
-	is_moved = old_position != global_position
-	is_moved = (old_rotation != global_rotation) or is_moved
 	old_position = global_position
 	old_rotation = global_rotation
 
@@ -39,9 +39,13 @@ func _physics_process(_delta: float) -> void:
 	camera_pivot.rotation = interpolated_rotation
 
 func _unhandled_input(event: InputEvent) -> void:
-	# Zoom in/out movement
+	# Zoom in/out movement (excluding mac trackpad)
 	if event.is_action_pressed("camera_zoom_in") or event.is_action_pressed("camera_zoom_out"):
 		new_position_z = clampf(position.z + zoom_speed * (-1 if event.is_action_pressed("camera_zoom_in") else 1) * pow(position.z / 100, 3) / 5, 104, 300)
+	# Zoom in/out gesture for mac trackpad
+	# event.delta.y is scroll amount
+	if event is InputEventPanGesture:
+		new_position_z = clampf(position.z + zoom_speed * event.delta.y * pow(position.z / 100, 3) / 5, 104, 300)
 	# Rotation movement
 	if event is InputEventMouseMotion:
 		if Input.is_action_pressed("camera_move"):
@@ -51,3 +55,13 @@ func _unhandled_input(event: InputEvent) -> void:
 			if info_box != null:
 				if (not info_box.is_hidden) and game_controller.mode == GameController.InGameMode.NORMAL:
 					info_box.hide_animation()
+
+			# Check if it's moved
+			if abs(event.relative - old_mouse_movement) < Vector2(50, 50):
+				is_moved = true
+			else:
+				is_moved = false
+		else:
+			is_moved = false
+		# Set old mouse movement
+		old_mouse_movement = event.relative

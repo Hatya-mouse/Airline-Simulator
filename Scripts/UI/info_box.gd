@@ -9,6 +9,7 @@ const checkbox_scene = preload("res://Scenes/Control/InfoBox/info_check_box.tscn
 const label_scene = preload("res://Scenes/Control/InfoBox/info_label.tscn")
 const property_scene = preload("res://Scenes/Control/InfoBox/info_property.tscn")
 const list_header_scene = preload("res://Scenes/Control/InfoBox/info_list_header.tscn")
+const info_airport_list_scene = preload("res://Scenes/Control/InfoBox/info_airport_list.tscn")
 const info_airline_list_scene = preload("res://Scenes/Control/InfoBox/info_airline_list.tscn")
 const spacer_scene = preload("res://Scenes/Control/InfoBox/info_spacer.tscn")
 
@@ -208,6 +209,14 @@ func get_list_header(contents: PackedStringArray, alignment: Array[HorizontalAli
 	var node = list_header_scene.instantiate()
 	node.contents = contents
 	node.alignment_array = alignment
+	return node
+
+func get_airport_list_node(airport: Airport, index: int, auto_added: bool = false) -> MarginContainer:
+	var node = info_airport_list_scene.instantiate()
+	node.airport = airport
+	node.airport_index = index
+	node.auto_added = auto_added
+	node.info_box = self
 	return node
 
 func get_airline_list_node(airline: Airline, passengers: int) -> MarginContainer:

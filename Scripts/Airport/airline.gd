@@ -6,7 +6,6 @@ const plane_scene = preload("res://Scenes/Airport/plane.tscn")
 
 var game_controller: GameController
 
-var airports: Array[Airport] = []
 var airways: Array[Airway] = []
 var way_back_airways: Array[Airway] = []
 
@@ -16,9 +15,6 @@ var ticket_price: float = 50.0
 
 var interval_tick = 50
 var tick_counter = 0
-
-var back_to_first: bool = false
-var one_way: bool = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
