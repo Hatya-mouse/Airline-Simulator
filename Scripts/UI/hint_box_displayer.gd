@@ -12,10 +12,6 @@ func _ready() -> void:
 		collision_control.mouse_entered.connect(_on_mouse_entered)
 		collision_control.mouse_exited.connect(_on_mouse_exited)
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
-
 func _on_mouse_entered() -> void:
 	if hint_box != null:
 		hint_box.node_global_position = position

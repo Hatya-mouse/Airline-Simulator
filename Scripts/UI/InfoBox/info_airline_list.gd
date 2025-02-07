@@ -1,4 +1,4 @@
-extends MarginContainer
+extends InfoBoxItem
 
 @onready var color_panel: PanelContainer = $HBox/Begin/Color
 @onready var airport_label: Label = $HBox/Begin/VBox/AirportName
@@ -12,7 +12,7 @@ extends MarginContainer
 
 ## If this list is shown in the information panel of the same airport as
 ## airline's last airport, set selected_airport variable.
-var selected_airport: Airport
+var selected_airport: AirportData
 var airline: Airline
 var passenger_number: int = 0
 
@@ -27,7 +27,7 @@ func _process(_delta: float) -> void:
 func _update_ui() -> void:
 	if airline == null:
 		return
-	if airline.airports.is_empty():
+	if airline.route_data.airports.is_empty():
 		return
 
 	var airport_iata = []
@@ -35,14 +35,14 @@ func _update_ui() -> void:
 	var smallest_airport_type = ""
 
 	# Get airport IATA
-	for airport in airline.airports:
+	for airport in airline.route_data.airports:
 		# Use ICAO code if IATA code is unavailable
 		var code = airport.get_iata_code()
 		airport_iata.append(code)
-		last_airport_name = airport.airport_data["name"]
+		last_airport_name = airport.airport_data.name
 
 		# Update smallest airport type directly in loop
-		var airport_type = airport.airport_data["type"]
+		var airport_type = airport.airport_data.type
 		match smallest_airport_type:
 			"large_airport":
 				if airport_type in ["medium_airport", "small_airport"]:
@@ -62,19 +62,19 @@ func _update_ui() -> void:
 	# Example: ["ITM", "HND"] -> "ITM — HND"
 	# "—" is em dash
 	var route_string = airport_iata.duplicate()
-	if airline.back_to_first:
+	if airline.route_data.back_to_first:
 		route_string.append(airport_iata[0])
 
 	# Set up the airport name label
 	airport_label.text = last_airport_name
 	# Adjust label color if selected and last airport match
-	if selected_airport and (last_airport_name == selected_airport.airport_data["name"]):
-		if airline.one_way:
+	if selected_airport and (last_airport_name == selected_airport.name):
+		if airline.route_data.one_way:
 			airport_label.label_settings = same_airport_label
 			airport_label.text += " (%s)" % tr("THIS_AIRPORT")
 		else:
 			# If one_way is false, show reversed airline's last airport.
-			airport_label.text = airline.airports[0].airport_data["name"]
+			airport_label.text = airline.airports[0].airport_data.name
 			# Of course change the route string's order.
 			route_string.reverse()
 	else:

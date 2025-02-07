@@ -5,7 +5,6 @@ class_name AirlineController
 @export var airline_parent: Node3D
 @export var preview_airline_parent: Node3D
 
-var airlines: Array[Airline] = []
 # <Airport ident (String)> : <Array[Airline]>
 var airport_to_airlines: Dictionary = {}
 
@@ -17,16 +16,14 @@ func _ready() -> void:
 func _process(_delta: float) -> void:
 	pass
 
-## Add a new airline.
+## Add a new airline node.
 func add_airline(airline: Airline) -> void:
-	# Add the airline to the array
-	airlines.append(airline)
 	# Add to the airline parent as a child
 	airline_parent.add_child(airline)
 
 	# Add airport_to_airlines for easier access
 	# from a airport name.
-	for airport in airline.airports:
+	for airport in airline.route_data.airports:
 		var airport_ident = airport.get_ident()
 
 		# Initialize the airline list for the airport if not present
@@ -41,17 +38,17 @@ func add_airline(airline: Airline) -> void:
 			old_airline_list.append(airline)
 
 		# Update the airline state of the airport
-		airport.update_airline_state(true)
+		airport.set_has_airlines(true)
 
 ## Return all airlines with given airport.
 func get_airlines_for_airport(airport_ident: String) -> Array:
 	return airport_to_airlines.get(airport_ident, [])
 
 ## Remove all the old preview airlines and set the preview airline.
-## Automatically set Airline.is_preview true.
+## Automatically set Airline.is_editing true.
 func set_preview(airline: Airline) -> void:
 	clear_preview()
-	airline.is_preview = true
+	airline.route_data.is_editing = true
 	preview_airline_parent.add_child(airline)
 
 ## Remove all preview airlines.

@@ -1,5 +1,4 @@
-extends HBoxContainer
-
+extends InfoBoxItem
 signal toggled(toggled_on: bool)
 
 @onready var label: Label = $Label

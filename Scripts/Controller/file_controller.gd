@@ -52,7 +52,7 @@ func _save_game() -> void:
 
 func _load_data() -> void:
 	if not FileAccess.file_exists(save_path):
-		print("File doesn't exist! Aborting.")
+		print("The file doesn't exist! Aborting.")
 		return
 
 	var save_file = FileAccess.open(save_path, FileAccess.READ)

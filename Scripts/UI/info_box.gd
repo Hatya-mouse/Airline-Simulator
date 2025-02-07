@@ -8,9 +8,6 @@ const button_scene = preload("res://Scenes/Control/InfoBox/info_button.tscn")
 const checkbox_scene = preload("res://Scenes/Control/InfoBox/info_check_box.tscn")
 const label_scene = preload("res://Scenes/Control/InfoBox/info_label.tscn")
 const property_scene = preload("res://Scenes/Control/InfoBox/info_property.tscn")
-const list_header_scene = preload("res://Scenes/Control/InfoBox/info_list_header.tscn")
-const info_airport_list_scene = preload("res://Scenes/Control/InfoBox/info_airport_list.tscn")
-const info_airline_list_scene = preload("res://Scenes/Control/InfoBox/info_airline_list.tscn")
 const spacer_scene = preload("res://Scenes/Control/InfoBox/info_spacer.tscn")
 
 @onready var title_label: Label = $InfoBox/VBoxContainer/PanelContainer/VBoxContainer/MarginContainer/TitleLabel
@@ -22,8 +19,6 @@ const spacer_scene = preload("res://Scenes/Control/InfoBox/info_spacer.tscn")
 @onready var scroll_container_parent: VBoxContainer = $InfoBox/VBoxContainer
 @onready var scroll_container: ScrollContainer = $InfoBox/VBoxContainer/ScrollContainer
 @onready var blue_panel: Panel = $InfoBox/VBoxContainer/Panel
-
-@onready var game_controller: GameController = %GameController
 
 var info_container: VBoxContainer
 var last_info_container: VBoxContainer
@@ -59,15 +54,8 @@ func animate_information_control(new_controls: Array[Control]) -> void:
 	# Create new scroll container
 	var new_scroll_container = scroll_container_scene.instantiate()
 
-	# Get old position of old scroll container
-	var old_position = scroll_container.global_position
-	var old_size = scroll_container.size
-
-	# Move scroll container and set position and size
-	scroll_container_parent.remove_child(scroll_container)
-	add_child(scroll_container)
-	scroll_container.global_position = old_position
-	scroll_container.size = old_size
+	# Reparent the scroll container
+	scroll_container.reparent(self)
 
 	# Remove all items from information_controls array
 	information_controls.clear()
@@ -102,7 +90,6 @@ func animate_information_control(new_controls: Array[Control]) -> void:
 
 func add_information_control(control: Control) -> void:
 	information_controls.append(control)
-	control.set("game_controller", game_controller)
 	info_container.add_child(control)
 	# Move the control at the last of the info container.
 	var index = len(information_controls)
@@ -110,7 +97,6 @@ func add_information_control(control: Control) -> void:
 
 func insert_information_control(control: Control, index: int) -> void:
 	information_controls.insert(index, control)
-	control.set("game_controller", game_controller)
 	info_container.add_child(control)
 	info_container.move_child(control, index)
 
@@ -149,7 +135,6 @@ func set_last_controls(controls: Array[Control]) -> void:
 	last_controls = controls
 	for last_control in last_controls:
 		if last_control.get_parent() != info_container:
-			last_control.set("game_controller", game_controller)
 			last_info_container.add_child(last_control)
 
 func set_title(new_title: String) -> void:
@@ -203,26 +188,6 @@ func get_checkbox(tr_key: String) -> HBoxContainer:
 func get_button(tr_key: String) -> MarginContainer:
 	var node = button_scene.instantiate()
 	node.text = tr(tr_key)
-	return node
-
-func get_list_header(contents: PackedStringArray, alignment: Array[HorizontalAlignment]) -> PanelContainer:
-	var node = list_header_scene.instantiate()
-	node.contents = contents
-	node.alignment_array = alignment
-	return node
-
-func get_airport_list_node(airport: Airport, index: int, auto_added: bool = false) -> MarginContainer:
-	var node = info_airport_list_scene.instantiate()
-	node.airport = airport
-	node.airport_index = index
-	node.auto_added = auto_added
-	node.info_box = self
-	return node
-
-func get_airline_list_node(airline: Airline, passengers: int) -> MarginContainer:
-	var node = info_airline_list_scene.instantiate()
-	node.airline = airline
-	node.passenger_number = passengers
 	return node
 
 func get_spacer() -> Control:

@@ -7,6 +7,8 @@ const property_editor_ui_scene = preload("res://Scenes/UI/airline_property_edito
 const airport_list_scene = preload("res://Scenes/Control/InfoBox/info_airport_list.tscn")
 const airline_scene = preload("res://Scenes/Airport/airline.tscn")
 
+const info_airport_list_scene = preload("res://Scenes/Control/InfoBox/info_airport_list.tscn")
+
 @onready var game_controller: GameController = %GameController
 @onready var airline_controller: AirlineController = %AirlineController
 
@@ -24,11 +26,7 @@ var property_editor_ui: AirlinePropertyEditorUI
 
 var info_box: InfoBox
 
-var editing_airline: Array[Airport] = []
-
-# Properties
-var back_to_first: bool = false
-var one_way: bool = false
+var editing_route: RouteData
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -67,11 +65,8 @@ func _on_create_airline_button_pressed(toggled_on: bool) -> void:
 		info_box.hide_animation()
 
 func reset() -> void:
-	# Clear the editing_airline array
-	editing_airline.clear()
-	# Set properties
-	back_to_first = false
-	one_way = false
+	# Create a new RouteData
+	editing_route = RouteData.new()
 
 ## Set up the info box for step 1 airline editor.
 func setup_infobox() -> void:
@@ -97,7 +92,7 @@ func setup_infobox() -> void:
 
 func add_airport_to_airline(airport: Airport) -> void:
 	# Add the airort to the editing airline array
-	editing_airline.append(airport)
+	editing_route.airports.append(airport.airport_data)
 	# Update the airline state
 	airport.set_airline_editor_selected(true)
 	# Update the airline list
@@ -106,11 +101,11 @@ func add_airport_to_airline(airport: Airport) -> void:
 	update_preview()
 
 func remove_airport_from_airline(index: int) -> void:
-	if editing_airline.size() > index:
-		# Update the airline state before removing it from the editing_airline array
-		editing_airline[index].set_airline_editor_selected(false)
+	if editing_route.airports.size() > index:
+		# Update the airline state before removing it from the editing_route.airports array
+		editing_route.airports[index].set_airline_editor_selected(false)
 		# Remove the airport from the editing airline array
-		editing_airline.remove_at(index)
+		editing_route.airports.remove_at(index)
 	# Update the airline list
 	update_list()
 	# Update the preview airline
@@ -121,9 +116,9 @@ func update_preview() -> void:
 	# Instantiate airline
 	var airline = create_airline()
 	if airline:
-		# Set is_preview true to blink airline
+		# Set is_editing true to blink airline
 		# and prevent airline from spawning airport
-		airline.is_preview = true
+		airline.route_data.is_editing = true
 		# Add airline as a preview
 		airline_controller.set_preview(airline)
 
@@ -131,12 +126,12 @@ func update_list() -> void:
 	# Clear the airport list
 	info_box.clear_controls_except_last()
 
-	# Check if editing_airline is empty
-	if editing_airline.is_empty():
+	# Check if editing_route.airports is empty
+	if editing_route.airports.is_empty():
 		info_box.add_information_control(info_box.get_info_label("CLICK_ON_THE_AIRPORT"))
 	else:
 		var counter = 0
-		for airport in editing_airline:
+		for airport in editing_route.airports:
 			# Get airport list item
 			var airport_list_item = get_airport_control(airport, counter)
 			# Add it to the info box
@@ -144,17 +139,17 @@ func update_list() -> void:
 			# Increase the counter
 			counter += 1
 
-		if back_to_first:
+		if editing_route.back_to_first:
 			# Add first airport at last if back_to_first if true
-			var last_airport_list_item = get_airport_control(editing_airline[0], counter, true)
+			var last_airport_list_item = get_airport_control(editing_route.airports[0], counter, true)
 			info_box.add_information_control(last_airport_list_item)
 
 func item_dropped(old_index: int, mouse_position: Vector2):
 	var index = get_index_from_position(mouse_position)
-	# Move the item in editing_airline array
-	var dropped_airport = editing_airline[old_index]
-	editing_airline.remove_at(old_index)
-	editing_airline.insert(index, dropped_airport)
+	# Move the item in editing_route.airports array
+	var dropped_airport = editing_route.airports[old_index]
+	editing_route.airports.remove_at(old_index)
+	editing_route.airports.insert(index, dropped_airport)
 	# Update UIs
 	update_list()
 	update_preview()
@@ -191,13 +186,13 @@ func _on_remove_airport(index: int) -> void:
 	remove_airport_audio_player.play()
 
 func _on_back_to_first_toggled(toggled_on: bool) -> void:
-	back_to_first = toggled_on
+	editing_route.back_to_first = toggled_on
 	# Update the preview airline
 	update_list()
 	update_preview()
 
 func _on_one_way_toggled(toggled_on: bool) -> void:
-	one_way = toggled_on
+	editing_route.one_way = toggled_on
 	# Update the preview airline
 	update_preview()
 
@@ -242,11 +237,11 @@ func _on_complete_button_pressed() -> void:
 
 # Utility functions
 
-## Generate airline node from the editing_airline array.
+## Generate airline node from the editing_route.airports array.
 ## Doesn't add airline as a child of a node, so you need to
 ## add it yourself.
 func create_airline() -> Airline:
-	if editing_airline.is_empty():
+	if editing_route.airports.is_empty():
 		return
 
 	# Instantiate the airline scene.
@@ -255,32 +250,40 @@ func create_airline() -> Airline:
 	# Set the node name of the airline.
 	# Example: HND_ITM
 	var route_string = []
-	for airport in editing_airline:
+	for airport in editing_route.airports:
 		route_string.append(airport.get_ident())
 	airline.name = "_".join(route_string)
 
 	# Set some properties of airline node.
 	airline.game_controller = game_controller
 
-	# Pass the airports.
-	# We need to duplicate the array in order to
-	# preserve Airline.airports from modified by
-	# modifying editing_airline.
-	airline.airports = editing_airline.duplicate()
+	# Pass the route data.
+	# We need to duplicate the route data in order to
+	# preserve Airline.route_data from being modified
+	# by editing AirlineEditor.route_data.
+	airline.route_data = editing_route.duplicate(true)
+	airline.route_data.airports = editing_route.airports.duplicate(true)
+	print(airline.route_data.airports, editing_route.airports)
 
-	# Set some properties.
-	airline.back_to_first = back_to_first
-	airline.one_way = one_way
+	airline.route_data.is_editing = false
 
 	return airline
 
 ## Return airport control (which is used in airport list).
-func get_airport_control(airport: Airport, index: int, auto_added: bool = false) -> Control:
+func get_airport_control(airport: AirportData, index: int, auto_added: bool = false) -> Control:
 	# Instantiate the airport list scene
-	var airport_list = info_box.get_airport_list_node(airport, index, auto_added)
+	var airport_list = get_airport_list_node(airport, index, auto_added)
 	# Connect the clicked signal
 	airport_list.connect("clicked", _on_remove_airport)
 	# Pass the airline editor instance
 	airport_list.airline_editor = self
 	# Return the generated airport
 	return airport_list
+
+func get_airport_list_node(airport: AirportData, index: int, auto_added: bool = false) -> MarginContainer:
+	var node = info_airport_list_scene.instantiate()
+	node.airport = airport
+	node.airport_index = index
+	node.auto_added = auto_added
+	node.info_box = info_box
+	return node

@@ -1,4 +1,4 @@
-extends HBoxContainer
+extends InfoBoxItem
 
 @onready var label: Label = $Label
 @onready var content: Label = $Content

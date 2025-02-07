@@ -1,4 +1,4 @@
-extends MarginContainer
+extends InfoBoxItem
 class_name InfoButton
 
 signal pressed

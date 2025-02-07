@@ -1,4 +1,4 @@
-extends MarginContainer
+extends InfoBoxItem
 class_name InfoAirportListItem
 
 ## Index starts from 0.
@@ -15,7 +15,7 @@ signal clicked(airport_index: int)
 @onready var preview_background: PanelContainer = %PreviewBackground
 @onready var preview_margin: MarginContainer = %PreviewMargin
 
-@export var airport: Airport
+@export var airport: AirportData
 @export var auto_added := false
 @export var airport_index: int = 0
 
@@ -23,7 +23,7 @@ var airline_editor: AirlineEditor
 var info_box: InfoBox
 var hud_parent: CanvasLayer
 
-var is_preview: bool = false
+var is_editing: bool = false
 var color_bar_style_box: StyleBoxFlat
 
 var dragging: bool = false
@@ -32,18 +32,18 @@ var drag_offset: Vector2
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	# Get some informations from the airport
-	var airport_name = airport.airport_data["name"]
-	var airport_type = airport.airport_data["type"]
+	var airport_name = airport.name
+	var airport_type = airport.type
 	var airport_icao = airport.get_icao_code()
 	var airport_iata = airport.get_iata_code()
 
 	var style_box = StyleBoxFlat.new()
-	if airport_type.contains("large"):
-		style_box.bg_color = GameConfig.large_color
-	if airport_type.contains("medium"):
-		style_box.bg_color = GameConfig.medium_color
-	if airport_type.contains("small"):
+	if airport_type == AirportData.AirportType.SMALL_AIRPORT:
 		style_box.bg_color = GameConfig.small_color
+	if airport_type == AirportData.AirportType.MEDIUM_AIRPORT:
+		style_box.bg_color = GameConfig.medium_color
+	if airport_type == AirportData.AirportType.LARGE_AIRPORT:
+		style_box.bg_color = GameConfig.large_color
 	color.add_theme_stylebox_override("panel", style_box)
 	color_bar_style_box = style_box
 
@@ -93,8 +93,8 @@ func setup_preview() -> void:
 	global_position = old_position
 	# Adjust z_index in order to show the list item forward.
 	z_index = 1
-	# Set is_preview true
-	is_preview = true
+	# Set is_editing true
+	is_editing = true
 	# Add background
 	preview_background.show()
 	preview_margin.add_theme_constant_override("margin_right", 10)

@@ -135,7 +135,7 @@ func add_path(start_lat: float, start_lon: float, end_lat: float, end_lon: float
 	material.set_shader_parameter("arrow_texture", arrow_texture)
 	material.set_shader_parameter("color", color)
 	material.set_shader_parameter("move_direction", Vector2(0.0, 0.15))
-	material.set_shader_parameter("is_preview", is_editing)
+	material.set_shader_parameter("is_editing", is_editing)
 	mesh_material = material
 
 	# Commit the material

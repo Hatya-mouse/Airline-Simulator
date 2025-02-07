@@ -1,4 +1,4 @@
-extends PanelContainer
+extends InfoBoxItem
 
 const normal_label_style = preload("res://UIResources/LabelSettings/normal_label.tres")
 
