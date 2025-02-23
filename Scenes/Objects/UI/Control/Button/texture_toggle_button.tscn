@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://bbmofpjeuig28"]
+
+[ext_resource type="AudioStream" uid="uid://2824wndol588" path="res://Assets/Audio/SFX/UI/click_2.wav" id="3_14vhm"]
+[ext_resource type="Script" path="res://Scripts/UI/Controls/Button/texture_toggle_button.gd" id="3_uprto"]
+
+[node name="TextureToggleButton" type="TextureButton"]
+custom_minimum_size = Vector2(70, 70)
+toggle_mode = true
+ignore_texture_size = true
+stretch_mode = 5
+script = ExtResource("3_uprto")
+click_sound = ExtResource("3_14vhm")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+
+[connection signal="toggled" from="." to="." method="_on_toggled"]

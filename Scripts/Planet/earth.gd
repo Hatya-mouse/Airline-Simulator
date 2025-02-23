@@ -1,4 +1,5 @@
 extends MeshInstance3D
+class_name Earth
 
 @export var sun: Node3D
 @export var cloud_rotation := 0.0

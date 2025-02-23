@@ -1,0 +1,47 @@
+[gd_scene load_steps=7 format=3 uid="uid://svthteekm0vg"]
+
+[ext_resource type="Script" path="res://Scripts/UI/InfoBoxContent/AirportInfo/airport_info_ui.gd" id="1_s3jp1"]
+[ext_resource type="PackedScene" uid="uid://5d2xph2krmch" path="res://Scenes/Objects/UI/Control/Label/property_label.tscn" id="2_xxy71"]
+[ext_resource type="PackedScene" uid="uid://dxexvip67vw1x" path="res://Scenes/Objects/UI/Control/InfoBox/info_box_spacer.tscn" id="3_bs0j2"]
+[ext_resource type="PackedScene" uid="uid://bf3d4mv2sgeox" path="res://Scenes/Objects/UI/Control/InfoBox/info_box_list_header.tscn" id="3_qfv7u"]
+[ext_resource type="PackedScene" uid="uid://b57p4di2qitmw" path="res://Scenes/Objects/UI/Control/InfoBox/info_box_label.tscn" id="4_jyysy"]
+[ext_resource type="PackedScene" uid="uid://ccc3cg3iby6sp" path="res://Scenes/Objects/UI/Control/Button/text_button.tscn" id="5_louyl"]
+
+[node name="AirportInfoUI" type="VBoxContainer"]
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_s3jp1")
+
+[node name="ICAOLabel" parent="." instance=ExtResource("2_xxy71")]
+layout_mode = 2
+content_text = "–"
+
+[node name="IATALabel" parent="." instance=ExtResource("2_xxy71")]
+layout_mode = 2
+content_text = "–"
+
+[node name="LatitudeLabel" parent="." instance=ExtResource("2_xxy71")]
+layout_mode = 2
+content_text = "–"
+
+[node name="LongitudeLabel" parent="." instance=ExtResource("2_xxy71")]
+layout_mode = 2
+content_text = "–"
+
+[node name="InfoSpacer2" parent="." instance=ExtResource("3_bs0j2")]
+layout_mode = 2
+
+[node name="MoreDetailsButton" parent="." instance=ExtResource("5_louyl")]
+layout_mode = 2
+
+[node name="InfoSpacer" parent="." instance=ExtResource("3_bs0j2")]
+layout_mode = 2
+
+[node name="ListHeader" parent="." instance=ExtResource("3_qfv7u")]
+layout_mode = 2
+
+[node name="NoAirlineLabel" parent="." instance=ExtResource("4_jyysy")]
+layout_mode = 2
+
+[node name="AirlineList" type="VBoxContainer" parent="."]
+layout_mode = 2

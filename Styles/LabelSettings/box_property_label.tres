@@ -1,0 +1,17 @@
+[gd_resource type="LabelSettings" load_steps=5 format=3 uid="uid://bv66h2w5oyetn"]
+
+[ext_resource type="FontFile" uid="uid://bqfbhfdqcp021" path="res://Assets/Fonts/Roboto/Roboto-Regular.ttf" id="1_0y062"]
+[ext_resource type="FontFile" uid="uid://bg5sb26ar4ld" path="res://Assets/Fonts/NotoSansJP/NotoSansJP-Regular.ttf" id="2_3wevq"]
+
+[sub_resource type="SystemFont" id="SystemFont_n70wq"]
+font_names = PackedStringArray("Sans-Serif")
+
+[sub_resource type="FontVariation" id="FontVariation_jmhjl"]
+fallbacks = Array[Font]([ExtResource("2_3wevq"), SubResource("SystemFont_n70wq")])
+base_font = ExtResource("1_0y062")
+
+[resource]
+line_spacing = 0.0
+font = SubResource("FontVariation_jmhjl")
+font_size = 32
+font_color = Color(0.75, 0.75, 0.75, 1)

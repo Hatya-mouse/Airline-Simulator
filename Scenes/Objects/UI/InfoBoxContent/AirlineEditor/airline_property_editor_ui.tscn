@@ -1,0 +1,31 @@
+[gd_scene load_steps=4 format=3 uid="uid://ck1pjsvycvou1"]
+
+[ext_resource type="PackedScene" uid="uid://ccc3cg3iby6sp" path="res://Scenes/Objects/UI/Control/Button/text_button.tscn" id="1_8qsvw"]
+[ext_resource type="Script" path="res://Scripts/UI/InfoBoxContent/AirlineEditor/airline_property_editor_ui.gd" id="1_kl75y"]
+[ext_resource type="PackedScene" uid="uid://dxexvip67vw1x" path="res://Scenes/Objects/UI/Control/InfoBox/info_box_spacer.tscn" id="3_7a5u3"]
+
+[node name="AirlinePropertyEditorUI" type="VBoxContainer"]
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_kl75y")
+
+[node name="InfoSpacer1" parent="." instance=ExtResource("3_7a5u3")]
+layout_mode = 2
+
+[node name="CompleteButton" parent="." instance=ExtResource("1_8qsvw")]
+layout_mode = 2
+button_type = 2
+
+[node name="InfoSpacer2" parent="." instance=ExtResource("3_7a5u3")]
+layout_mode = 2
+
+[node name="CancelButton" parent="." instance=ExtResource("1_8qsvw")]
+layout_mode = 2
+button_type = 1
+
+[node name="SFX" type="Node" parent="."]
+
+[node name="CompleteAirlineAudioPlayer" type="AudioStreamPlayer" parent="SFX"]
+
+[connection signal="pressed" from="CompleteButton" to="." method="_on_complete_button_pressed"]
+[connection signal="pressed" from="CancelButton" to="." method="_on_cancel_button_pressed"]

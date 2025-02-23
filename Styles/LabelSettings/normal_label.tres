@@ -1,0 +1,8 @@
+[gd_resource type="LabelSettings" load_steps=2 format=3 uid="uid://cen8j3djydtij"]
+
+[ext_resource type="FontVariation" uid="uid://cltucxgwyjki3" path="res://Styles/Fonts/normal_font.tres" id="1_54obk"]
+
+[resource]
+line_spacing = 0.0
+font = ExtResource("1_54obk")
+font_size = 32

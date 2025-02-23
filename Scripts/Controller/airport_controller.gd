@@ -4,14 +4,14 @@ signal airport_visibility_changed(airport_type: bool)
 
 const database_path = "res://Resources/Airport_Database/airports.txt"
 
-const airport_scene = preload("res://Scenes/Airport/airport.tscn")
-
-const list_header_scene = preload("res://Scenes/Control/InfoBox/info_list_header.tscn")
-const info_airline_list_scene = preload("res://Scenes/Control/InfoBox/info_airline_list.tscn")
+const airport_scene = preload("res://Scenes/Objects/Airport/airport.tscn")
+const airport_info_scene = preload("res://Scenes/Objects/UI/InfoBoxContent/AirportInfo/airport_info_ui.tscn")
+const airport_info_panel_scene = preload("res://Scenes/Objects/UI/CenterPanelContent/AirportInfo/airport_info_panel_ui.tscn")
 
 @onready var game_controller: GameController = %GameController
 @onready var airline_controller: AirlineController = %AirlineController
 @onready var airline_editor: AirlineEditor = %AirlineEditor
+@onready var airport_preview: SubViewport = %AirportPreview
 
 @export_category("Airport Node")
 @export var airport_parent: Node3D
@@ -43,6 +43,7 @@ const info_airline_list_scene = preload("res://Scenes/Control/InfoBox/info_airli
 @export var airport_name_label: LabelBox
 
 var info_box: InfoBox
+var center_panel: CenterPanel
 
 var large_airport_visibility := false
 var medium_airport_visibility := false
@@ -51,6 +52,7 @@ var small_airport_visibility := false
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	info_box = game_controller.info_box
+	center_panel = game_controller.center_panel
 
 	var airports = load_database(database_path)
 	for airport in airports:
@@ -61,18 +63,16 @@ func _ready() -> void:
 	medium_airport_button.pressed.connect(_medium_airport_button_pressed)
 	large_airport_button.pressed.connect(_large_airport_button_pressed)
 
-func _process(_delta: float) -> void:
-	large_airport_visibility = not large_airport_button.button_pressed
-	medium_airport_visibility = not medium_airport_button.button_pressed
-	small_airport_visibility = not small_airport_button.button_pressed
-
 func _small_airport_button_pressed() -> void:
+	small_airport_visibility = not small_airport_button.button_pressed
 	airport_visibility_changed.emit(AirportData.AirportType.SMALL_AIRPORT)
 
 func _medium_airport_button_pressed() -> void:
+	medium_airport_visibility = not medium_airport_button.button_pressed
 	airport_visibility_changed.emit(AirportData.AirportType.MEDIUM_AIRPORT)
 
 func _large_airport_button_pressed() -> void:
+	large_airport_visibility = not large_airport_button.button_pressed
 	airport_visibility_changed.emit(AirportData.AirportType.LARGE_AIRPORT)
 
 ## Add airport node from airport data dictionary.
@@ -136,38 +136,56 @@ func spawn_airport(airport: Dictionary) -> void:
 
 	airport_parent.add_child(airport_node)
 
-func _on_airport_clicked(airport: Airport) -> void:
+func _on_airport_clicked(airport_data: AirportData) -> void:
 	if game_controller.mode == GameController.InGameMode.NORMAL:
-		show_info(airport.airport_data)
+		show_info(airport_data)
 	elif game_controller.mode == GameController.InGameMode.AIRLINE:
-		airline_editor.add_airport_to_airline(airport)
+		airline_editor.add_airport_to_airline(airport_data)
 
 func show_info(airport_data: AirportData) -> void:
-	# Add airport data text information control
-	info_box.clear_information_controls()
-	info_box.set_title(airport_data.name)
-	info_box.add_information_control(info_box.get_property_label("ICAO_CODE", airport_data.get_icao_code()))
-	info_box.add_information_control(info_box.get_property_label("IATA_CODE", airport_data.get_iata_code()))
-	info_box.add_information_control(info_box.get_property_label("LATITUDE", String.num(airport_data.latitude)))
-	info_box.add_information_control(info_box.get_property_label("LONGITUDE", String.num(airport_data.longitude)))
+	# If the airport hasn't already selected
+	if game_controller.selected_airport != airport_data:
+		# Set the selected airport
+		game_controller.set_selected_airport(airport_data)
 
-	# Add airline list header
-	var header_contents: PackedStringArray = ["Airline", "Passengers"]
-	var header_alignment: Array[HorizontalAlignment] = [HORIZONTAL_ALIGNMENT_LEFT, HORIZONTAL_ALIGNMENT_RIGHT]
-	info_box.add_information_control(get_list_header(header_contents, header_alignment))
+		# Add airport data text information control
+		info_box.set_title(airport_data.name)
+		var airport_info_ui = airport_info_scene.instantiate()
+		airport_info_ui.airport_data = airport_data
+		airport_info_ui.airline_controller = airline_controller
+		airport_info_ui.show_airport_details.connect(show_more_details)
+		info_box.set_content(airport_info_ui)
 
-	# Add airline list
-	for airline in airline_controller.get_airlines_for_airport(airport_data.identifier):
-		var airline_list_item = get_airline_list_node(airline, 0)
-		airline_list_item.selected_airport = airport_data
-		info_box.add_information_control(airline_list_item)
+		# Connect the signal which is emitted when the info box
+		# is closed (which means the airport is deselected)
+		if not info_box.closed.is_connected(_on_airport_deselected):
+			info_box.closed.connect(_on_airport_deselected)
 
-	# Play show animation
-	info_box.show_animation()
+		# Play show animation
+		info_box.hide_button_disabled = false
+		info_box.show_animation()
+
+## Called when the "More Details" button pressed.
+func show_more_details(airport_data: AirportData) -> void:
+	# Instantiate the panel content.
+	var airport_info_panel = airport_info_panel_scene.instantiate()
+	airport_info_panel.airport_preview = airport_preview
+	airport_info_panel.airport = airport_data
+	# Set the panel content.
+	center_panel.set_content(airport_info_panel)
+	# Show the center panel.
+	center_panel.show_animation()
 
 ## Move the airport control forward.
 func move_forward(airport: Airport) -> void:
 	airport_parent.move_child(airport, airport_parent.get_child_count())
+
+## Called when the airport is deselected. (info box is hidden)
+func _on_airport_deselected() -> void:
+	# Deselect the airport.
+	game_controller.set_selected_airport(null)
+	# Disconnect the signal.
+	info_box.closed.disconnect(_on_airport_deselected)
 
 # CSV reading utility functions
 func load_database(path: String) -> Array:
@@ -179,7 +197,7 @@ func load_database(path: String) -> Array:
 
 	while not file.eof_reached():
 		var line = file.get_csv_line()
-		if len(line) == len(chart):
+		if line.size() == chart.size():
 			var airport_data = read_airport(line, chart)
 			var type: String = airport_data["type"]
 			var scheduled_service: String = airport_data["scheduled_service"]
@@ -212,32 +230,5 @@ func get_country_code(path: String) -> Dictionary:
 		dictionary.get_or_add(line[alpha_2_index], line[full_name_index])
 	return dictionary
 
-#func read_csv_line(string: String) -> Array:
-	#var counter = 0
-	#var array := []
-	#var delimiter_count = string.count(",")
-	#while counter != delimiter_count:
-		#var index = string.find(",")
-		#if index == -1:
-			#index = 1
-		#var sliced_string = string.substr(0, index)
-		#string = string.substr(index + 1)
-		#array.append(remove_double_quotation(sliced_string))
-		#counter += 1
-	#array.append(remove_double_quotation(string))
-	#return array
-
 func remove_double_quotation(string: String) -> String:
 	return string.replace("\"", "")
-
-func get_list_header(contents: PackedStringArray, alignment: Array[HorizontalAlignment]) -> PanelContainer:
-	var node = list_header_scene.instantiate()
-	node.contents = contents
-	node.alignment_array = alignment
-	return node	
-
-func get_airline_list_node(airline: Airline, passengers: int) -> MarginContainer:
-	var node = info_airline_list_scene.instantiate()
-	node.airline = airline
-	node.passenger_number = passengers
-	return node

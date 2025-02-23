@@ -1,20 +1,23 @@
 extends Node
 class_name AirlineController
 
+@onready var game_controller: GameController = %GameController
+
 @export_category("Airline Node")
 @export var airline_parent: Node3D
 @export var preview_airline_parent: Node3D
+@export_category("Controls")
+@export var route_visibility_button: TextureToggleButton
 
-# <Airport ident (String)> : <Array[Airline]>
+# <Airport ident (String)> : <Array[RouteData]>
 var airport_to_airlines: Dictionary = {}
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	pass # Replace with function body.
+	route_visibility_button.pressed.connect(_on_route_visibility_button_pressed)
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(_delta: float) -> void:
-	pass
+func _on_route_visibility_button_pressed() -> void:
+	game_controller.route_visible = not route_visibility_button.button_pressed
 
 ## Add a new airline node.
 func add_airline(airline: Airline) -> void:
@@ -34,8 +37,8 @@ func add_airline(airline: Airline) -> void:
 		var old_airline_list = airport_to_airlines[airport_ident]
 
 		# Ensure the airline is not already in the list to avoid duplicates
-		if not old_airline_list.has(airline):
-			old_airline_list.append(airline)
+		if not old_airline_list.has(airline.route_data):
+			old_airline_list.append(airline.route_data)
 
 		# Update the airline state of the airport
 		airport.set_has_airlines(true)

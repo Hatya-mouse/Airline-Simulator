@@ -1,7 +1,7 @@
 [gd_resource type="ShaderMaterial" load_steps=3 format=3 uid="uid://cs8pw48weiwre"]
 
 [ext_resource type="Shader" path="res://Shaders/Planet/sun_shader_material.gdshader" id="1_6ghq0"]
-[ext_resource type="Texture2D" uid="uid://ce4tfo6j6gvi2" path="res://Textures/Planet/8k_sun.jpg" id="2_dij58"]
+[ext_resource type="Texture2D" uid="uid://ce4tfo6j6gvi2" path="res://Assets/Textures/Planet/8k_sun.jpg" id="2_dij58"]
 
 [resource]
 render_priority = 0

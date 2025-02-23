@@ -11,6 +11,7 @@ config_version=5
 [application]
 
 config/name="Air International Inc."
+config/tags=PackedStringArray("3d", "game", "simulation")
 run/main_scene="res://Scenes/Game/solar_system.tscn"
 config/use_custom_user_dir=true
 config/features=PackedStringArray("4.3", "Forward Plus")
@@ -18,7 +19,7 @@ config/icon="res://icon.svg"
 
 [audio]
 
-buses/default_bus_layout="res://Audio/Bus/default_bus_layout.tres"
+buses/default_bus_layout="res://Assets/Audio/Bus/default_bus_layout.tres"
 
 [autoload]
 
@@ -47,8 +48,23 @@ camera_zoom_out={
 "events": [Object(InputEventMouseButton,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"button_mask":16,"position":Vector2(373, 37),"global_position":Vector2(392, 128),"factor":0.355586,"button_index":5,"canceled":false,"pressed":true,"double_click":false,"script":null)
 ]
 }
+camera_move_joy_x={
+"deadzone": 0.5,
+"events": [Object(InputEventJoypadMotion,"resource_local_to_scene":false,"resource_name":"","device":-1,"axis":0,"axis_value":1.0,"script":null)
+]
+}
+camera_move_joy_y={
+"deadzone": 0.5,
+"events": [Object(InputEventJoypadMotion,"resource_local_to_scene":false,"resource_name":"","device":-1,"axis":1,"axis_value":1.0,"script":null)
+]
+}
 
 [internationalization]
 
-locale/translations=PackedStringArray("res://Translation/UI/menu.en.translation", "res://Translation/UI/menu.ja.translation")
+locale/translations=PackedStringArray("res://Translation/UI/main.en.translation", "res://Translation/UI/main.ja.translation")
 locale/locale_filter_mode=0
+
+[layer_names]
+
+3d_render/layer_1="Default Layer"
+3d_render/layer_2="Airport Preview Layer"

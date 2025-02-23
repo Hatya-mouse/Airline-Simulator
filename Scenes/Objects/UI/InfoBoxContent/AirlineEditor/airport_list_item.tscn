@@ -1,0 +1,96 @@
+[gd_scene load_steps=10 format=3 uid="uid://bfshul7pgy04j"]
+
+[ext_resource type="Script" path="res://Scripts/UI/InfoBoxContent/AirlineEditor/airport_list_item.gd" id="1_8oscd"]
+[ext_resource type="LabelSettings" uid="uid://dyn75pi86acbl" path="res://Styles/LabelSettings/box_title_label.tres" id="1_gxx4w"]
+[ext_resource type="LabelSettings" uid="uid://c88bauj8uwi8e" path="res://Styles/LabelSettings/bold_big.tres" id="2_bx1k7"]
+[ext_resource type="Material" uid="uid://6srimgbwoygb" path="res://Materials/UI/title_box_blur_background.tres" id="2_n0nqd"]
+[ext_resource type="LabelSettings" uid="uid://bv66h2w5oyetn" path="res://Styles/LabelSettings/box_property_label.tres" id="3_nrwot"]
+[ext_resource type="StyleBox" uid="uid://mul55luxliia" path="res://Styles/StyleBox/info_airport_list_remove_button_pressed.tres" id="6_0knvc"]
+[ext_resource type="StyleBox" uid="uid://dse6i0ct6dhh8" path="res://Styles/StyleBox/info_airport_list_remove_button.tres" id="7_lxdq1"]
+[ext_resource type="Texture2D" uid="uid://cuy2hateq71i2" path="res://Assets/Textures/Control/Icon/Control/x_button.svg" id="8_n2xvf"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kbfbd"]
+bg_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[node name="InfoAirportList" type="MarginContainer"]
+offset_left = 378.0
+offset_right = 378.0
+offset_bottom = 96.0
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_bottom = 10
+script = ExtResource("1_8oscd")
+
+[node name="PreviewBackground" type="PanelContainer" parent="."]
+unique_name_in_owner = true
+visible = false
+material = ExtResource("2_n0nqd")
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_kbfbd")
+
+[node name="PreviewMargin" type="MarginContainer" parent="."]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="HStack" type="HBoxContainer" parent="PreviewMargin"]
+layout_mode = 2
+theme_override_constants/separation = 12
+
+[node name="RemoveButton" type="Button" parent="PreviewMargin/HStack"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(25, 0)
+layout_mode = 2
+theme_override_styles/focus = ExtResource("7_lxdq1")
+theme_override_styles/disabled = ExtResource("7_lxdq1")
+theme_override_styles/hover_pressed = ExtResource("7_lxdq1")
+theme_override_styles/hover = ExtResource("7_lxdq1")
+theme_override_styles/pressed = ExtResource("6_0knvc")
+theme_override_styles/normal = ExtResource("7_lxdq1")
+icon = ExtResource("8_n2xvf")
+icon_alignment = 1
+expand_icon = true
+
+[node name="ColorPanel" type="PanelContainer" parent="PreviewMargin/HStack"]
+unique_name_in_owner = true
+layout_mode = 2
+mouse_filter = 2
+
+[node name="NumberMargin" type="MarginContainer" parent="PreviewMargin/HStack/ColorPanel"]
+layout_mode = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_right = 8
+
+[node name="NumberLabel" type="Label" parent="PreviewMargin/HStack/ColorPanel/NumberMargin"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "1"
+label_settings = ExtResource("2_bx1k7")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="AirportInfo" type="VBoxContainer" parent="PreviewMargin/HStack"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 0
+
+[node name="NameLabel" type="Label" parent="PreviewMargin/HStack/AirportInfo"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+text = "Gibraltar Airport"
+label_settings = ExtResource("1_gxx4w")
+vertical_alignment = 2
+autowrap_mode = 3
+
+[node name="CodeLabel" type="Label" parent="PreviewMargin/HStack/AirportInfo"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "LXGB / GIB"
+label_settings = ExtResource("3_nrwot")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+
+[connection signal="pressed" from="PreviewMargin/HStack/RemoveButton" to="." method="_on_button_pressed"]

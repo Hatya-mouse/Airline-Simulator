@@ -2,6 +2,7 @@ extends Node
 class_name GameController
 
 signal tick
+signal airline_visibility_updated
 
 const earth_radius = 100.0
 
@@ -12,18 +13,35 @@ const earth_radius = 100.0
 @export_category("Scene")
 @export var earth: MeshInstance3D
 @export var info_box: InfoBox
+@export var center_panel: CenterPanel
 @export var camera: Camera3D
 
 @export_category("Basic UI Elements")
 @export var money_label: Label
 @export var hint_box_parent: Node
 
-var mode: InGameMode = InGameMode.NORMAL
+var mode: InGameMode = InGameMode.NORMAL:
+	set(value):
+		mode = value
+		selected_airport = null
+		airline_visibility_updated.emit()
 
-enum InGameMode { NORMAL, AIRLINE }
+enum InGameMode {
+	NORMAL,
+	AIRLINE
+}
 
 var delta_counter: float = 0.0
 var money: float = 0.0
+
+## Current selected (info box is shown) airport.
+var selected_airport: AirportData
+
+## Whether airlines are visible.
+var route_visible := true:
+	set(value):
+		route_visible = value
+		airline_visibility_updated.emit()
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -33,9 +51,15 @@ func _ready() -> void:
 	# Set the tick duration
 	timer.wait_time = GameConfig.game_tick_duration
 
+	%AirportController.large_airport_button.grab_focus()
+
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:
 	pass
+
+func set_selected_airport(airport: AirportData) -> void:
+	selected_airport = airport
+	airline_visibility_updated.emit()
 
 func earn(amount: float) -> void:
 	money += amount
@@ -56,3 +80,24 @@ func get_position_on_earth(lat: float, lon: float) -> Vector3:
 
 func _on_timer_timeout() -> void:
 	tick.emit()
+
+func format_money(value: float) -> String:
+	var units := ["", "K", "M", "B", "T", "Q"]
+	var unit_index := 0
+	while value >= 1000 and unit_index < units.size() - 1:
+		value /= 1000.0
+		unit_index += 1
+	return "$" + str(snapped(value, 0.1)) + units[unit_index]
+
+func add_commas(value: int) -> String:
+	var str_value := str(value)
+	var result := ""
+	var count := 0
+	
+	for i in range(str_value.length() - 1, -1, -1):
+		result = str_value[i] + result
+		count += 1
+		if count % 3 == 0 and i != 0:
+			result = "," + result
+
+	return result

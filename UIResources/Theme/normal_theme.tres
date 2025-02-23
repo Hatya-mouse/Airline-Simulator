@@ -1,8 +1,0 @@
-[gd_resource type="Theme" format=3 uid="uid://drekqoieprg23"]
-
-[resource]
-HBoxContainer/constants/separation = 0
-MarginContainer/constants/margin_bottom = 20
-MarginContainer/constants/margin_left = 32
-MarginContainer/constants/margin_right = 32
-MarginContainer/constants/margin_top = 20

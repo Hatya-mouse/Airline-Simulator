@@ -1,0 +1,24 @@
+[gd_scene load_steps=4 format=3 uid="uid://ccc3cg3iby6sp"]
+
+[ext_resource type="Script" path="res://Scripts/UI/Controls/Button/text_button.gd" id="1_003d0"]
+[ext_resource type="FontVariation" uid="uid://bun4qhcccla0f" path="res://Styles/Fonts/bold_font.tres" id="2_bwobn"]
+[ext_resource type="AudioStream" uid="uid://2824wndol588" path="res://Assets/Audio/SFX/UI/click_2.wav" id="2_lxdh3"]
+
+[node name="TextButtonControl" type="Button"]
+offset_top = 10.0
+offset_right = 147.0
+offset_bottom = 66.0
+size_flags_vertical = 4
+theme_override_colors/font_disabled_color = Color(0.7, 0.7, 0.7, 1)
+theme_override_colors/font_pressed_color = Color(0.9, 0.9, 0.9, 1)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("2_bwobn")
+theme_override_font_sizes/font_size = 32
+text = "Complete"
+expand_icon = true
+script = ExtResource("1_003d0")
+click_sound = ExtResource("2_lxdh3")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+
+[connection signal="pressed" from="." to="." method="_on_pressed"]

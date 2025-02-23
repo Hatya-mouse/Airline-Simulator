@@ -1,0 +1,8 @@
+[gd_resource type="LabelSettings" load_steps=2 format=3 uid="uid://c88bauj8uwi8e"]
+
+[ext_resource type="FontVariation" uid="uid://bun4qhcccla0f" path="res://Styles/Fonts/bold_font.tres" id="1_k6125"]
+
+[resource]
+line_spacing = 0.0
+font = ExtResource("1_k6125")
+font_size = 36

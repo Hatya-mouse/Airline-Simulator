@@ -1,0 +1,15 @@
+[gd_resource type="Theme" load_steps=2 format=3 uid="uid://drekqoieprg23"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kpjwo"]
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[resource]
+HBoxContainer/constants/separation = 0
+MarginContainer/constants/margin_bottom = 20
+MarginContainer/constants/margin_left = 32
+MarginContainer/constants/margin_right = 32
+MarginContainer/constants/margin_top = 20
+PanelContainer/styles/panel = SubResource("StyleBoxFlat_kpjwo")

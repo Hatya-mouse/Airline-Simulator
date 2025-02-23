@@ -1,7 +1,7 @@
 [gd_resource type="ShaderMaterial" load_steps=3 format=3 uid="uid://cggn71l1gmmf4"]
 
 [ext_resource type="Shader" path="res://Shaders/Airway/airplane_icon.gdshader" id="1_kqaes"]
-[ext_resource type="Texture2D" uid="uid://dr632irkujlsm" path="res://Textures/Experience_Japan_Pictogram/T_HIKOKI.png" id="2_66yrj"]
+[ext_resource type="Texture2D" uid="uid://dr632irkujlsm" path="res://Assets/Textures/Experience_Japan_Pictogram/T_HIKOKI.png" id="2_66yrj"]
 
 [resource]
 render_priority = 0

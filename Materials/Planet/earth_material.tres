@@ -1,10 +1,10 @@
 [gd_resource type="ShaderMaterial" load_steps=6 format=3 uid="uid://c2j0d64a514o3"]
 
 [ext_resource type="Shader" path="res://Shaders/Planet/earth_surface_shader.gdshader" id="1_p0xtw"]
-[ext_resource type="Texture2D" uid="uid://d3wds1ft3ihy7" path="res://Textures/Planet/earth_color_10K.png" id="2_2lp4h"]
-[ext_resource type="Texture2D" uid="uid://t7nopqtb25q2" path="res://Textures/Planet/topography_10k.png" id="3_ihbp7"]
-[ext_resource type="Texture2D" uid="uid://cwqcx3mjf2yic" path="res://Textures/Planet/earth_landocean_16K.png" id="3_rst1d"]
-[ext_resource type="Texture2D" uid="uid://cf4fe058ej5jg" path="res://Textures/Planet/earth_nightlights_10K.png" id="3_sxiwn"]
+[ext_resource type="Texture2D" uid="uid://d3wds1ft3ihy7" path="res://Assets/Textures/Planet/earth_color_10K.png" id="2_2lp4h"]
+[ext_resource type="Texture2D" uid="uid://t7nopqtb25q2" path="res://Assets/Textures/Planet/topography_10k.png" id="3_ihbp7"]
+[ext_resource type="Texture2D" uid="uid://cwqcx3mjf2yic" path="res://Assets/Textures/Planet/earth_landocean_16K.png" id="3_rst1d"]
+[ext_resource type="Texture2D" uid="uid://cf4fe058ej5jg" path="res://Assets/Textures/Planet/earth_nightlights_10K.png" id="3_sxiwn"]
 
 [resource]
 render_priority = 0
