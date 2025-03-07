@@ -304,6 +304,9 @@ func complete_airline() -> void:
 	info_box.hide_animation()
 	# Play airline complete sound
 	complete_airline_audio_player.play()
+	
+	# Focus on create airline button
+	create_airline_button.grab_focus()
 
 # Signals
 

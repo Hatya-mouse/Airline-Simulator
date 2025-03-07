@@ -2,22 +2,16 @@
 
 [ext_resource type="Script" path="res://Scripts/UI/Controls/Panel/center_panel.gd" id="1_mn6lx"]
 [ext_resource type="Theme" uid="uid://drekqoieprg23" path="res://Styles/Theme/normal_theme.tres" id="1_qkua0"]
+[ext_resource type="StyleBox" uid="uid://c8gp5ws08rk22" path="res://Styles/StyleBox/box_background_basic.tres" id="3_52cha"]
 [ext_resource type="StyleBox" uid="uid://d2paldjrl6nkr" path="res://Styles/StyleBox/box_title.tres" id="3_eufvj"]
-[ext_resource type="LabelSettings" uid="uid://dyn75pi86acbl" path="res://Styles/LabelSettings/box_title_label.tres" id="4_xc8wh"]
-[ext_resource type="Texture2D" uid="uid://cuy2hateq71i2" path="res://Assets/Textures/Control/Icon/Control/x_button.svg" id="5_o7ev2"]
-[ext_resource type="Texture2D" uid="uid://bqjcguviu4eeu" path="res://Assets/Textures/Control/Icon/Control/x_button_pressed.svg" id="6_j5j1j"]
+[ext_resource type="LabelSettings" uid="uid://dyn75pi86acbl" path="res://Styles/LabelSettings/normal_label_bold.tres" id="4_xc8wh"]
+[ext_resource type="Texture2D" uid="uid://cuy2hateq71i2" path="res://Assets/Textures/Icon/Basic/x_button.svg" id="5_o7ev2"]
+[ext_resource type="Texture2D" uid="uid://bqjcguviu4eeu" path="res://Assets/Textures/Icon/Basic/x_button_pressed.svg" id="6_j5j1j"]
 [ext_resource type="AudioStream" uid="uid://b0lijxw8e6nn1" path="res://Assets/Audio/SFX/UI/cancel.wav" id="6_sfvmr"]
-[ext_resource type="Texture2D" uid="uid://cyma3cf5md0ee" path="res://Assets/Textures/Control/Icon/Control/x_button_disabled.svg" id="7_ejxgy"]
+[ext_resource type="Texture2D" uid="uid://cyma3cf5md0ee" path="res://Assets/Textures/Icon/Basic/x_button_disabled.svg" id="7_ejxgy"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2gdhd"]
 bg_color = Color(0, 0, 0, 0.470588)
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fnqee"]
-bg_color = Color(0.15, 0.15, 0.15, 1)
-corner_radius_top_left = 10
-corner_radius_top_right = 10
-corner_radius_bottom_right = 10
-corner_radius_bottom_left = 10
 
 [sub_resource type="Animation" id="Animation_6di1i"]
 length = 0.001
@@ -275,7 +269,7 @@ anchor_bottom = 0.9
 grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("1_qkua0")
-theme_override_styles/panel = SubResource("StyleBoxFlat_fnqee")
+theme_override_styles/panel = ExtResource("3_52cha")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="CenterPanelContainer"]
 layout_mode = 2

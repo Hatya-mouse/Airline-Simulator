@@ -1,24 +1,77 @@
-[gd_scene load_steps=2 format=3 uid="uid://bf2xsl3dno16c"]
+[gd_scene load_steps=12 format=3 uid="uid://bf2xsl3dno16c"]
 
 [ext_resource type="Script" path="res://Scripts/UI/CenterPanelContent/AirportInfo/airport_info_panel_ui.gd" id="1_a3n5n"]
+[ext_resource type="PackedScene" uid="uid://b5qlkm6sgonm7" path="res://Scenes/Objects/UI/CenterPanelContent/AirportInfo/basic_airport_info_ui.tscn" id="1_m6070"]
+[ext_resource type="StyleBox" uid="uid://c8gp5ws08rk22" path="res://Styles/StyleBox/box_background_basic.tres" id="2_703fs"]
+[ext_resource type="PackedScene" uid="uid://criapa6y6ghi4" path="res://Scenes/Objects/UI/Control/Button/basic_texture_button.tscn" id="2_ja87t"]
+[ext_resource type="Texture2D" uid="uid://c7eqgo60ikpbp" path="res://Assets/Textures/Icon/Route/route_icon.png" id="3_u7isk"]
+[ext_resource type="Texture2D" uid="uid://dfspanlhpmmvy" path="res://Assets/Textures/Icon/Route/route_icon_active.png" id="5_li1mc"]
+[ext_resource type="Texture2D" uid="uid://ccwgs0rnakf01" path="res://Assets/Textures/Icon/Airplane/airplane_blue.png" id="6_uirjw"]
+[ext_resource type="AudioStream" uid="uid://2824wndol588" path="res://Assets/Audio/SFX/UI/click_2.wav" id="7_0viys"]
+[ext_resource type="Texture2D" uid="uid://dr632irkujlsm" path="res://Assets/Textures/Icon/Airplane/airplane.png" id="8_v372q"]
 
-[node name="AirportInfoPanelUI" type="HBoxContainer"]
+[sub_resource type="ButtonGroup" id="ButtonGroup_ldb6o"]
+
+[sub_resource type="ButtonGroup" id="ButtonGroup_3lrgt"]
+
+[node name="AirportInfoPanelUI" type="VBoxContainer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
+theme_override_constants/separation = 0
 script = ExtResource("1_a3n5n")
 
-[node name="ScrollContainer" type="ScrollContainer" parent="."]
+[node name="TabPanelContainer" type="PanelContainer" parent="."]
+layout_mode = 2
+theme_override_styles/panel = ExtResource("2_703fs")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="TabPanelContainer"]
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="MarginContainer" type="MarginContainer" parent="TabPanelContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_top = 12
+theme_override_constants/margin_bottom = 12
+
+[node name="TabButtonGroup" type="HBoxContainer" parent="TabPanelContainer/VBoxContainer/MarginContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="BasicAirportInfoButton" parent="TabPanelContainer/VBoxContainer/MarginContainer/TabButtonGroup" instance=ExtResource("2_ja87t")]
+custom_minimum_size = Vector2(40, 40)
 layout_mode = 2
 size_flags_horizontal = 3
+toggle_mode = true
+button_group = SubResource("ButtonGroup_ldb6o")
+default_texture = ExtResource("8_v372q")
+focused_texture = null
+pressed_texture = ExtResource("6_uirjw")
+click_sound = ExtResource("7_0viys")
 
-[node name="MarginContainer" type="MarginContainer" parent="ScrollContainer"]
-layout_mode = 2
-
-[node name="VBoxContainer" type="VBoxContainer" parent="ScrollContainer/MarginContainer"]
-layout_mode = 2
-
-[node name="TextureRect" type="TextureRect" parent="."]
+[node name="AirlineListButton" parent="TabPanelContainer/VBoxContainer/MarginContainer/TabButtonGroup" instance=ExtResource("2_ja87t")]
+custom_minimum_size = Vector2(40, 40)
 layout_mode = 2
 size_flags_horizontal = 3
-expand_mode = 1
-stretch_mode = 6
+toggle_mode = true
+button_group = SubResource("ButtonGroup_3lrgt")
+default_texture = ExtResource("3_u7isk")
+focused_texture = null
+pressed_texture = ExtResource("5_li1mc")
+click_sound = ExtResource("7_0viys")
+
+[node name="HSeparator" type="HSeparator" parent="TabPanelContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="BasicAirportInfoUI" parent="." instance=ExtResource("1_m6070")]
+layout_mode = 2
+size_flags_stretch_ratio = 20.0
+
+[node name="Node" type="Node" parent="."]
+
+[connection signal="toggled" from="TabPanelContainer/VBoxContainer/MarginContainer/TabButtonGroup/BasicAirportInfoButton" to="." method="_on_basic_airport_info_button_toggled"]
+[connection signal="toggled" from="TabPanelContainer/VBoxContainer/MarginContainer/TabButtonGroup/AirlineListButton" to="." method="_on_airline_list_button_toggled"]

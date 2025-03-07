@@ -1,6 +1,11 @@
-extends HBoxContainer
+extends VBoxContainer
 
-@onready var texture_rect: TextureRect = $TextureRect
+const tab_button_group: ButtonGroup = preload("res://Styles/ButtonGroups/airport_info_panel_tab_view.tres")
+
+@onready var basic_airport_info_button: BasicTextureButton = $TabPanelContainer/VBoxContainer/MarginContainer/TabButtonGroup/BasicAirportInfoButton
+@onready var airline_list_button: BasicTextureButton = $TabPanelContainer/VBoxContainer/MarginContainer/TabButtonGroup/AirlineListButton
+
+@onready var basic_info_ui: HBoxContainer = $BasicAirportInfoUI
 
 @export var airport_preview: SubViewport
 
@@ -9,17 +14,22 @@ var airport: AirportData
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	airport_preview.set_selected_airport(airport)
-	var viewport_texture = airport_preview.get_texture()
-	texture_rect.texture = viewport_texture
-	# Set the panel title.
-	var panel_title = "{0} — {1}".format([tr("AIRPORT_INFORMATION"), airport.name])
-	center_panel.set_title(panel_title)
+	basic_info_ui.airport_preview = airport_preview
+	basic_info_ui.center_panel = center_panel
+	basic_info_ui.airport = airport
+	basic_info_ui.show_info()
+
+	basic_airport_info_button.button_group = tab_button_group
+	airline_list_button.button_group = tab_button_group
+
+	basic_airport_info_button.button_pressed = true
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:
-	var preview_size = Vector2(
-		get_viewport_rect().size.x * 0.3,
-		get_viewport_rect().size.y * 0.7
-	)
-	airport_preview.size = preview_size
+	pass
+
+func _on_basic_airport_info_button_toggled(toggled_on: bool) -> void:
+	basic_info_ui.visible = toggled_on
+
+func _on_airline_list_button_toggled(_toggled_on: bool) -> void:
+	pass

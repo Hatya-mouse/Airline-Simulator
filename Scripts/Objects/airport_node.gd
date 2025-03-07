@@ -31,9 +31,9 @@ var old_visibility := false
 var airport_data: AirportData
 
 var old_mouse_movement := Vector2()
-var is_dragging := false
 
-var has_visibility_changed := false
+var should_update_visibility := false
+var is_airport_visible := false
 var viewport_size_just_changed := false
 
 func _ready() -> void:
@@ -65,32 +65,38 @@ func _ready() -> void:
 	update_icon()
 
 func _process(_delta: float) -> void:
-	if should_update_visibility():
+	update_is_airport_visible()
+
+	if is_airport_visible or should_update_airport():
+		should_update_visibility = false
 		_update_position()
+
 		var camera_vector = to_local(camera.global_position)
 		_update_visibility(camera_vector)
 
 	viewport_size_just_changed = false
-	is_dragging = camera.is_moved
 
 ## Check if visibility needs to be updated based on various conditions.
-func should_update_visibility() -> bool:
-	return has_visibility_changed or should_update_due_to_camera()
+func should_update_airport() -> bool:
+	return (
+		should_update_visibility or 
+		(is_airport_visible and should_update_due_to_camera())
+	)
 
 ## Check if the camera rotation or viewport size changes require an update.
 func should_update_due_to_camera() -> bool:
-	return (camera.is_moved or viewport_size_just_changed) and is_airport_visible()
+	return camera.is_moved or viewport_size_just_changed
 
 ## Check if this airport needs visibility updates based on its state.
-func is_airport_visible() -> bool:
-	return (
+func update_is_airport_visible() -> void:
+	is_airport_visible = (
 		is_airport_type_visible() or
 		(game_controller.route_visible and airport_data.has_airlines)
 	)
 
 func _airport_visibility_changed(airport_type: AirportData.AirportType) -> void:
 	if airport_data.type == airport_type:
-		has_visibility_changed = true
+		should_update_visibility = true
 
 ## Check if this type of airport is set visible.
 func is_airport_type_visible() -> bool:
@@ -110,7 +116,7 @@ func _update_visibility(camera_vector: Vector3):
 	var visibility = (
 		(not camera.is_position_behind(global_position)) and
 		is_in_front and
-		is_airport_visible()
+		is_airport_visible
 	)
 
 	# If visibility has changed, play show/hide animation
@@ -145,7 +151,7 @@ func _on_mouse_exited() -> void:
 	label.hide_animation()
 
 func _on_pressed() -> void:
-	if not is_dragging:
+	if not camera.is_moved:
 		clicked.emit(airport_data)
 		airport_info_audio_player.play()
 

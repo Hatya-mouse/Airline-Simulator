@@ -1,13 +1,13 @@
 [gd_scene load_steps=10 format=3 uid="uid://bfshul7pgy04j"]
 
 [ext_resource type="Script" path="res://Scripts/UI/InfoBoxContent/AirlineEditor/airport_list_item.gd" id="1_8oscd"]
-[ext_resource type="LabelSettings" uid="uid://dyn75pi86acbl" path="res://Styles/LabelSettings/box_title_label.tres" id="1_gxx4w"]
+[ext_resource type="LabelSettings" uid="uid://dyn75pi86acbl" path="res://Styles/LabelSettings/normal_label_bold.tres" id="1_gxx4w"]
 [ext_resource type="LabelSettings" uid="uid://c88bauj8uwi8e" path="res://Styles/LabelSettings/bold_big.tres" id="2_bx1k7"]
 [ext_resource type="Material" uid="uid://6srimgbwoygb" path="res://Materials/UI/title_box_blur_background.tres" id="2_n0nqd"]
 [ext_resource type="LabelSettings" uid="uid://bv66h2w5oyetn" path="res://Styles/LabelSettings/box_property_label.tres" id="3_nrwot"]
 [ext_resource type="StyleBox" uid="uid://mul55luxliia" path="res://Styles/StyleBox/info_airport_list_remove_button_pressed.tres" id="6_0knvc"]
 [ext_resource type="StyleBox" uid="uid://dse6i0ct6dhh8" path="res://Styles/StyleBox/info_airport_list_remove_button.tres" id="7_lxdq1"]
-[ext_resource type="Texture2D" uid="uid://cuy2hateq71i2" path="res://Assets/Textures/Control/Icon/Control/x_button.svg" id="8_n2xvf"]
+[ext_resource type="Texture2D" uid="uid://cuy2hateq71i2" path="res://Assets/Textures/Icon/Basic/x_button.svg" id="8_n2xvf"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kbfbd"]
 bg_color = Color(1, 1, 1, 1)

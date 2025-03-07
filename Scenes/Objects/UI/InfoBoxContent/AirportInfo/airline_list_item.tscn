@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://Scripts/UI/InfoBoxContent/AirportInfo/airline_list_item.gd" id="1_pmb2s"]
 [ext_resource type="LabelSettings" uid="uid://cdywhvbe7nuf1" path="res://Styles/LabelSettings/box_title_label_grey.tres" id="2_us24y"]
-[ext_resource type="LabelSettings" uid="uid://dyn75pi86acbl" path="res://Styles/LabelSettings/box_title_label.tres" id="3_56upl"]
+[ext_resource type="LabelSettings" uid="uid://dyn75pi86acbl" path="res://Styles/LabelSettings/normal_label_bold.tres" id="3_56upl"]
 [ext_resource type="LabelSettings" uid="uid://cen8j3djydtij" path="res://Styles/LabelSettings/normal_label.tres" id="3_ia07j"]
 [ext_resource type="LabelSettings" uid="uid://bv66h2w5oyetn" path="res://Styles/LabelSettings/box_property_label.tres" id="4_xpg76"]
 

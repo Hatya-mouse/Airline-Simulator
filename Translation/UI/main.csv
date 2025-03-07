@@ -1,5 +1,8 @@
 keys,en,ja
 
+YES,"Yes","はい"
+NO,"No","いいえ"
+
 LARGE_AIRPORT_VISIBILITY,"Show Large Airports","大規模空港を表示"
 MEDIUM_AIRPORT_VISIBILITY,"Show Medium Airports","中規模空港を表示"
 SMALL_AIRPORT_VISIBILITY,"Show Small Airports","小規模空港を表示"
@@ -32,3 +35,10 @@ PASSENGERS,"Passengers","旅客"
 NO_AIRLINE_FOR_THIS_AIRPORT,"No route reaches this airport.","路線が設定されていません。"
 MORE_AIRPORT_DETAILS,"More details","詳細を見る"
 AIRPORT_INFORMATION,"Airport Information","空港情報"
+
+HAS_AIRLINE,"Has Airline","航空路線"
+YES_HAS_AIRLINE,"Yes","あり"
+DOESNT_HAVE_AIRLINE,"No","なし"
+
+BASIC_INFORMATION,"Basic Information","基本情報"
+AIRLINE_INFORMATION,"Airlines","航空路線"

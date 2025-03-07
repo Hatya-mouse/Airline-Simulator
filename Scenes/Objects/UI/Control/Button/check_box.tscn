@@ -2,10 +2,10 @@
 
 [ext_resource type="Script" path="res://Scripts/UI/Controls/Button/check_box.gd" id="1_rc0ka"]
 [ext_resource type="PackedScene" uid="uid://bbmofpjeuig28" path="res://Scenes/Objects/UI/Control/Button/texture_toggle_button.tscn" id="2_37vjf"]
-[ext_resource type="Texture2D" uid="uid://d0f1g0jysic6c" path="res://Assets/Textures/Control/Icon/Control/checkbox_off.svg" id="3_076tk"]
+[ext_resource type="Texture2D" uid="uid://d0f1g0jysic6c" path="res://Assets/Textures/Icon/Basic/checkbox_off.svg" id="3_076tk"]
 [ext_resource type="LabelSettings" uid="uid://cen8j3djydtij" path="res://Styles/LabelSettings/normal_label.tres" id="3_u4vmp"]
-[ext_resource type="Texture2D" uid="uid://b0on3i1olq2fv" path="res://Assets/Textures/Control/Icon/Control/checkbox_on.svg" id="4_bm0gl"]
-[ext_resource type="Texture2D" uid="uid://b061r4xswtknw" path="res://Assets/Textures/Control/Icon/Control/checkbox_focused.png" id="5_fwnau"]
+[ext_resource type="Texture2D" uid="uid://b0on3i1olq2fv" path="res://Assets/Textures/Icon/Basic/checkbox_on.svg" id="4_bm0gl"]
+[ext_resource type="Texture2D" uid="uid://b061r4xswtknw" path="res://Assets/Textures/Icon/Basic/checkbox_focused.png" id="5_fwnau"]
 [ext_resource type="AudioStream" uid="uid://f3biq7gur0mb" path="res://Assets/Audio/SFX/UI/checkbox.wav" id="6_cd423"]
 
 [node name="InfoProperty" type="HBoxContainer"]

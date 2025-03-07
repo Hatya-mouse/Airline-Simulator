@@ -20,6 +20,11 @@ var is_moved := false
 
 # Called every frame.
 func _process(_delta: float) -> void:
+	if abs(old_position.x - global_position.x) > 10:
+		is_moved = true
+	else:
+		is_moved = false
+
 	old_position = global_position
 	old_rotation = global_rotation
 
@@ -75,10 +80,6 @@ func handle_mouse_rotation(event: InputEventMouseMotion) -> void:
 			0
 		)
 
-		is_moved = abs(event.relative - old_mouse_movement) >= Vector2(50, 50)
-	else:
-		is_moved = false
-	
 	old_mouse_movement = event.relative
 
 # Handle joystick rotation input
