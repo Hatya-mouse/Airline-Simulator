@@ -1,7 +1,7 @@
 extends Resource
 class_name AirportData
 
-signal should_update_icon
+signal state_changed
 
 enum AirportType {
 	SMALL_AIRPORT,
@@ -32,23 +32,23 @@ var airline_editor_selected: bool = false
 ## Whether this airport's info is showed.
 var info_selected: bool = false
 
-## Change has_airlines and fire should_update_icon signal.
+## Change has_airlines and fire state_changed signal.
 func set_has_airlines(value: bool) -> void:
 	if has_airlines != value:
 		has_airlines = value
-		should_update_icon.emit()
+		state_changed.emit()
 
 ## Set is this airport is selected.
 func set_airline_editor_selected(value: bool) -> void:
 	if airline_editor_selected != value:
 		airline_editor_selected = value
-		should_update_icon.emit()
+		state_changed.emit()
 
-## Change info_selected and fire should_update_icon signal.
+## Change info_selected and fire state_changed signal.
 func set_info_selected(value: bool) -> void:
 	if info_selected != value:
 		info_selected = value
-		should_update_icon.emit()
+		state_changed.emit()
 
 ## Return IATA code.
 ## Fallback to ICAO code if IATA code is unavailable.

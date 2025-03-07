@@ -38,6 +38,7 @@ var old_mouse_movement := Vector2()
 var should_update_visibility := false
 var is_airport_visible := false
 var viewport_size_just_changed := false
+var airport_type_visibility := false
 
 var is_airport_in_screen := false
 
@@ -61,8 +62,9 @@ func _ready() -> void:
 	get_viewport().size_changed.connect(_viewport_size_changed)
 	# Connect airport visibility change signal
 	airport_controller.airport_visibility_changed.connect(_airport_visibility_changed)
+	game_controller.airline_visibility_updated.connect(_route_visibility_changed)
 	# Connect airline state change signal
-	airport_data.should_update_icon.connect(update_icon)
+	airport_data.state_changed.connect(_airline_state_changed)
 
 	position = offset
 
@@ -71,14 +73,12 @@ func _ready() -> void:
 	airport_info_audio_player.stream = airport_info_sound
 
 	# Update airline state
-	update_icon()
+	_airline_state_changed()
 
 func _process(_delta: float) -> void:
 	pass
 
 func _physics_process(_delta: float) -> void:
-	update_is_airport_visible()
-
 	if is_airport_visible or should_update_airport():
 		should_update_visibility = false
 		_update_position()
@@ -102,16 +102,21 @@ func should_update_due_to_camera() -> bool:
 ## Check if this airport needs visibility updates based on its state.
 func update_is_airport_visible() -> void:
 	is_airport_visible = (
-		is_airport_type_visible() or
+		airport_type_visibility or
 		(game_controller.route_visible and airport_data.has_airlines)
 	)
 
 func _airport_visibility_changed(airport_type: AirportData.AirportType) -> void:
 	if airport_data.type == airport_type:
 		should_update_visibility = true
+		airport_type_visibility = _cache_airport_type_visible()
+		update_is_airport_visible()
+
+func _route_visibility_changed() -> void:
+	update_is_airport_visible()
 
 ## Check if this type of airport is set visible.
-func is_airport_type_visible() -> bool:
+func _cache_airport_type_visible() -> bool:
 	if airport_data.type == AirportData.AirportType.SMALL_AIRPORT:
 		return airport_controller.small_airport_visibility
 	elif airport_data.type == AirportData.AirportType.MEDIUM_AIRPORT:
@@ -150,7 +155,9 @@ func _update_position():
 	icon_control.position = camera.unproject_position(global_position) - Vector2(50, 50)
 
 ## Make brighter (which means selected) if this airport is a part of the airline(s).
-func update_icon() -> void:
+func _airline_state_changed() -> void:
+	update_is_airport_visible()
+
 	if airport_data.has_airlines or airport_data.airline_editor_selected:
 		icon_control.texture_normal = normal_with_airline_icon
 		icon_control.texture_pressed = pressed_with_airline_icon
