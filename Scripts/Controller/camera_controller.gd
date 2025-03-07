@@ -20,13 +20,7 @@ var is_moved := false
 
 # Called every frame.
 func _process(_delta: float) -> void:
-	if abs(old_position.x - global_position.x) > 10:
-		is_moved = true
-	else:
-		is_moved = false
-
-	old_position = global_position
-	old_rotation = global_rotation
+	pass
 
 # Smooth transition for position and rotation
 func _physics_process(_delta: float) -> void:
@@ -36,9 +30,18 @@ func _physics_process(_delta: float) -> void:
 	if is_rotation_aligned(interpolated_rotation):
 		new_rotation.y = fmod(new_rotation.y, PI * 2)
 		interpolated_rotation = new_rotation
-	
+
 	interpolated_rotation.x = clampf(interpolated_rotation.x, -PI / 2, PI / 2)
 	camera_pivot.rotation = interpolated_rotation
+
+	# Check if the camera is moved.
+	if abs(old_position.x - global_position.x) > 10:
+		is_moved = true
+	else:
+		is_moved = false
+
+	old_position = global_position
+	old_rotation = global_rotation
 
 # Check if the rotation is aligned with the target
 func is_rotation_aligned(interpolated_rotation: Vector3) -> bool:

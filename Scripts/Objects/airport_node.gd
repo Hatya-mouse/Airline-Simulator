@@ -4,9 +4,10 @@ class_name Airport
 signal clicked(airport_data: AirportData)
 
 @onready var icon_control: TextureButton = %Icon
-@onready var animation_player: AnimationPlayer = $Icon/AnimationPlayer
 @onready var add_airport_audio_player: AudioStreamPlayer = $AddAirport
 @onready var airport_info_audio_player: AudioStreamPlayer = $AirportInfo
+
+@onready var visible_notifier: VisibleOnScreenNotifier3D = $VisibleOnScreenNotifier3D
 
 @export var airport_info_sound: AudioStream
 @export var add_airport_sound: AudioStream
@@ -23,6 +24,8 @@ var game_controller: GameController
 var camera: Camera3D
 var earth: Node3D
 
+var tween: Tween
+
 var label: LabelBox
 var offset := Vector3()
 # Could the airport seen last frame?
@@ -36,7 +39,13 @@ var should_update_visibility := false
 var is_airport_visible := false
 var viewport_size_just_changed := false
 
+var is_airport_in_screen := false
+
 func _ready() -> void:
+	# Connect the visibility notifier signal
+	visible_notifier.screen_entered.connect(_on_screen_entered)
+	visible_notifier.screen_exited.connect(_on_screen_exited)
+
 	# Set textures
 	icon_control.texture_normal = normal_icon
 	icon_control.texture_pressed = pressed_icon
@@ -65,6 +74,9 @@ func _ready() -> void:
 	update_icon()
 
 func _process(_delta: float) -> void:
+	pass
+
+func _physics_process(_delta: float) -> void:
 	update_is_airport_visible()
 
 	if is_airport_visible or should_update_airport():
@@ -121,7 +133,16 @@ func _update_visibility(camera_vector: Vector3):
 
 	# If visibility has changed, play show/hide animation
 	if old_visibility != visibility:
-		animation_player.play("show" if visibility else "hide")
+		# Play show / hide animation using Tween :)
+		if tween:
+			tween.kill()
+		tween = create_tween()
+		if visibility:
+			icon_control.show()
+			tween.tween_property(icon_control, "modulate:a", 1.0, 0.1)
+		else:
+			tween.tween_property(icon_control, "modulate:a", 0.0, 0.1)
+			tween.tween_property(icon_control, "visible", false, 0.1)
 	old_visibility = visibility
 
 func _update_position():
@@ -157,3 +178,9 @@ func _on_pressed() -> void:
 
 func _viewport_size_changed() -> void:
 	viewport_size_just_changed = true
+
+func _on_screen_entered() -> void:
+	is_airport_in_screen = true
+
+func _on_screen_exited() -> void:
+	is_airport_in_screen = false

@@ -1,100 +1,10 @@
-[gd_scene load_steps=10 format=3 uid="uid://dyxl1rl5r1lbt"]
+[gd_scene load_steps=6 format=3 uid="uid://dyxl1rl5r1lbt"]
 
 [ext_resource type="Script" path="res://Scripts/Objects/airport_node.gd" id="1_a28fk"]
 [ext_resource type="AudioStream" uid="uid://cjbnjqybw4nag" path="res://Assets/Audio/SFX/UI/click.wav" id="2_lplos"]
 [ext_resource type="AudioStream" uid="uid://deafa8faxbvde" path="res://Assets/Audio/SFX/Game/add_airport.wav" id="3_nm7o8"]
 [ext_resource type="BitMap" uid="uid://cl6n663t3t7lm" path="res://Assets/Textures/Icon/Airport/click_mask.png" id="4_ais0v"]
 [ext_resource type="Texture2D" uid="uid://du8yq74suaot0" path="res://Assets/Textures/Icon/Airport/small_airport.png" id="5_7tpil"]
-
-[sub_resource type="Animation" id="Animation_2hnye"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Icon:visible")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Icon:modulate")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(1, 1, 1, 1)]
-}
-
-[sub_resource type="Animation" id="Animation_jf7n4"]
-resource_name = "hide"
-length = 0.1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Icon:visible")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [true, false]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Icon:modulate")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
-}
-
-[sub_resource type="Animation" id="Animation_fqwui"]
-resource_name = "show"
-length = 0.1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Icon:visible")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Icon:modulate")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_bxinm"]
-_data = {
-"RESET": SubResource("Animation_2hnye"),
-"hide": SubResource("Animation_jf7n4"),
-"show": SubResource("Animation_fqwui")
-}
 
 [node name="Airport" type="Node3D" groups=["airport"]]
 script = ExtResource("1_a28fk")
@@ -104,6 +14,7 @@ texture_click_mask = ExtResource("4_ais0v")
 
 [node name="Icon" type="TextureButton" parent="."]
 unique_name_in_owner = true
+modulate = Color(1, 1, 1, 0)
 custom_minimum_size = Vector2(100, 100)
 offset_right = 100.0
 offset_bottom = 100.0
@@ -112,15 +23,11 @@ texture_normal = ExtResource("5_7tpil")
 ignore_texture_size = true
 stretch_mode = 5
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Icon"]
-root_node = NodePath("../..")
-libraries = {
-"": SubResource("AnimationLibrary_bxinm")
-}
-
 [node name="AirportInfo" type="AudioStreamPlayer" parent="."]
 
 [node name="AddAirport" type="AudioStreamPlayer" parent="."]
+
+[node name="VisibleOnScreenNotifier3D" type="VisibleOnScreenNotifier3D" parent="."]
 
 [connection signal="mouse_entered" from="Icon" to="." method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="Icon" to="." method="_on_mouse_exited"]
