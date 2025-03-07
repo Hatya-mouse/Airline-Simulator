@@ -1,0 +1,85 @@
+[gd_scene load_steps=6 format=3 uid="uid://b5qlkm6sgonm7"]
+
+[ext_resource type="Script" path="res://Scripts/UI/CenterPanelContent/AirportInfo/basic_airport_info_ui.gd" id="1_qqpmh"]
+[ext_resource type="LabelSettings" uid="uid://3mppycugrfbn" path="res://Styles/LabelSettings/extra_large_label.tres" id="2_sur5v"]
+[ext_resource type="PackedScene" uid="uid://dxexvip67vw1x" path="res://Scenes/Objects/UI/Control/InfoBox/info_box_spacer.tscn" id="3_rh3wd"]
+[ext_resource type="PackedScene" uid="uid://dmr4h12uwgh7m" path="res://Scenes/Objects/UI/Control/Label/section_label.tscn" id="4_tpnhm"]
+[ext_resource type="PackedScene" uid="uid://5d2xph2krmch" path="res://Scenes/Objects/UI/Control/Label/property_label.tscn" id="5_gvrgc"]
+
+[node name="BasicAirportInfoUI" type="HBoxContainer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+script = ExtResource("1_qqpmh")
+
+[node name="ScrollContainer" type="ScrollContainer" parent="."]
+layout_mode = 2
+size_flags_horizontal = 3
+horizontal_scroll_mode = 0
+
+[node name="MarginContainer" type="MarginContainer" parent="ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="InfoHBoxContainer" type="VBoxContainer" parent="ScrollContainer/MarginContainer"]
+layout_mode = 2
+
+[node name="AirportNameLabel" type="Label" parent="ScrollContainer/MarginContainer/InfoHBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+size_flags_vertical = 0
+text = "Tokyo Haneda International Airport"
+label_settings = ExtResource("2_sur5v")
+autowrap_mode = 2
+
+[node name="InfoSpacer" parent="ScrollContainer/MarginContainer/InfoHBoxContainer" instance=ExtResource("3_rh3wd")]
+layout_mode = 2
+
+[node name="BasicInformationSection" parent="ScrollContainer/MarginContainer/InfoHBoxContainer" instance=ExtResource("4_tpnhm")]
+unique_name_in_owner = true
+layout_mode = 2
+text = ""
+
+[node name="ICAOCodeLabel" parent="ScrollContainer/MarginContainer/InfoHBoxContainer" instance=ExtResource("5_gvrgc")]
+unique_name_in_owner = true
+layout_mode = 2
+align_content_text_to_right = true
+
+[node name="IATACodeLabel" parent="ScrollContainer/MarginContainer/InfoHBoxContainer" instance=ExtResource("5_gvrgc")]
+unique_name_in_owner = true
+layout_mode = 2
+align_content_text_to_right = true
+
+[node name="LatitudeLabel" parent="ScrollContainer/MarginContainer/InfoHBoxContainer" instance=ExtResource("5_gvrgc")]
+unique_name_in_owner = true
+layout_mode = 2
+align_content_text_to_right = true
+
+[node name="LongitudeLabel" parent="ScrollContainer/MarginContainer/InfoHBoxContainer" instance=ExtResource("5_gvrgc")]
+unique_name_in_owner = true
+layout_mode = 2
+align_content_text_to_right = true
+
+[node name="InfoSpacer2" parent="ScrollContainer/MarginContainer/InfoHBoxContainer" instance=ExtResource("3_rh3wd")]
+layout_mode = 2
+
+[node name="AirlineInformationSection" parent="ScrollContainer/MarginContainer/InfoHBoxContainer" instance=ExtResource("4_tpnhm")]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="HasAirlineLabel" parent="ScrollContainer/MarginContainer/InfoHBoxContainer" instance=ExtResource("5_gvrgc")]
+unique_name_in_owner = true
+layout_mode = 2
+align_content_text_to_right = true
+
+[node name="AirportPreviewRect" type="TextureRect" parent="."]
+layout_mode = 2
+size_flags_horizontal = 3
+expand_mode = 1
+stretch_mode = 6

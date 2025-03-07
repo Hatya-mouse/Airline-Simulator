@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://dmr4h12uwgh7m"]
+
+[ext_resource type="LabelSettings" uid="uid://dyn75pi86acbl" path="res://Styles/LabelSettings/normal_label_bold.tres" id="1_y7wf1"]
+
+[node name="SectionLabel" type="Label"]
+text = "Section Title"
+label_settings = ExtResource("1_y7wf1")
+vertical_alignment = 1
