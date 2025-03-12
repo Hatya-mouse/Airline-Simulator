@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://c36velgas3n3k"]
 
-[ext_resource type="Script" path="res://Addons/godot_atmosphere_shader-18378add88641971320537f7621db58c9ab7d874/addons/zylann.atmosphere/planet_atmosphere.gd" id="2"]
-[ext_resource type="Shader" path="res://Addons/godot_atmosphere_shader-18378add88641971320537f7621db58c9ab7d874/addons/zylann.atmosphere/shaders/planet_atmosphere_no_clouds.gdshader" id="2_1uesl"]
+[ext_resource type="Script" uid="uid://dq60v6qgqirr7" path="res://Addons/godot_atmosphere_shader-18378add88641971320537f7621db58c9ab7d874/addons/zylann.atmosphere/planet_atmosphere.gd" id="2"]
+[ext_resource type="Shader" uid="uid://c0r3nrdkv32ay" path="res://Addons/godot_atmosphere_shader-18378add88641971320537f7621db58c9ab7d874/addons/zylann.atmosphere/shaders/planet_atmosphere_no_clouds.gdshader" id="2_1uesl"]
 
 [node name="PlanetAthmosphere" type="Node3D"]
 script = ExtResource("2")

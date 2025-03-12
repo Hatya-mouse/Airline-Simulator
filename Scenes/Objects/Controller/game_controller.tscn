@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://c5xx2o7etpvpg"]
+[gd_scene load_steps=3 format=3 uid="uid://c5xx2o7etpvpg"]
 
-[ext_resource type="Script" path="res://Scripts/Controller/game_controller.gd" id="1_vs5pm"]
+[ext_resource type="Script" uid="uid://co3mdwkonwd3k" path="res://Scripts/Controller/game_controller.gd" id="1_vs5pm"]
+[ext_resource type="PackedScene" uid="uid://bbhg7xvowocc4" path="res://Scenes/Objects/Controller/Utils.tscn" id="2_4j2xs"]
 
 [node name="GameController" type="Node"]
 script = ExtResource("1_vs5pm")
@@ -8,5 +9,7 @@ script = ExtResource("1_vs5pm")
 [node name="Timer" type="Timer" parent="."]
 wait_time = 0.1
 autostart = true
+
+[node name="Utils" parent="." instance=ExtResource("2_4j2xs")]
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

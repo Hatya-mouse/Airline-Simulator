@@ -1,0 +1,92 @@
+[gd_scene load_steps=9 format=3 uid="uid://bo12w1d0hf4a8"]
+
+[ext_resource type="StyleBox" uid="uid://cxcttot0r2nuf" path="res://Styles/StyleBox/box_background_dark_color.tres" id="1_pdv3b"]
+[ext_resource type="LabelSettings" uid="uid://3mppycugrfbn" path="res://Styles/LabelSettings/extra_large_label.tres" id="2_l1ewx"]
+[ext_resource type="Script" uid="uid://k0sqspv7qxwm" path="res://Scripts/Controls/CenterPanelContent/AircraftManager/aircraft_shop_list_item.gd" id="3_13kin"]
+[ext_resource type="LabelSettings" uid="uid://dyj2tynbd73n7" path="res://Styles/LabelSettings/money_mono.tres" id="3_luioq"]
+[ext_resource type="Texture2D" uid="uid://cnogpjpnxlqi8" path="res://Assets/Textures/Aircraft/Skyliner_7X/skyliner_7x_top.png" id="5_0l3yl"]
+[ext_resource type="PackedScene" uid="uid://ccc3cg3iby6sp" path="res://Scenes/Objects/UI/Basic/Button/text_button.tscn" id="5_3rhfm"]
+[ext_resource type="PackedScene" uid="uid://bbhg7xvowocc4" path="res://Scenes/Objects/Controller/Utils.tscn" id="5_i42e5"]
+[ext_resource type="PackedScene" uid="uid://5d2xph2krmch" path="res://Scenes/Objects/UI/Basic/Label/property_label.tscn" id="6_hpqw4"]
+
+[node name="AircraftShopListItem" type="PanelContainer"]
+clip_contents = true
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 248.0
+grow_horizontal = 2
+theme_override_styles/panel = ExtResource("1_pdv3b")
+script = ExtResource("3_13kin")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+clip_contents = true
+layout_mode = 2
+size_flags_vertical = 0
+theme_override_constants/margin_left = 24
+theme_override_constants/margin_top = 24
+theme_override_constants/margin_right = 24
+theme_override_constants/margin_bottom = 24
+
+[node name="HBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 32
+
+[node name="PhotoRect" type="TextureRect" parent="MarginContainer/HBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(700, 0)
+layout_mode = 2
+texture = ExtResource("5_0l3yl")
+expand_mode = 5
+stretch_mode = 5
+
+[node name="LabelVBox" type="VBoxContainer" parent="MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="NameLabel" type="Label" parent="MarginContainer/HBoxContainer/LabelVBox"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(50, 0)
+layout_mode = 2
+text = "Skyliner 7X"
+label_settings = ExtResource("2_l1ewx")
+vertical_alignment = 1
+
+[node name="PriceLabel" type="Label" parent="MarginContainer/HBoxContainer/LabelVBox"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(50, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+text = "$248,300,000"
+label_settings = ExtResource("3_luioq")
+vertical_alignment = 1
+
+[node name="PropVBox" type="VBoxContainer" parent="MarginContainer/HBoxContainer/LabelVBox"]
+layout_mode = 2
+
+[node name="CapacityLabel" parent="MarginContainer/HBoxContainer/LabelVBox/PropVBox" instance=ExtResource("6_hpqw4")]
+unique_name_in_owner = true
+layout_mode = 2
+align_content_text_to_right = true
+
+[node name="SpeedLabel" parent="MarginContainer/HBoxContainer/LabelVBox/PropVBox" instance=ExtResource("6_hpqw4")]
+unique_name_in_owner = true
+layout_mode = 2
+align_content_text_to_right = true
+
+[node name="RangeLabel" parent="MarginContainer/HBoxContainer/LabelVBox/PropVBox" instance=ExtResource("6_hpqw4")]
+unique_name_in_owner = true
+layout_mode = 2
+align_content_text_to_right = true
+
+[node name="ButtonVBox" type="VBoxContainer" parent="MarginContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="MoreInfoButton" parent="MarginContainer/HBoxContainer/ButtonVBox" instance=ExtResource("5_3rhfm")]
+layout_mode = 2
+tr_text = "MORE_DETAILS"
+
+[node name="Utils" parent="." instance=ExtResource("5_i42e5")]
+unique_name_in_owner = true
+
+[connection signal="pressed" from="MarginContainer/HBoxContainer/ButtonVBox/MoreInfoButton" to="." method="_on_more_info_button_pressed"]

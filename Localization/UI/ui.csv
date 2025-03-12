@@ -1,0 +1,75 @@
+keys,en,ja
+
+YES,"Yes","はい"
+NO,"No","いいえ"
+
+BACK,"Back","戻る"
+
+CREATE_AIRLINE,"Create Airline","路線の作成"
+CREATE_AIRLINE_DESCRIPTION,"Create a new airline.","新しい航空路線を作成します。"
+MANAGE_AIRCRAFT,"Manage Aircraft","航空機を管理"
+MANAGE_AIRCRAFT_DESCRIPTION,"Open aircraft manager.","航空機管理パネルを表示します。"
+
+LARGE_AIRPORT_VISIBILITY,"Show Large Airports","大規模空港を表示"
+LARGE_AIRPORT_VISIBILITY_DESCRIPTION,"Toggle visibility for large airports.","大規模空港の表示/非表示切り替えます。"
+MEDIUM_AIRPORT_VISIBILITY,"Show Medium Airports","中規模空港を表示"
+MEDIUM_AIRPORT_VISIBILITY_DESCRIPTION,"Toggle visibility for medium airports.","中規模空港の表示/非表示を切り替えます。"
+SMALL_AIRPORT_VISIBILITY,"Show Small Airports","小規模空港を表示"
+SMALL_AIRPORT_VISIBILITY_DESCRIPTION,"Toggle visibility for small airports.","小規模空港の表示/非表示を切り替えます。"
+ROUTE_VISIBILITY,"Show Airlines","航空路線を表示"
+ROUTE_VISIBILITY_DESCRIPTION,"Toggle visibility for airlines.","航空路線の表示/非表示を切り替えます。"
+
+ICAO_CODE,"ICAO Airport Code","ICAO空港コード"
+IATA_CODE,"IATA Airport Code","IATA空港コード"
+COUNTRY,"Country","国"
+REGION,"Region Name","都市"
+LATITUDE,"Latitude","緯度"
+LONGITUDE,"Longitude","経度"
+
+ADDED_AUTOMATICALLY,"Added Automatically","自動で追加されました"
+BACK_TO_FIRST_AIRPORT,"Back to the first airport","最初の空港に戻る"
+BACK_TO_FIRST_AIRPORT_DESCRIPTION,"Add the first airport at the end of the airport list.","最初の空港をリストの最後にも追加します。"
+ONE_WAY,"One Way","片道"
+ONE_WAY_DESCRIPTION,"Make the airline one-way only.","この航空路線を路線を片道のみにします。"
+CLICK_ON_THE_AIRPORT,"Click the airport to add","空港をクリックして追加"
+NEXT,"Next","次へ"
+CANCEL,"Cancel","キャンセル"
+COMPLETE,"Complete","完了"
+THIS_AIRPORT,"This Airport","この空港"
+
+AIRLINES,"Airlines","路線"
+PASSENGERS,"Passengers","旅客"
+NO_AIRLINE_FOR_THIS_AIRPORT,"No route reaches this airport.","路線が設定されていません。"
+MORE_DETAILS,"More details","詳細を見る"
+AIRPORT_INFORMATION,"Airport Information","空港情報"
+
+HAS_AIRLINE,"Has Airline","航空路線"
+YES_HAS_AIRLINE,"Yes","あり"
+DOESNT_HAVE_AIRLINE,"No","なし"
+
+BASIC_INFORMATION,"Basic Information","基本情報"
+AIRLINE_INFORMATION,"Airlines","航空路線"
+
+PURCHASE_AIRCRAFT,"Purchase Aircraft","航空機を購入"
+SEARCH_AIRCRAFT,"Search Aircraft","航空機を検索"
+
+"Capacity: {capacity}, Maximum Cruise Speed: {speed} kt, Range: {range} nm","Capacity: {capacity}, Maximum Cruise Speed: {speed} kt, Range: {range} nm","最大座席数: {capacity}, 最高巡航速度: {speed} ノット, 航続距離: {range} 海里"
+AIRCRAFT_TYPE,"Type","機種"
+CAPACITY,"Capacity","最大座席数"
+RANGE,"Range","航続距離"
+"%s nm (%s km)","%s nm (%s km)","%s 海里 (%s km)"
+FUEL_CONSUMPTION,"Fuel Consumption","燃費"
+MAX_SPEED,"Maximum Cruise Speed","最高巡航速度"
+"%s kt (%s km/h)","%s kt (%s km/h)","%s ノット (%s km/h)"
+NAME,"Name","名前"
+PRICE,"Price","価格"
+
+"Buy for $%s","Buy for $%s","$%s で購入"
+
+SORTING,"Sorting","並び替え"
+SEARCH,"Search","検索"
+REVERSE_SORT,"Reverse Order","並び順を反転"
+FILTER,"Filter","フィルター"
+
+nm,"nm","海里"
+kt,"kt","ノット"

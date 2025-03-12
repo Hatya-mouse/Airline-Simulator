@@ -1,0 +1,30 @@
+[gd_resource type="ShaderMaterial" load_steps=6 format=3 uid="uid://bk85u55st2b7r"]
+
+[ext_resource type="Shader" path="res://Shaders/Planet/ocean.gdshader" id="1_2yya5"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_34op0"]
+noise_type = 3
+seed = 1
+frequency = 0.04
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_8ifqc"]
+as_normal_map = true
+bump_strength = 4.0
+noise = SubResource("FastNoiseLite_34op0")
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_cju3x"]
+noise_type = 3
+frequency = 0.04
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_g1dar"]
+as_normal_map = true
+bump_strength = 10.0
+noise = SubResource("FastNoiseLite_cju3x")
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_2yya5")
+shader_parameter/oceanColor1 = Color(0.0313726, 0.462745, 0.647059, 1)
+shader_parameter/oceanColor2 = Color(0.484046, 0.703466, 0.956472, 1)
+shader_parameter/noise1 = SubResource("NoiseTexture2D_8ifqc")
+shader_parameter/noise2 = SubResource("NoiseTexture2D_g1dar")

@@ -1,0 +1,45 @@
+[gd_scene load_steps=5 format=3 uid="uid://cf3ndgsnx5hap"]
+
+[ext_resource type="Script" uid="uid://bsi3c8n0knt3q" path="res://Scripts/Controls/FullscreenBoxContent/AircraftShop/shop_filter_group.gd" id="1_evsia"]
+[ext_resource type="PackedScene" uid="uid://che3u5j56ymei" path="res://Scenes/Objects/UI/Basic/Button/check_box.tscn" id="1_kpeck"]
+[ext_resource type="Theme" uid="uid://drekqoieprg23" path="res://Styles/Theme/normal_theme.tres" id="2_tohmr"]
+[ext_resource type="LabelSettings" uid="uid://dyj2tynbd73n7" path="res://Styles/LabelSettings/money_mono.tres" id="3_awhao"]
+
+[node name="ShopFilterGroup" type="VBoxContainer"]
+theme_override_constants/separation = 8
+script = ExtResource("1_evsia")
+
+[node name="FilterCheckbox" parent="." instance=ExtResource("1_kpeck")]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Price"
+
+[node name="InputGroup" type="VBoxContainer" parent="."]
+layout_mode = 2
+theme_override_constants/separation = 12
+
+[node name="Line1" type="HBoxContainer" parent="InputGroup"]
+layout_mode = 2
+
+[node name="MinSpin" type="SpinBox" parent="InputGroup/Line1"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+theme = ExtResource("2_tohmr")
+max_value = 1e+09
+custom_arrow_step = 100000.0
+select_all_on_focus = true
+
+[node name="Label" type="Label" parent="InputGroup/Line1"]
+layout_mode = 2
+text = "~"
+label_settings = ExtResource("3_awhao")
+
+[node name="MaxSpin" type="SpinBox" parent="InputGroup"]
+unique_name_in_owner = true
+layout_mode = 2
+theme = ExtResource("2_tohmr")
+max_value = 1e+09
+value = 1e+09
+custom_arrow_step = 100000.0
+select_all_on_focus = true

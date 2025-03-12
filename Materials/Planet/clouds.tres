@@ -1,0 +1,20 @@
+[gd_resource type="ShaderMaterial" load_steps=6 format=3 uid="uid://n6atxthkl5fs"]
+
+[ext_resource type="Shader" path="res://Shaders/Planet/clouds.gdshader" id="1_tfk5c"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_mofld"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_uylfd"]
+noise = SubResource("FastNoiseLite_mofld")
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_aro3r"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_kqg0c"]
+noise = SubResource("FastNoiseLite_aro3r")
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_tfk5c")
+shader_parameter/fac = 0.5
+shader_parameter/albedo_noise = SubResource("NoiseTexture2D_uylfd")
+shader_parameter/alpha_noise = SubResource("NoiseTexture2D_kqg0c")

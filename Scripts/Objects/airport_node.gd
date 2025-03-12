@@ -105,10 +105,10 @@ func update_is_airport_visible() -> void:
 		airport_type_visibility or
 		(game_controller.route_visible and airport_data.has_airlines)
 	)
+	should_update_visibility = true
 
 func _airport_visibility_changed(airport_type: AirportData.AirportType) -> void:
 	if airport_data.type == airport_type:
-		should_update_visibility = true
 		airport_type_visibility = _cache_airport_type_visible()
 		update_is_airport_visible()
 

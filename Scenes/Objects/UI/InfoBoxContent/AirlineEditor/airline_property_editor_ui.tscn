@@ -1,8 +1,8 @@
 [gd_scene load_steps=4 format=3 uid="uid://ck1pjsvycvou1"]
 
-[ext_resource type="PackedScene" uid="uid://ccc3cg3iby6sp" path="res://Scenes/Objects/UI/Control/Button/text_button.tscn" id="1_8qsvw"]
-[ext_resource type="Script" path="res://Scripts/UI/InfoBoxContent/AirlineEditor/airline_property_editor_ui.gd" id="1_kl75y"]
-[ext_resource type="PackedScene" uid="uid://dxexvip67vw1x" path="res://Scenes/Objects/UI/Control/InfoBox/info_box_spacer.tscn" id="3_7a5u3"]
+[ext_resource type="PackedScene" uid="uid://ccc3cg3iby6sp" path="res://Scenes/Objects/UI/Basic/Button/text_button.tscn" id="1_8qsvw"]
+[ext_resource type="Script" uid="uid://bss34ww15fpgi" path="res://Scripts/Controls/InfoBoxContent/AirlineEditor/airline_property_editor_ui.gd" id="1_kl75y"]
+[ext_resource type="PackedScene" uid="uid://dxexvip67vw1x" path="res://Scenes/Objects/UI/Basic/InfoBox/info_box_spacer.tscn" id="3_7a5u3"]
 
 [node name="AirlinePropertyEditorUI" type="VBoxContainer"]
 offset_right = 40.0
@@ -15,6 +15,7 @@ layout_mode = 2
 [node name="CompleteButton" parent="." instance=ExtResource("1_8qsvw")]
 layout_mode = 2
 button_type = 2
+highlight_color = 2
 
 [node name="InfoSpacer2" parent="." instance=ExtResource("3_7a5u3")]
 layout_mode = 2

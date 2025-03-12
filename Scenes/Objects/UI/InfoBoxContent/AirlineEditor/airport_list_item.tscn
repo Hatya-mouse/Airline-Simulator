@@ -1,6 +1,6 @@
 [gd_scene load_steps=10 format=3 uid="uid://bfshul7pgy04j"]
 
-[ext_resource type="Script" path="res://Scripts/UI/InfoBoxContent/AirlineEditor/airport_list_item.gd" id="1_8oscd"]
+[ext_resource type="Script" uid="uid://cacronlww6he3" path="res://Scripts/Controls/InfoBoxContent/AirlineEditor/airport_list_item.gd" id="1_8oscd"]
 [ext_resource type="LabelSettings" uid="uid://dyn75pi86acbl" path="res://Styles/LabelSettings/normal_label_bold.tres" id="1_gxx4w"]
 [ext_resource type="LabelSettings" uid="uid://c88bauj8uwi8e" path="res://Styles/LabelSettings/bold_big.tres" id="2_bx1k7"]
 [ext_resource type="Material" uid="uid://6srimgbwoygb" path="res://Materials/UI/title_box_blur_background.tres" id="2_n0nqd"]

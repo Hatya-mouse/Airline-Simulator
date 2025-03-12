@@ -1,0 +1,38 @@
+[gd_scene load_steps=8 format=3 uid="uid://che3u5j56ymei"]
+
+[ext_resource type="Script" uid="uid://c10gaocl3akdu" path="res://Scripts/Controls/Basic/Button/check_box.gd" id="1_rc0ka"]
+[ext_resource type="PackedScene" uid="uid://bbmofpjeuig28" path="res://Scenes/Objects/UI/Basic/Button/texture_toggle_button.tscn" id="2_37vjf"]
+[ext_resource type="Texture2D" uid="uid://d0f1g0jysic6c" path="res://Assets/Textures/Icon/Basic/checkbox_off.svg" id="3_076tk"]
+[ext_resource type="LabelSettings" uid="uid://cen8j3djydtij" path="res://Styles/LabelSettings/normal_label.tres" id="3_u4vmp"]
+[ext_resource type="Texture2D" uid="uid://b0on3i1olq2fv" path="res://Assets/Textures/Icon/Basic/checkbox_on.svg" id="4_bm0gl"]
+[ext_resource type="Texture2D" uid="uid://b061r4xswtknw" path="res://Assets/Textures/Icon/Basic/checkbox_focused.png" id="5_fwnau"]
+[ext_resource type="AudioStream" uid="uid://f3biq7gur0mb" path="res://Assets/Audio/SFX/UI/checkbox.wav" id="6_cd423"]
+
+[node name="InfoProperty" type="HBoxContainer"]
+focus_mode = 2
+theme_override_constants/separation = 16
+script = ExtResource("1_rc0ka")
+click_sound = ExtResource("6_cd423")
+
+[node name="TextureToggleButton" parent="." instance=ExtResource("2_37vjf")]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+texture_normal = ExtResource("3_076tk")
+default_texture = ExtResource("3_076tk")
+focused_texture = ExtResource("5_fwnau")
+pressed_texture = ExtResource("4_bm0gl")
+hide_default_texture = true
+click_sound = ExtResource("6_cd423")
+
+[node name="Label" type="Label" parent="."]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+label_settings = ExtResource("3_u4vmp")
+vertical_alignment = 1
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+
+[connection signal="focus_entered" from="." to="." method="_on_focus_entered"]
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]
+[connection signal="toggled" from="TextureToggleButton" to="." method="_on_button_toggled"]

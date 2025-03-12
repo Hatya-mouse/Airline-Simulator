@@ -1,0 +1,38 @@
+[gd_scene load_steps=4 format=3 uid="uid://dop8ydnr8hs5k"]
+
+[ext_resource type="Script" uid="uid://dcrn3j6j5gl2g" path="res://Scripts/Controls/CenterPanelContent/AircraftManager/aircraft_list_ui.gd" id="1_016rt"]
+[ext_resource type="PackedScene" uid="uid://ccc3cg3iby6sp" path="res://Scenes/Objects/UI/Basic/Button/text_button.tscn" id="2_8hx4h"]
+[ext_resource type="Texture2D" uid="uid://dr632irkujlsm" path="res://Assets/Textures/Icon/Airplane/airplane.png" id="3_lv0iy"]
+
+[node name="AircraftListUI" type="HBoxContainer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_016rt")
+
+[node name="SidePanel" type="HBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="SidePanel"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/margin_left = 12
+theme_override_constants/margin_top = 12
+theme_override_constants/margin_right = 12
+theme_override_constants/margin_bottom = 12
+
+[node name="VBoxContainer" type="VBoxContainer" parent="SidePanel/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="ShopButton" parent="SidePanel/MarginContainer/VBoxContainer" instance=ExtResource("2_8hx4h")]
+layout_mode = 2
+icon = ExtResource("3_lv0iy")
+tr_text = "PURCHASE_AIRCRAFT"
+
+[node name="VSeparator" type="VSeparator" parent="SidePanel"]
+layout_mode = 2
+
+[connection signal="pressed" from="SidePanel/MarginContainer/VBoxContainer/ShopButton" to="." method="_on_shop_button_pressed"]

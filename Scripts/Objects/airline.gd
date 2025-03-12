@@ -1,8 +1,8 @@
 extends Node3D
 class_name Airline
 
-const airway_scene = preload("res://Scenes/Objects/Airport/airway.tscn")
-const plane_scene = preload("res://Scenes/Objects/Airport/plane.tscn")
+const airway_scene = preload("res://Scenes/Objects/Objects/airway.tscn")
+const plane_scene = preload("res://Scenes/Objects/Objects/plane.tscn")
 
 var game_controller: GameController
 
@@ -55,7 +55,7 @@ func start_aircraft() -> void:
 		var airplane = plane_scene.instantiate()
 		airplane.game_controller = game_controller
 		airplane.airways = airways.duplicate()
-		game_controller.airplane_controller.airplane_parent.add_child(airplane)
+		game_controller.aircraft_controller.airplane_parent.add_child(airplane)
 		# Depart the airplane.
 		airplane.depart()
 
@@ -64,7 +64,7 @@ func start_aircraft() -> void:
 		var airplane = plane_scene.instantiate()
 		airplane.game_controller = game_controller
 		airplane.airways = way_back_airways.duplicate()
-		game_controller.airplane_controller.airplane_parent.add_child(airplane)
+		game_controller.aircraft_controller.airplane_parent.add_child(airplane)
 		# Depart the airplane.
 		airplane.depart()
 

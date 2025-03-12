@@ -1,11 +1,11 @@
 [gd_scene load_steps=7 format=3 uid="uid://svthteekm0vg"]
 
-[ext_resource type="Script" path="res://Scripts/UI/InfoBoxContent/AirportInfo/airport_info_ui.gd" id="1_s3jp1"]
-[ext_resource type="PackedScene" uid="uid://5d2xph2krmch" path="res://Scenes/Objects/UI/Control/Label/property_label.tscn" id="2_xxy71"]
-[ext_resource type="PackedScene" uid="uid://dxexvip67vw1x" path="res://Scenes/Objects/UI/Control/InfoBox/info_box_spacer.tscn" id="3_bs0j2"]
-[ext_resource type="PackedScene" uid="uid://bf3d4mv2sgeox" path="res://Scenes/Objects/UI/Control/InfoBox/info_box_list_header.tscn" id="3_qfv7u"]
-[ext_resource type="PackedScene" uid="uid://b57p4di2qitmw" path="res://Scenes/Objects/UI/Control/InfoBox/info_box_label.tscn" id="4_jyysy"]
-[ext_resource type="PackedScene" uid="uid://ccc3cg3iby6sp" path="res://Scenes/Objects/UI/Control/Button/text_button.tscn" id="5_louyl"]
+[ext_resource type="Script" uid="uid://c1nkbpbjjgkiv" path="res://Scripts/Controls/InfoBoxContent/AirportInfo/airport_info_ui.gd" id="1_s3jp1"]
+[ext_resource type="PackedScene" uid="uid://5d2xph2krmch" path="res://Scenes/Objects/UI/Basic/Label/property_label.tscn" id="2_xxy71"]
+[ext_resource type="PackedScene" uid="uid://dxexvip67vw1x" path="res://Scenes/Objects/UI/Basic/InfoBox/info_box_spacer.tscn" id="3_bs0j2"]
+[ext_resource type="PackedScene" uid="uid://bf3d4mv2sgeox" path="res://Scenes/Objects/UI/Basic/InfoBox/info_box_list_header.tscn" id="3_qfv7u"]
+[ext_resource type="PackedScene" uid="uid://b57p4di2qitmw" path="res://Scenes/Objects/UI/Basic/InfoBox/info_box_label.tscn" id="4_jyysy"]
+[ext_resource type="PackedScene" uid="uid://ccc3cg3iby6sp" path="res://Scenes/Objects/UI/Basic/Button/text_button.tscn" id="5_louyl"]
 
 [node name="AirportInfoUI" type="VBoxContainer"]
 offset_right = 40.0

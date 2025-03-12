@@ -14,7 +14,7 @@ config/name="Air International Inc."
 config/tags=PackedStringArray("3d", "game", "simulation")
 run/main_scene="res://Scenes/Game/solar_system.tscn"
 config/use_custom_user_dir=true
-config/features=PackedStringArray("4.3", "Forward Plus")
+config/features=PackedStringArray("4.4", "Forward Plus")
 config/icon="res://icon.svg"
 
 [audio]
@@ -61,7 +61,7 @@ camera_move_joy_y={
 
 [internationalization]
 
-locale/translations=PackedStringArray("res://Translation/UI/main.en.translation", "res://Translation/UI/main.ja.translation")
+locale/translations=PackedStringArray("res://Localization/UI/ui.en.translation", "res://Localization/UI/ui.ja.translation")
 locale/locale_filter_mode=0
 
 [layer_names]

@@ -1,0 +1,8 @@
+[gd_resource type="LabelSettings" load_steps=2 format=3 uid="uid://dyj2tynbd73n7"]
+
+[ext_resource type="FontFile" uid="uid://e28utwkubie0" path="res://Assets/Fonts/IBMPlexMono/IBMPlexMono-Regular.ttf" id="1_rqwj6"]
+
+[resource]
+line_spacing = 0.0
+font = ExtResource("1_rqwj6")
+font_size = 36

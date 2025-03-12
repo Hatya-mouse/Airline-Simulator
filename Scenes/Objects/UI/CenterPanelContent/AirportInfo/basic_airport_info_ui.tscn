@@ -1,10 +1,10 @@
 [gd_scene load_steps=6 format=3 uid="uid://b5qlkm6sgonm7"]
 
-[ext_resource type="Script" path="res://Scripts/UI/CenterPanelContent/AirportInfo/basic_airport_info_ui.gd" id="1_qqpmh"]
+[ext_resource type="Script" uid="uid://c1mfvn0wx3egf" path="res://Scripts/Controls/CenterPanelContent/AirportInfo/basic_airport_info_ui.gd" id="1_qqpmh"]
 [ext_resource type="LabelSettings" uid="uid://3mppycugrfbn" path="res://Styles/LabelSettings/extra_large_label.tres" id="2_sur5v"]
-[ext_resource type="PackedScene" uid="uid://dxexvip67vw1x" path="res://Scenes/Objects/UI/Control/InfoBox/info_box_spacer.tscn" id="3_rh3wd"]
-[ext_resource type="PackedScene" uid="uid://dmr4h12uwgh7m" path="res://Scenes/Objects/UI/Control/Label/section_label.tscn" id="4_tpnhm"]
-[ext_resource type="PackedScene" uid="uid://5d2xph2krmch" path="res://Scenes/Objects/UI/Control/Label/property_label.tscn" id="5_gvrgc"]
+[ext_resource type="PackedScene" uid="uid://dxexvip67vw1x" path="res://Scenes/Objects/UI/Basic/InfoBox/info_box_spacer.tscn" id="3_rh3wd"]
+[ext_resource type="PackedScene" uid="uid://dmr4h12uwgh7m" path="res://Scenes/Objects/UI/Basic/Label/section_label.tscn" id="4_tpnhm"]
+[ext_resource type="PackedScene" uid="uid://5d2xph2krmch" path="res://Scenes/Objects/UI/Basic/Label/property_label.tscn" id="5_gvrgc"]
 
 [node name="BasicAirportInfoUI" type="HBoxContainer"]
 anchors_preset = 15

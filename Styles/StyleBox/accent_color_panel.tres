@@ -2,5 +2,3 @@
 
 [resource]
 bg_color = Color(0, 0.484167, 0.83, 1)
-corner_radius_bottom_right = 10
-corner_radius_bottom_left = 10

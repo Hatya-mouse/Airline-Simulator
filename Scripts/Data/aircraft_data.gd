@@ -1,5 +1,7 @@
 extends Resource
 class_name AircraftData
 
-## Unique ID of the aircraft.
-var aircraft_id: String = ""
+## Unique id of this aircraft.
+@export var id: String = ""
+## Aircraft variant.
+@export var variant: AircraftVariant

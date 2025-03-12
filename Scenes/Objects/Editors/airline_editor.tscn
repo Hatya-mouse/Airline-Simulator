@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://c1xc0vb5rp5od"]
 
-[ext_resource type="Script" path="res://Scripts/Editor/airline_editor.gd" id="1_d5mj5"]
+[ext_resource type="Script" uid="uid://d3y0dri3npeh2" path="res://Scripts/UIManagers/airline_editor.gd" id="1_d5mj5"]
 
 [node name="AirlineEditor" type="Node"]
 script = ExtResource("1_d5mj5")

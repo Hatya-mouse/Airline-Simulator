@@ -1,10 +1,10 @@
 [gd_scene load_steps=6 format=3 uid="uid://cklof4m7ffkeq"]
 
-[ext_resource type="Script" path="res://Scripts/UI/InfoBoxContent/AirlineEditor/airline_editor_ui.gd" id="1_7bbn0"]
-[ext_resource type="PackedScene" uid="uid://che3u5j56ymei" path="res://Scenes/Objects/UI/Control/Button/check_box.tscn" id="2_l1dm7"]
-[ext_resource type="PackedScene" uid="uid://b57p4di2qitmw" path="res://Scenes/Objects/UI/Control/InfoBox/info_box_label.tscn" id="2_vt3gv"]
-[ext_resource type="PackedScene" uid="uid://ccc3cg3iby6sp" path="res://Scenes/Objects/UI/Control/Button/text_button.tscn" id="3_58bet"]
-[ext_resource type="PackedScene" uid="uid://dxexvip67vw1x" path="res://Scenes/Objects/UI/Control/InfoBox/info_box_spacer.tscn" id="4_fniyr"]
+[ext_resource type="Script" uid="uid://b50dsd1i0xxaq" path="res://Scripts/Controls/InfoBoxContent/AirlineEditor/airline_editor_ui.gd" id="1_7bbn0"]
+[ext_resource type="PackedScene" uid="uid://che3u5j56ymei" path="res://Scenes/Objects/UI/Basic/Button/check_box.tscn" id="2_l1dm7"]
+[ext_resource type="PackedScene" uid="uid://b57p4di2qitmw" path="res://Scenes/Objects/UI/Basic/InfoBox/info_box_label.tscn" id="2_vt3gv"]
+[ext_resource type="PackedScene" uid="uid://ccc3cg3iby6sp" path="res://Scenes/Objects/UI/Basic/Button/text_button.tscn" id="3_58bet"]
+[ext_resource type="PackedScene" uid="uid://dxexvip67vw1x" path="res://Scenes/Objects/UI/Basic/InfoBox/info_box_spacer.tscn" id="4_fniyr"]
 
 [node name="AirlineEditorUI" type="VBoxContainer"]
 offset_right = 150.0
@@ -29,6 +29,7 @@ layout_mode = 2
 [node name="NextButton" parent="." instance=ExtResource("3_58bet")]
 layout_mode = 2
 button_type = 2
+highlight_color = 2
 
 [node name="InfoSpacer2" parent="." instance=ExtResource("4_fniyr")]
 layout_mode = 2

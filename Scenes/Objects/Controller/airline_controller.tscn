@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://cp616hfmd7raq"]
 
-[ext_resource type="Script" path="res://Scripts/Controller/airport_controller.gd" id="1_50j6j"]
+[ext_resource type="Script" uid="uid://rjsxxa3aid7e" path="res://Scripts/Controller/airport_controller.gd" id="1_50j6j"]
 
 [node name="AirlineController" type="Node"]
 script = ExtResource("1_50j6j")

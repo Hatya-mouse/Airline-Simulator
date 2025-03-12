@@ -1,0 +1,89 @@
+[gd_scene load_steps=10 format=3 uid="uid://ca8khddjbfntq"]
+
+[ext_resource type="Script" uid="uid://bv4b2wnxgdq1" path="res://Scripts/Objects/airplane.gd" id="1_m6oy1"]
+[ext_resource type="Material" uid="uid://cggn71l1gmmf4" path="res://Materials/Airway/airplane_icon.tres" id="2_uul7e"]
+[ext_resource type="AudioStream" uid="uid://ck48s8c8s1vte" path="res://Assets/Audio/SFX/Game/airplane_departure.wav" id="3_xtvs0"]
+[ext_resource type="AudioStream" uid="uid://bxdd014pyw6o8" path="res://Assets/Audio/SFX/Game/airline_arrive.wav" id="4_fvpyn"]
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_2efkr"]
+material = ExtResource("2_uul7e")
+size = Vector2(0.2, 0.2)
+
+[sub_resource type="Animation" id="Animation_fijea"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MeshInstance3D:mesh:material:shader_parameter/color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_u40yr"]
+resource_name = "hide"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MeshInstance3D:mesh:material:shader_parameter/color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_0yrst"]
+resource_name = "show"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MeshInstance3D:mesh:material:shader_parameter/color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ige5f"]
+_data = {
+&"RESET": SubResource("Animation_fijea"),
+&"hide": SubResource("Animation_u40yr"),
+&"show": SubResource("Animation_0yrst")
+}
+
+[node name="Plane" type="Node3D"]
+script = ExtResource("1_m6oy1")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("PlaneMesh_2efkr")
+
+[node name="Audio" type="Node" parent="."]
+
+[node name="DepartureSFX" type="AudioStreamPlayer3D" parent="Audio"]
+stream = ExtResource("3_xtvs0")
+unit_size = 5000.0
+bus = &"SFX"
+
+[node name="ArriveSFX" type="AudioStreamPlayer3D" parent="Audio"]
+stream = ExtResource("4_fvpyn")
+unit_size = 5000.0
+bus = &"SFX"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_ige5f")
+}
+
+[node name="Timer" type="Timer" parent="."]
