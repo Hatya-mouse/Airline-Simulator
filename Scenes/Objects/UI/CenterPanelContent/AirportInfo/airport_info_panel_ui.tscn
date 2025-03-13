@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://cgvajvygy6kih" path="res://Scripts/Controls/CenterPanelContent/AirportInfo/airport_info_panel_ui.gd" id="1_a3n5n"]
 [ext_resource type="PackedScene" uid="uid://b5qlkm6sgonm7" path="res://Scenes/Objects/UI/CenterPanelContent/AirportInfo/basic_airport_info_ui.tscn" id="1_m6070"]
-[ext_resource type="StyleBox" uid="uid://c8gp5ws08rk22" path="res://Styles/StyleBox/box_background_basic.tres" id="2_703fs"]
+[ext_resource type="StyleBox" uid="uid://c8gp5ws08rk22" path="res://Styles/StyleBox/floating_box_background.tres" id="2_703fs"]
 [ext_resource type="PackedScene" uid="uid://criapa6y6ghi4" path="res://Scenes/Objects/UI/Basic/Button/basic_texture_button.tscn" id="2_ja87t"]
 [ext_resource type="Texture2D" uid="uid://c7eqgo60ikpbp" path="res://Assets/Textures/Icon/Route/route_icon.png" id="3_u7isk"]
 [ext_resource type="Texture2D" uid="uid://dfspanlhpmmvy" path="res://Assets/Textures/Icon/Route/route_icon_active.png" id="5_li1mc"]

@@ -1,18 +1,16 @@
 [gd_scene load_steps=16 format=3 uid="uid://b4qoenqo151ry"]
 
+[ext_resource type="StyleBox" uid="uid://cu8avulf4vehy" path="res://Styles/StyleBox/opaque_black_background.tres" id="1_8m14m"]
 [ext_resource type="Script" uid="uid://c646rpfats2wi" path="res://Scripts/Controls/Basic/Panel/center_panel.gd" id="1_mn6lx"]
 [ext_resource type="Theme" uid="uid://drekqoieprg23" path="res://Styles/Theme/normal_theme.tres" id="1_qkua0"]
-[ext_resource type="StyleBox" uid="uid://c8gp5ws08rk22" path="res://Styles/StyleBox/box_background_basic.tres" id="3_52cha"]
-[ext_resource type="StyleBox" uid="uid://d2paldjrl6nkr" path="res://Styles/StyleBox/box_title.tres" id="3_eufvj"]
+[ext_resource type="StyleBox" uid="uid://c8gp5ws08rk22" path="res://Styles/StyleBox/floating_box_background.tres" id="3_52cha"]
+[ext_resource type="StyleBox" uid="uid://d2paldjrl6nkr" path="res://Styles/StyleBox/box_header.tres" id="3_eufvj"]
 [ext_resource type="LabelSettings" uid="uid://dyn75pi86acbl" path="res://Styles/LabelSettings/normal_label_bold.tres" id="4_xc8wh"]
 [ext_resource type="PackedScene" uid="uid://ccc3cg3iby6sp" path="res://Scenes/Objects/UI/Basic/Button/text_button.tscn" id="5_72l8n"]
 [ext_resource type="Texture2D" uid="uid://cuy2hateq71i2" path="res://Assets/Textures/Icon/Basic/x_button.svg" id="5_o7ev2"]
 [ext_resource type="Texture2D" uid="uid://bqjcguviu4eeu" path="res://Assets/Textures/Icon/Basic/x_button_pressed.svg" id="6_j5j1j"]
 [ext_resource type="AudioStream" uid="uid://b0lijxw8e6nn1" path="res://Assets/Audio/SFX/UI/cancel.wav" id="6_sfvmr"]
 [ext_resource type="Texture2D" uid="uid://cyma3cf5md0ee" path="res://Assets/Textures/Icon/Basic/x_button_disabled.svg" id="7_ejxgy"]
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2gdhd"]
-bg_color = Color(0, 0, 0, 0.470588)
 
 [sub_resource type="Animation" id="Animation_6di1i"]
 length = 0.001
@@ -269,7 +267,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_2gdhd")
+theme_override_styles/panel = ExtResource("1_8m14m")
 script = ExtResource("1_mn6lx")
 
 [node name="CenterPanelContainer" type="PanelContainer" parent="."]
@@ -341,7 +339,7 @@ size_flags_vertical = 3
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
-"": SubResource("AnimationLibrary_4lvu8")
+&"": SubResource("AnimationLibrary_4lvu8")
 }
 
 [node name="HideAudioPlayer" type="AudioStreamPlayer" parent="."]

@@ -1,6 +1,6 @@
 [gd_resource type="ShaderMaterial" load_steps=4 format=3 uid="uid://c4ucntfaukhjk"]
 
-[ext_resource type="Shader" path="res://Shaders/Planet/star_material.gdshader" id="1_ym0f4"]
+[ext_resource type="Shader" uid="uid://b4wkkarnohyci" path="res://Shaders/Planet/star_material.gdshader" id="1_ym0f4"]
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_4qsy4"]
 noise_type = 0
@@ -14,5 +14,5 @@ noise = SubResource("FastNoiseLite_4qsy4")
 [resource]
 shader = ExtResource("1_ym0f4")
 shader_parameter/resolution = Vector2(600, 400)
-shader_parameter/density = 60.0
 shader_parameter/noise_texture = SubResource("NoiseTexture2D_5k7j0")
+shader_parameter/density = 60.0

@@ -41,7 +41,7 @@ code = "shader_type canvas_item;
 render_mode blend_mix;
 
 uniform vec4 base_color : source_color = vec4(1.000000, 1.000000, 1.000000, 1.000000);
-uniform float blur_strength : hint_range(0, 5, 0.10000000149012) = 5;
+uniform float blur_strength : hint_range(0.0, 5.0, 0.10000000149012) = 5.0;
 uniform sampler2D ScreenTexture : filter_linear_mipmap, hint_screen_texture;
 uniform float color_blend;
 uniform float alpha;

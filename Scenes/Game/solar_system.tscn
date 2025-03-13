@@ -40,11 +40,11 @@
 [ext_resource type="PackedScene" uid="uid://c1xc0vb5rp5od" path="res://Scenes/Objects/Editors/airline_editor.tscn" id="23_qwg2y"]
 [ext_resource type="Script" uid="uid://dt4ht0ghrpjb" path="res://Scripts/UIManagers/airport_ui_manager.gd" id="26_nrlui"]
 [ext_resource type="Script" uid="uid://lmtd5c4gmh7f" path="res://Scripts/UIManagers/aircraft_ui_manager.gd" id="26_vr1jx"]
-[ext_resource type="StyleBox" uid="uid://d0ulp3nmaac3g" path="res://Styles/StyleBox/box_background.tres" id="29_j5vt3"]
+[ext_resource type="StyleBox" uid="uid://d0ulp3nmaac3g" path="res://Styles/StyleBox/blur_box_background.tres" id="29_j5vt3"]
 [ext_resource type="Material" uid="uid://b0l8cemh1mv2e" path="res://Materials/UI/dark_blur_background.tres" id="29_r15ql"]
 [ext_resource type="PackedScene" uid="uid://ccc3cg3iby6sp" path="res://Scenes/Objects/UI/Basic/Button/text_button.tscn" id="32_2rw4x"]
 [ext_resource type="Texture2D" uid="uid://c7eqgo60ikpbp" path="res://Assets/Textures/Icon/Route/route_icon.png" id="33_paedu"]
-[ext_resource type="LabelSettings" uid="uid://dyj2tynbd73n7" path="res://Styles/LabelSettings/money_mono.tres" id="33_wx3sa"]
+[ext_resource type="LabelSettings" uid="uid://bp2o3apcufnt" path="res://Styles/LabelSettings/mono_large.tres" id="33_wmgir"]
 [ext_resource type="Texture2D" uid="uid://cxf5a10xpwnj4" path="res://Assets/Textures/Icon/TopBar/top_bar_focused_left.png" id="36_0wdm1"]
 [ext_resource type="Texture2D" uid="uid://weuvmuhb18vs" path="res://Assets/Textures/Icon/Airplane/manage_aircraft_button.png" id="37_dx1an"]
 [ext_resource type="Texture2D" uid="uid://dev4i5xdjyo75" path="res://Assets/Textures/Icon/Airplane/manage_aircraft_button_pressed.png" id="39_c7o26"]
@@ -286,7 +286,7 @@ theme_override_constants/margin_bottom = 0
 [node name="MoneyLabel" type="Label" parent="HUD/TopPanel/MarginContainer/HBoxContainer/MoneyPanel/MoneyLabelMargin"]
 layout_mode = 2
 text = "100000000000000000000"
-label_settings = ExtResource("33_wx3sa")
+label_settings = ExtResource("33_wmgir")
 vertical_alignment = 1
 
 [node name="CreateAirlineButton" parent="HUD/TopPanel/MarginContainer/HBoxContainer" instance=ExtResource("32_2rw4x")]

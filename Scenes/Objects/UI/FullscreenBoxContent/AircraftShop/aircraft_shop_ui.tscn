@@ -1,23 +1,24 @@
 [gd_scene load_steps=21 format=3 uid="uid://bhn4p2cfg71g2"]
 
 [ext_resource type="Script" uid="uid://cjkvbtqk6f43m" path="res://Scripts/Controls/CenterPanelContent/AircraftManager/aircraft_shop_ui.gd" id="1_mbfu4"]
-[ext_resource type="Theme" uid="uid://drekqoieprg23" path="res://Styles/Theme/normal_theme.tres" id="2_16o0l"]
-[ext_resource type="FontVariation" uid="uid://cltucxgwyjki3" path="res://Styles/Fonts/normal_font.tres" id="3_5pqjy"]
-[ext_resource type="Texture2D" uid="uid://ih3tuvvkor8c" path="res://Assets/Textures/Icon/Basic/magnifying_glass_gray.png" id="4_3pnrt"]
+[ext_resource type="PackedScene" uid="uid://bgyw5njg6spmd" path="res://Scenes/Objects/UI/FullscreenBoxContent/AircraftShop/aircraft_shop_side_bar.tscn" id="2_86byi"]
+[ext_resource type="LabelSettings" uid="uid://bp2o3apcufnt" path="res://Styles/LabelSettings/mono_large.tres" id="4_wmtap"]
 [ext_resource type="LabelSettings" uid="uid://3mppycugrfbn" path="res://Styles/LabelSettings/extra_large_label.tres" id="5_4vo8t"]
-[ext_resource type="PackedScene" uid="uid://che3u5j56ymei" path="res://Scenes/Objects/UI/Basic/Button/check_box.tscn" id="5_aj3on"]
-[ext_resource type="PackedScene" uid="uid://dmr4h12uwgh7m" path="res://Scenes/Objects/UI/Basic/Label/section_label.tscn" id="5_ap8bf"]
-[ext_resource type="PackedScene" uid="uid://dxexvip67vw1x" path="res://Scenes/Objects/UI/Basic/InfoBox/info_box_spacer.tscn" id="5_nxn7f"]
 [ext_resource type="LabelSettings" uid="uid://dyj2tynbd73n7" path="res://Styles/LabelSettings/money_mono.tres" id="6_600bd"]
 [ext_resource type="Script" uid="uid://xg12270o0lm1" path="res://Scripts/Controller/utils.gd" id="7_akjsh"]
-[ext_resource type="StyleBox" uid="uid://cxcttot0r2nuf" path="res://Styles/StyleBox/box_background_dark_color.tres" id="7_co1cd"]
-[ext_resource type="PackedScene" uid="uid://cf3ndgsnx5hap" path="res://Scenes/Objects/UI/FullscreenBoxContent/AircraftShop/shop_filter_group.tscn" id="8_cckt7"]
+[ext_resource type="StyleBox" uid="uid://cxcttot0r2nuf" path="res://Styles/StyleBox/floating_box_background_dark.tres" id="7_co1cd"]
+[ext_resource type="StyleBox" uid="uid://c8gp5ws08rk22" path="res://Styles/StyleBox/floating_box_background.tres" id="8_6o8bo"]
 [ext_resource type="PackedScene" uid="uid://5d2xph2krmch" path="res://Scenes/Objects/UI/Basic/Label/property_label.tscn" id="8_vi1au"]
+[ext_resource type="StyleBox" uid="uid://cu8avulf4vehy" path="res://Styles/StyleBox/opaque_black_background.tres" id="8_wmtap"]
 [ext_resource type="PackedScene" uid="uid://ccc3cg3iby6sp" path="res://Scenes/Objects/UI/Basic/Button/text_button.tscn" id="9_6k018"]
+[ext_resource type="PackedScene" uid="uid://dmr4h12uwgh7m" path="res://Scenes/Objects/UI/Basic/Label/section_label.tscn" id="10_5romj"]
 [ext_resource type="AudioStream" uid="uid://2824wndol588" path="res://Assets/Audio/SFX/UI/click_2.wav" id="13_wwhnu"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mo28k"]
-bg_color = Color(0.15, 0.15, 0.15, 1)
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wmtap"]
+bg_color = Color(0.20871, 0.20871, 0.20871, 1)
+border_color = Color(0.34, 0.34, 0.34, 1)
+corner_radius_top_left = 10
+corner_radius_bottom_left = 10
 
 [sub_resource type="Animation" id="Animation_7byfo"]
 length = 0.001
@@ -112,6 +113,106 @@ tracks/7/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [Color(1, 1, 1, 1)]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("Overlay:visible")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("Overlay:modulate")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("Overlay/PanelContainer:anchor_bottom")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [1.5]
+}
+tracks/11/type = "value"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("Overlay/PanelContainer:anchor_top")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [1.5]
+}
+
+[sub_resource type="Animation" id="Animation_5romj"]
+resource_name = "hide_confirmation"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Overlay:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Overlay:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Overlay/PanelContainer:anchor_top")
+tracks/2/interp = 2
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.5, 1.5]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Overlay/PanelContainer:anchor_bottom")
+tracks/3/interp = 2
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.5, 1.5]
 }
 
 [sub_resource type="Animation" id="Animation_jehoo"]
@@ -210,6 +311,58 @@ tracks/7/keys = {
 "values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
 }
 
+[sub_resource type="Animation" id="Animation_wmtap"]
+resource_name = "show_confirmation"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Overlay:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Overlay:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Overlay/PanelContainer:anchor_bottom")
+tracks/2/interp = 2
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [1.5, 0.5]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Overlay/PanelContainer:anchor_top")
+tracks/3/interp = 2
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [1.5, 0.5]
+}
+
 [sub_resource type="Animation" id="Animation_7hfto"]
 resource_name = "show_detail"
 length = 0.4
@@ -287,7 +440,9 @@ tracks/5/keys = {
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_eqjog"]
 _data = {
 &"RESET": SubResource("Animation_7byfo"),
+&"hide_confirmation": SubResource("Animation_5romj"),
 &"hide_detail": SubResource("Animation_jehoo"),
+&"show_confirmation": SubResource("Animation_wmtap"),
 &"show_detail": SubResource("Animation_7hfto")
 }
 
@@ -309,101 +464,7 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/separation = 0
 
-[node name="SideBar" type="PanelContainer" parent="Browser"]
-layout_mode = 2
-size_flags_horizontal = 3
-theme_override_styles/panel = SubResource("StyleBoxFlat_mo28k")
-
-[node name="HBoxContainer" type="HBoxContainer" parent="Browser/SideBar"]
-layout_mode = 2
-theme_override_constants/separation = 0
-
-[node name="ScrollContainer" type="ScrollContainer" parent="Browser/SideBar/HBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
-horizontal_scroll_mode = 0
-
-[node name="MarginContainer" type="MarginContainer" parent="Browser/SideBar/HBoxContainer/ScrollContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
-theme_override_constants/margin_left = 30
-theme_override_constants/margin_top = 30
-theme_override_constants/margin_right = 30
-theme_override_constants/margin_bottom = 30
-
-[node name="VBoxContainer" type="VBoxContainer" parent="Browser/SideBar/HBoxContainer/ScrollContainer/MarginContainer"]
-layout_mode = 2
-theme_override_constants/separation = 8
-
-[node name="SearchBar" type="LineEdit" parent="Browser/SideBar/HBoxContainer/ScrollContainer/MarginContainer/VBoxContainer"]
-unique_name_in_owner = true
-custom_minimum_size = Vector2(0, 70)
-layout_mode = 2
-size_flags_horizontal = 3
-theme = ExtResource("2_16o0l")
-theme_override_fonts/font = ExtResource("3_5pqjy")
-theme_override_font_sizes/font_size = 32
-placeholder_text = "Search"
-right_icon = ExtResource("4_3pnrt")
-
-[node name="SortingSpacer" parent="Browser/SideBar/HBoxContainer/ScrollContainer/MarginContainer/VBoxContainer" instance=ExtResource("5_nxn7f")]
-layout_mode = 2
-
-[node name="Sorting" type="VBoxContainer" parent="Browser/SideBar/HBoxContainer/ScrollContainer/MarginContainer/VBoxContainer"]
-layout_mode = 2
-theme_override_constants/separation = 8
-
-[node name="SortSectionLabel" parent="Browser/SideBar/HBoxContainer/ScrollContainer/MarginContainer/VBoxContainer/Sorting" instance=ExtResource("5_ap8bf")]
-unique_name_in_owner = true
-layout_mode = 2
-text = "Sorting"
-
-[node name="SortOptionButton" type="OptionButton" parent="Browser/SideBar/HBoxContainer/ScrollContainer/MarginContainer/VBoxContainer/Sorting"]
-unique_name_in_owner = true
-layout_mode = 2
-theme = ExtResource("2_16o0l")
-
-[node name="SortReverseCheckbox" parent="Browser/SideBar/HBoxContainer/ScrollContainer/MarginContainer/VBoxContainer/Sorting" instance=ExtResource("5_aj3on")]
-unique_name_in_owner = true
-layout_mode = 2
-
-[node name="FilterSpacer" parent="Browser/SideBar/HBoxContainer/ScrollContainer/MarginContainer/VBoxContainer" instance=ExtResource("5_nxn7f")]
-layout_mode = 2
-
-[node name="Filter" type="VBoxContainer" parent="Browser/SideBar/HBoxContainer/ScrollContainer/MarginContainer/VBoxContainer"]
-layout_mode = 2
-theme_override_constants/separation = 16
-
-[node name="FilterSectionLabel" parent="Browser/SideBar/HBoxContainer/ScrollContainer/MarginContainer/VBoxContainer/Filter" instance=ExtResource("5_ap8bf")]
-unique_name_in_owner = true
-layout_mode = 2
-text = "Filter"
-
-[node name="PriceFilter" parent="Browser/SideBar/HBoxContainer/ScrollContainer/MarginContainer/VBoxContainer/Filter" instance=ExtResource("8_cckt7")]
-unique_name_in_owner = true
-layout_mode = 2
-
-[node name="CapacityFilter" parent="Browser/SideBar/HBoxContainer/ScrollContainer/MarginContainer/VBoxContainer/Filter" instance=ExtResource("8_cckt7")]
-unique_name_in_owner = true
-layout_mode = 2
-possible_max_value = 1000.0
-
-[node name="RangeFilter" parent="Browser/SideBar/HBoxContainer/ScrollContainer/MarginContainer/VBoxContainer/Filter" instance=ExtResource("8_cckt7")]
-unique_name_in_owner = true
-layout_mode = 2
-possible_max_value = 100000.0
-
-[node name="SpeedFilter" parent="Browser/SideBar/HBoxContainer/ScrollContainer/MarginContainer/VBoxContainer/Filter" instance=ExtResource("8_cckt7")]
-unique_name_in_owner = true
-layout_mode = 2
-possible_max_value = 1000.0
-
-[node name="FuelFilter" parent="Browser/SideBar/HBoxContainer/ScrollContainer/MarginContainer/VBoxContainer/Filter" instance=ExtResource("8_cckt7")]
-unique_name_in_owner = true
-layout_mode = 2
-possible_max_value = 1000.0
-
-[node name="HSeparator" type="VSeparator" parent="Browser/SideBar/HBoxContainer"]
+[node name="SideBar" parent="Browser" instance=ExtResource("2_86byi")]
 layout_mode = 2
 
 [node name="GridScroller" type="ScrollContainer" parent="Browser"]
@@ -493,7 +554,7 @@ label_settings = ExtResource("5_4vo8t")
 [node name="PriceLabel" type="Label" parent="Detail/MarginContainer/VBoxContainer/TopDetail/MarginContainer/InfoVBox/PriceAndName"]
 unique_name_in_owner = true
 layout_mode = 2
-label_settings = ExtResource("6_600bd")
+label_settings = ExtResource("4_wmtap")
 
 [node name="AircraftInfoPanel" type="PanelContainer" parent="Detail/MarginContainer/VBoxContainer/TopDetail/MarginContainer/InfoVBox"]
 layout_mode = 2
@@ -544,9 +605,125 @@ size_flags_horizontal = 3
 button_type = 2
 highlight_color = 4
 
+[node name="Overlay" type="Panel" parent="."]
+visible = false
+modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = ExtResource("8_wmtap")
+
+[node name="PanelContainer" type="PanelContainer" parent="Overlay"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 1.5
+anchor_right = 0.5
+anchor_bottom = 1.5
+offset_left = -800.0
+offset_top = -450.0
+offset_right = 800.0
+offset_bottom = 450.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = ExtResource("8_6o8bo")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Overlay/PanelContainer"]
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="LeftPanel" type="ScrollContainer" parent="Overlay/PanelContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="PanelContainer" type="PanelContainer" parent="Overlay/PanelContainer/HBoxContainer/LeftPanel"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_wmtap")
+
+[node name="MarginContainer" type="MarginContainer" parent="Overlay/PanelContainer/HBoxContainer/LeftPanel/PanelContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 30
+theme_override_constants/margin_top = 30
+theme_override_constants/margin_right = 30
+theme_override_constants/margin_bottom = 30
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Overlay/PanelContainer/HBoxContainer/LeftPanel/PanelContainer/MarginContainer"]
+layout_mode = 2
+
+[node name="RightPanel" type="MarginContainer" parent="Overlay/PanelContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/margin_left = 30
+theme_override_constants/margin_top = 30
+theme_override_constants/margin_right = 30
+theme_override_constants/margin_bottom = 30
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Overlay/PanelContainer/HBoxContainer/RightPanel"]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="TotalSectionLabel" parent="Overlay/PanelContainer/HBoxContainer/RightPanel/VBoxContainer" instance=ExtResource("10_5romj")]
+layout_mode = 2
+text = "TOTAL"
+
+[node name="TotalLabel" type="Label" parent="Overlay/PanelContainer/HBoxContainer/RightPanel/VBoxContainer"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+text = "$1,000,000"
+label_settings = ExtResource("4_wmtap")
+autowrap_mode = 3
+
+[node name="BalanceSectionLabel" parent="Overlay/PanelContainer/HBoxContainer/RightPanel/VBoxContainer" instance=ExtResource("10_5romj")]
+layout_mode = 2
+text = "CURRENT BALANCE"
+
+[node name="BalanceLabel" type="Label" parent="Overlay/PanelContainer/HBoxContainer/RightPanel/VBoxContainer"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+text = "$0"
+label_settings = ExtResource("6_600bd")
+autowrap_mode = 3
+
+[node name="BalanceAfterPurchaseSectionLabel" parent="Overlay/PanelContainer/HBoxContainer/RightPanel/VBoxContainer" instance=ExtResource("10_5romj")]
+layout_mode = 2
+text = "BALANCE AFTER PURCHASE"
+
+[node name="BalanceAfterPurchase" type="Label" parent="Overlay/PanelContainer/HBoxContainer/RightPanel/VBoxContainer"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+text = "$-1,000,000"
+label_settings = ExtResource("6_600bd")
+autowrap_mode = 3
+
+[node name="Spacer" type="Control" parent="Overlay/PanelContainer/HBoxContainer/RightPanel/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="ButtonBox" type="HBoxContainer" parent="Overlay/PanelContainer/HBoxContainer/RightPanel/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 16
+
+[node name="CancelButton" parent="Overlay/PanelContainer/HBoxContainer/RightPanel/VBoxContainer/ButtonBox" instance=ExtResource("9_6k018")]
+layout_mode = 2
+size_flags_horizontal = 3
+tr_text = "CANCEL"
+button_type = 1
+
+[node name="ConfirmButton" parent="Overlay/PanelContainer/HBoxContainer/RightPanel/VBoxContainer/ButtonBox" instance=ExtResource("9_6k018")]
+layout_mode = 2
+size_flags_horizontal = 3
+tr_text = "CONFIRM_PURCHASE"
+button_type = 2
+highlight_color = 4
+
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
-"": SubResource("AnimationLibrary_eqjog")
+&"": SubResource("AnimationLibrary_eqjog")
 }
 
 [node name="Utils" type="Node" parent="."]

@@ -1,0 +1,110 @@
+[gd_scene load_steps=10 format=3 uid="uid://bgyw5njg6spmd"]
+
+[ext_resource type="Script" uid="uid://c762wp6rqe4ej" path="res://Scripts/Controls/FullscreenBoxContent/AircraftShop/aircraft_shop_side_bar.gd" id="1_68esf"]
+[ext_resource type="Theme" uid="uid://drekqoieprg23" path="res://Styles/Theme/normal_theme.tres" id="1_th1yt"]
+[ext_resource type="FontVariation" uid="uid://cltucxgwyjki3" path="res://Styles/Fonts/normal_font.tres" id="2_68esf"]
+[ext_resource type="Texture2D" uid="uid://ih3tuvvkor8c" path="res://Assets/Textures/Icon/Basic/magnifying_glass_gray.png" id="3_3oga5"]
+[ext_resource type="PackedScene" uid="uid://dxexvip67vw1x" path="res://Scenes/Objects/UI/Basic/InfoBox/info_box_spacer.tscn" id="4_hnbxk"]
+[ext_resource type="PackedScene" uid="uid://dmr4h12uwgh7m" path="res://Scenes/Objects/UI/Basic/Label/section_label.tscn" id="5_q30sf"]
+[ext_resource type="PackedScene" uid="uid://che3u5j56ymei" path="res://Scenes/Objects/UI/Basic/Button/check_box.tscn" id="6_m82uj"]
+[ext_resource type="PackedScene" uid="uid://cf3ndgsnx5hap" path="res://Scenes/Objects/UI/FullscreenBoxContent/AircraftShop/shop_filter_group.tscn" id="7_pruk1"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mo28k"]
+bg_color = Color(0.15, 0.15, 0.15, 1)
+
+[node name="SideBar" type="PanelContainer"]
+size_flags_horizontal = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_mo28k")
+script = ExtResource("1_68esf")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="ScrollContainer" type="ScrollContainer" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+horizontal_scroll_mode = 0
+
+[node name="MarginContainer" type="MarginContainer" parent="HBoxContainer/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/margin_left = 30
+theme_override_constants/margin_top = 30
+theme_override_constants/margin_right = 30
+theme_override_constants/margin_bottom = 30
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer/ScrollContainer/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="SearchBar" type="LineEdit" parent="HBoxContainer/ScrollContainer/MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 70)
+layout_mode = 2
+size_flags_horizontal = 3
+theme = ExtResource("1_th1yt")
+theme_override_fonts/font = ExtResource("2_68esf")
+theme_override_font_sizes/font_size = 32
+placeholder_text = "Search"
+right_icon = ExtResource("3_3oga5")
+
+[node name="SortingSpacer" parent="HBoxContainer/ScrollContainer/MarginContainer/VBoxContainer" instance=ExtResource("4_hnbxk")]
+layout_mode = 2
+
+[node name="Sorting" type="VBoxContainer" parent="HBoxContainer/ScrollContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="SortSectionLabel" parent="HBoxContainer/ScrollContainer/MarginContainer/VBoxContainer/Sorting" instance=ExtResource("5_q30sf")]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Sorting"
+
+[node name="SortOptionButton" type="OptionButton" parent="HBoxContainer/ScrollContainer/MarginContainer/VBoxContainer/Sorting"]
+unique_name_in_owner = true
+layout_mode = 2
+theme = ExtResource("1_th1yt")
+
+[node name="SortReverseCheckbox" parent="HBoxContainer/ScrollContainer/MarginContainer/VBoxContainer/Sorting" instance=ExtResource("6_m82uj")]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="FilterSpacer" parent="HBoxContainer/ScrollContainer/MarginContainer/VBoxContainer" instance=ExtResource("4_hnbxk")]
+layout_mode = 2
+
+[node name="Filter" type="VBoxContainer" parent="HBoxContainer/ScrollContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 16
+
+[node name="FilterSectionLabel" parent="HBoxContainer/ScrollContainer/MarginContainer/VBoxContainer/Filter" instance=ExtResource("5_q30sf")]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Filter"
+
+[node name="PriceFilter" parent="HBoxContainer/ScrollContainer/MarginContainer/VBoxContainer/Filter" instance=ExtResource("7_pruk1")]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="CapacityFilter" parent="HBoxContainer/ScrollContainer/MarginContainer/VBoxContainer/Filter" instance=ExtResource("7_pruk1")]
+unique_name_in_owner = true
+layout_mode = 2
+possible_max_value = 1000.0
+
+[node name="RangeFilter" parent="HBoxContainer/ScrollContainer/MarginContainer/VBoxContainer/Filter" instance=ExtResource("7_pruk1")]
+unique_name_in_owner = true
+layout_mode = 2
+possible_max_value = 100000.0
+
+[node name="SpeedFilter" parent="HBoxContainer/ScrollContainer/MarginContainer/VBoxContainer/Filter" instance=ExtResource("7_pruk1")]
+unique_name_in_owner = true
+layout_mode = 2
+possible_max_value = 1000.0
+
+[node name="FuelFilter" parent="HBoxContainer/ScrollContainer/MarginContainer/VBoxContainer/Filter" instance=ExtResource("7_pruk1")]
+unique_name_in_owner = true
+layout_mode = 2
+possible_max_value = 1000.0
+
+[node name="HSeparator" type="VSeparator" parent="HBoxContainer"]
+layout_mode = 2

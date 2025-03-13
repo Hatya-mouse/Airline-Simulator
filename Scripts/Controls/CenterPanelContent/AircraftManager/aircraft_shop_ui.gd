@@ -11,19 +11,7 @@ const aircraft_shop_list_item = preload("res://Scenes/Objects/UI/FullscreenBoxCo
 
 # Browser view
 @onready var aircraft_list: GridContainer = %AircraftList
-# Filter & Sort menu
-@onready var search_bar: LineEdit = %SearchBar
-# Sorting section
-@onready var sort_section_label: Label = %SortSectionLabel
-@onready var sort_button: OptionButton = %SortOptionButton
-@onready var sort_reverse_checkbox: CheckboxButton = %SortReverseCheckbox
-# Filter section
-@onready var filter_section_label: Label = %FilterSectionLabel
-@onready var price_filter: ShopFilterGroup = %PriceFilter
-@onready var capacity_filter: ShopFilterGroup = %CapacityFilter
-@onready var range_filter: ShopFilterGroup = %RangeFilter
-@onready var speed_filter: ShopFilterGroup = %SpeedFilter
-@onready var fuel_filter: ShopFilterGroup = %FuelFilter
+@onready var side_bar: PanelContainer = $Browser/SideBar
 
 # Detail view
 @onready var carousel_h_box: HBoxContainer = %CarouselHBox
@@ -48,65 +36,17 @@ func _ready() -> void:
 	browser.show()
 	detail.hide()
 
-	# Set up filter UI elements.
-	# Set the placeholder text of the search bar/
-	search_bar.placeholder_text = tr("SEARCH")
-	
-	# Set the section label.
-	sort_section_label.text = tr("SORTING")
-
-	# Set up the sort button.
-	sort_button.add_item(tr("NAME"))
-	sort_button.add_item(tr("PRICE"))
-	sort_button.add_item(tr("RANGE"))
-	sort_button.add_item(tr("MAX_SPEED"))
-	sort_button.select(0)
-
-	# Set up the invert sort checkbox.
-	sort_reverse_checkbox.text = tr("REVERSE_SORT")
-	
-	# Set the section label.
-	filter_section_label.text = tr("FILTER")
-
-	# Set up the filters.
-	price_filter.label_text = tr("PRICE")
-	price_filter.value_changed.connect(_on_filter_changed)
-	price_filter.prefix = "$"
-	price_filter.possible_min_value = 0
-	price_filter.possible_max_value = 1_000_000_000
-	price_filter.step = 100_000
-
-	capacity_filter.label_text = tr("CAPACITY")
-	capacity_filter.value_changed.connect(_on_filter_changed)
-	capacity_filter.possible_min_value = 0
-	capacity_filter.possible_max_value = 1_000
-	capacity_filter.step = 20
-
-	range_filter.label_text = tr("RANGE")
-	range_filter.value_changed.connect(_on_filter_changed)
-	range_filter.suffix = tr("nm")
-	range_filter.possible_min_value = 0
-	range_filter.possible_max_value = 100_000
-	range_filter.step = 200
-
-	speed_filter.label_text = tr("MAX_SPEED")
-	speed_filter.value_changed.connect(_on_filter_changed)
-	speed_filter.suffix = tr("kt")
-	speed_filter.possible_min_value = 0
-	speed_filter.possible_max_value = 1_000
-	speed_filter.step = 20
-
-	fuel_filter.label_text = tr("FUEL_CONSUMPTION")
-	fuel_filter.value_changed.connect(_on_filter_changed)
-	fuel_filter.suffix = "L/100km"
-	fuel_filter.possible_min_value = 0
-	fuel_filter.possible_max_value = 1_000
-	fuel_filter.step = 20
+	# Connect filter signals.
+	side_bar.price_filter.value_changed.connect(_on_filter_changed)
+	side_bar.capacity_filter.value_changed.connect(_on_filter_changed)
+	side_bar.range_filter.value_changed.connect(_on_filter_changed)
+	side_bar.speed_filter.value_changed.connect(_on_filter_changed)
+	side_bar.fuel_filter.value_changed.connect(_on_filter_changed)
 
 	# Connect all the signals.
-	search_bar.text_changed.connect(_on_search_text_changed)
-	sort_button.item_selected.connect(_on_sort_selected)
-	sort_reverse_checkbox.toggled.connect(_on_sort_selected)
+	side_bar.search_bar.text_changed.connect(_on_search_text_changed)
+	side_bar.sort_button.item_selected.connect(_on_sort_selected)
+	side_bar.sort_reverse_checkbox.toggled.connect(_on_sort_selected)
 
 	# Show all aircraft.
 	apply_filters()
@@ -152,6 +92,7 @@ func _on_show_info(aircraft: AircraftVariant):
 
 	purchase_button.tr_text = tr("Buy for $%s") % price_string
 	purchase_button.update()
+	purchase_button.pressed.connect(_on_purchase_button_pressed)
 
 	# Play the show detail animation.
 	animation_player.play("show_detail")
@@ -170,7 +111,7 @@ func _on_filter_changed() -> void:
 func apply_filters():
 	# Get the search query. Convert to lower to
 	# make it easier to compare.
-	var search_text = search_bar.text.to_lower()
+	var search_text = side_bar.search_bar.text.to_lower()
 
 	# Filter aircraft based on the search query.
 	filtered_aircraft = aircraft_data.filter(
@@ -179,7 +120,7 @@ func apply_filters():
 	)
 
 	# Sort the aircraft.
-	match sort_button.selected:
+	match side_bar.sort_button.selected:
 		# Aircraft variant name
 		0: filtered_aircraft.sort_custom(func(a, b): return a.name < b.name)
 		# Price
@@ -191,21 +132,21 @@ func apply_filters():
 
 	filtered_aircraft = filtered_aircraft.filter(func(aircraft):
 		return (
-			(price_filter.minimum == -1 or aircraft.price >= price_filter.minimum) and
-			(price_filter.maximum == -1 or aircraft.price <= price_filter.maximum) and
-			(capacity_filter.minimum == -1 or aircraft.capacity >= capacity_filter.minimum) and
-			(capacity_filter.maximum == -1 or aircraft.capacity <= capacity_filter.maximum) and
-			(range_filter.minimum == -1 or aircraft.flight_range >= range_filter.minimum) and
-			(range_filter.maximum == -1 or aircraft.flight_range <= range_filter.maximum) and
-			(speed_filter.minimum == -1 or aircraft.speed >= speed_filter.minimum) and
-			(speed_filter.maximum == -1 or aircraft.speed <= speed_filter.maximum) and
-			(fuel_filter.minimum == -1 or aircraft.fuel_consumption >= fuel_filter.minimum) and
-			(fuel_filter.maximum == -1 or aircraft.fuel_consumption <= fuel_filter.maximum)
+			(side_bar.price_filter.minimum == -1 or aircraft.price >= side_bar.price_filter.minimum) and
+			(side_bar.price_filter.maximum == -1 or aircraft.price <= side_bar.price_filter.maximum) and
+			(side_bar.capacity_filter.minimum == -1 or aircraft.capacity >= side_bar.capacity_filter.minimum) and
+			(side_bar.capacity_filter.maximum == -1 or aircraft.capacity <= side_bar.capacity_filter.maximum) and
+			(side_bar.range_filter.minimum == -1 or aircraft.flight_range >= side_bar.range_filter.minimum) and
+			(side_bar.range_filter.maximum == -1 or aircraft.flight_range <= side_bar.range_filter.maximum) and
+			(side_bar.speed_filter.minimum == -1 or aircraft.speed >= side_bar.speed_filter.minimum) and
+			(side_bar.speed_filter.maximum == -1 or aircraft.speed <= side_bar.speed_filter.maximum) and
+			(side_bar.fuel_filter.minimum == -1 or aircraft.fuel_consumption >= side_bar.fuel_filter.minimum) and
+			(side_bar.fuel_filter.maximum == -1 or aircraft.fuel_consumption <= side_bar.fuel_filter.maximum)
 		)
 	)
 
 	# If invert checkbox is checked, reverse the array.
-	if sort_reverse_checkbox.is_pressed:
+	if side_bar.sort_reverse_checkbox.is_pressed:
 		filtered_aircraft.reverse()
 
 	# Update the list.
@@ -222,3 +163,6 @@ func update_aircraft_list():
 		list_item.aircraft_data = aircraft
 		list_item.show_info.connect(_on_show_info)
 		aircraft_list.add_child(list_item)
+
+func _on_purchase_button_pressed() -> void:
+	animation_player.play("show_confirmation")

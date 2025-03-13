@@ -1,6 +1,6 @@
 [gd_resource type="ShaderMaterial" load_steps=6 format=3 uid="uid://c2j0d64a514o3"]
 
-[ext_resource type="Shader" path="res://Shaders/Planet/earth_surface_shader.gdshader" id="1_p0xtw"]
+[ext_resource type="Shader" uid="uid://rcw7524ckgua" path="res://Shaders/Planet/earth_surface_shader.gdshader" id="1_p0xtw"]
 [ext_resource type="Texture2D" uid="uid://d3wds1ft3ihy7" path="res://Assets/Textures/Planet/earth_color_10K.png" id="2_2lp4h"]
 [ext_resource type="Texture2D" uid="uid://t7nopqtb25q2" path="res://Assets/Textures/Planet/topography_10k.png" id="3_ihbp7"]
 [ext_resource type="Texture2D" uid="uid://cwqcx3mjf2yic" path="res://Assets/Textures/Planet/earth_landocean_16K.png" id="3_rst1d"]
@@ -9,10 +9,10 @@
 [resource]
 render_priority = 0
 shader = ExtResource("1_p0xtw")
+shader_parameter/heightmap_texture = ExtResource("3_ihbp7")
 shader_parameter/displacement_factor = 0.002
 shader_parameter/sun_position = Vector3(0, 0, 0)
-shader_parameter/nightlight_color = Color(0.926641, 0.878015, 0.619425, 1)
-shader_parameter/heightmap_texture = ExtResource("3_ihbp7")
 shader_parameter/color_texture = ExtResource("2_2lp4h")
 shader_parameter/specular_texture = ExtResource("3_rst1d")
 shader_parameter/nightlight_texture = ExtResource("3_sxiwn")
+shader_parameter/nightlight_color = Color(0.926641, 0.878015, 0.619425, 1)

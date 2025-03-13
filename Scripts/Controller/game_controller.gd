@@ -55,6 +55,8 @@ func _ready() -> void:
 
 	%AirportController.large_airport_button.grab_focus()
 
+	get_tree().root.content_scale_factor = 1.0
+
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:
 	pass

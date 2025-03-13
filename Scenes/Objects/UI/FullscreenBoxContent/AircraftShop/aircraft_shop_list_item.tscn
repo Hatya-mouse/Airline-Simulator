@@ -1,6 +1,6 @@
 [gd_scene load_steps=9 format=3 uid="uid://bo12w1d0hf4a8"]
 
-[ext_resource type="StyleBox" uid="uid://cxcttot0r2nuf" path="res://Styles/StyleBox/box_background_dark_color.tres" id="1_pdv3b"]
+[ext_resource type="StyleBox" uid="uid://cxcttot0r2nuf" path="res://Styles/StyleBox/floating_box_background_dark.tres" id="1_pdv3b"]
 [ext_resource type="LabelSettings" uid="uid://3mppycugrfbn" path="res://Styles/LabelSettings/extra_large_label.tres" id="2_l1ewx"]
 [ext_resource type="Script" uid="uid://k0sqspv7qxwm" path="res://Scripts/Controls/CenterPanelContent/AircraftManager/aircraft_shop_list_item.gd" id="3_13kin"]
 [ext_resource type="LabelSettings" uid="uid://dyj2tynbd73n7" path="res://Styles/LabelSettings/money_mono.tres" id="3_luioq"]
