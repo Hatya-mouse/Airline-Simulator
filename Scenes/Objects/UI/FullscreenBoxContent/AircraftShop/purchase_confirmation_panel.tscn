@@ -1,0 +1,119 @@
+[gd_scene load_steps=8 format=3 uid="uid://dnw2tomovvkry"]
+
+[ext_resource type="StyleBox" uid="uid://c8gp5ws08rk22" path="res://Styles/StyleBox/floating_box_background.tres" id="1_c81nm"]
+[ext_resource type="PackedScene" uid="uid://dmr4h12uwgh7m" path="res://Scenes/Objects/UI/Basic/Label/section_label.tscn" id="2_dj8tl"]
+[ext_resource type="Script" uid="uid://duw3j4fa2xli3" path="res://Scripts/Controls/FullscreenBoxContent/AircraftShop/purchase_confirmation_panel.gd" id="2_fuvig"]
+[ext_resource type="LabelSettings" uid="uid://bp2o3apcufnt" path="res://Styles/LabelSettings/mono_large.tres" id="3_fuvig"]
+[ext_resource type="LabelSettings" uid="uid://dyj2tynbd73n7" path="res://Styles/LabelSettings/money_mono.tres" id="4_mr7en"]
+[ext_resource type="PackedScene" uid="uid://ccc3cg3iby6sp" path="res://Scenes/Objects/UI/Basic/Button/text_button.tscn" id="5_7rbdi"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wmtap"]
+bg_color = Color(0.20871, 0.20871, 0.20871, 1)
+border_color = Color(0.34, 0.34, 0.34, 1)
+corner_radius_top_left = 10
+corner_radius_bottom_left = 10
+
+[node name="ConfirmationPanel" type="PanelContainer"]
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 1.5
+anchor_right = 0.5
+anchor_bottom = 1.5
+offset_left = -800.0
+offset_top = -450.0
+offset_right = 800.0
+offset_bottom = 450.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = ExtResource("1_c81nm")
+script = ExtResource("2_fuvig")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="LeftPanel" type="ScrollContainer" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="PanelContainer" type="PanelContainer" parent="HBoxContainer/LeftPanel"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_wmtap")
+
+[node name="MarginContainer" type="MarginContainer" parent="HBoxContainer/LeftPanel/PanelContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 30
+theme_override_constants/margin_top = 30
+theme_override_constants/margin_right = 30
+theme_override_constants/margin_bottom = 30
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer/LeftPanel/PanelContainer/MarginContainer"]
+layout_mode = 2
+
+[node name="RightPanel" type="MarginContainer" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/margin_left = 30
+theme_override_constants/margin_top = 30
+theme_override_constants/margin_right = 30
+theme_override_constants/margin_bottom = 30
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer/RightPanel"]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="TotalSectionLabel" parent="HBoxContainer/RightPanel/VBoxContainer" instance=ExtResource("2_dj8tl")]
+layout_mode = 2
+text = "Total"
+
+[node name="TotalLabel" type="Label" parent="HBoxContainer/RightPanel/VBoxContainer"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+text = "$1,000,000"
+label_settings = ExtResource("3_fuvig")
+autowrap_mode = 3
+
+[node name="BalanceSectionLabel" parent="HBoxContainer/RightPanel/VBoxContainer" instance=ExtResource("2_dj8tl")]
+layout_mode = 2
+text = "Current Balance"
+
+[node name="BalanceLabel" type="Label" parent="HBoxContainer/RightPanel/VBoxContainer"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+text = "$0"
+label_settings = ExtResource("4_mr7en")
+autowrap_mode = 3
+
+[node name="BalanceAfterPurchaseSectionLabel" parent="HBoxContainer/RightPanel/VBoxContainer" instance=ExtResource("2_dj8tl")]
+layout_mode = 2
+text = "Balance After Purchase"
+
+[node name="BalanceAfterPurchase" type="Label" parent="HBoxContainer/RightPanel/VBoxContainer"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+text = "$-1,000,000"
+label_settings = ExtResource("4_mr7en")
+autowrap_mode = 3
+
+[node name="Spacer" type="Control" parent="HBoxContainer/RightPanel/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="ButtonBox" type="HBoxContainer" parent="HBoxContainer/RightPanel/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 16
+
+[node name="CancelButton" parent="HBoxContainer/RightPanel/VBoxContainer/ButtonBox" instance=ExtResource("5_7rbdi")]
+layout_mode = 2
+size_flags_horizontal = 3
+tr_text = "CANCEL"
+button_type = 1
+
+[node name="ConfirmButton" parent="HBoxContainer/RightPanel/VBoxContainer/ButtonBox" instance=ExtResource("5_7rbdi")]
+layout_mode = 2
+size_flags_horizontal = 3
+tr_text = "CONFIRM_PURCHASE"
+button_type = 2
+highlight_color = 4

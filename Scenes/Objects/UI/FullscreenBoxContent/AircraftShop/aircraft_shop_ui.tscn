@@ -1,24 +1,16 @@
-[gd_scene load_steps=21 format=3 uid="uid://bhn4p2cfg71g2"]
+[gd_scene load_steps=18 format=3 uid="uid://bhn4p2cfg71g2"]
 
 [ext_resource type="Script" uid="uid://cjkvbtqk6f43m" path="res://Scripts/Controls/CenterPanelContent/AircraftManager/aircraft_shop_ui.gd" id="1_mbfu4"]
 [ext_resource type="PackedScene" uid="uid://bgyw5njg6spmd" path="res://Scenes/Objects/UI/FullscreenBoxContent/AircraftShop/aircraft_shop_side_bar.tscn" id="2_86byi"]
 [ext_resource type="LabelSettings" uid="uid://bp2o3apcufnt" path="res://Styles/LabelSettings/mono_large.tres" id="4_wmtap"]
 [ext_resource type="LabelSettings" uid="uid://3mppycugrfbn" path="res://Styles/LabelSettings/extra_large_label.tres" id="5_4vo8t"]
-[ext_resource type="LabelSettings" uid="uid://dyj2tynbd73n7" path="res://Styles/LabelSettings/money_mono.tres" id="6_600bd"]
 [ext_resource type="Script" uid="uid://xg12270o0lm1" path="res://Scripts/Controller/utils.gd" id="7_akjsh"]
 [ext_resource type="StyleBox" uid="uid://cxcttot0r2nuf" path="res://Styles/StyleBox/floating_box_background_dark.tres" id="7_co1cd"]
-[ext_resource type="StyleBox" uid="uid://c8gp5ws08rk22" path="res://Styles/StyleBox/floating_box_background.tres" id="8_6o8bo"]
 [ext_resource type="PackedScene" uid="uid://5d2xph2krmch" path="res://Scenes/Objects/UI/Basic/Label/property_label.tscn" id="8_vi1au"]
 [ext_resource type="StyleBox" uid="uid://cu8avulf4vehy" path="res://Styles/StyleBox/opaque_black_background.tres" id="8_wmtap"]
 [ext_resource type="PackedScene" uid="uid://ccc3cg3iby6sp" path="res://Scenes/Objects/UI/Basic/Button/text_button.tscn" id="9_6k018"]
-[ext_resource type="PackedScene" uid="uid://dmr4h12uwgh7m" path="res://Scenes/Objects/UI/Basic/Label/section_label.tscn" id="10_5romj"]
+[ext_resource type="PackedScene" uid="uid://dnw2tomovvkry" path="res://Scenes/Objects/UI/FullscreenBoxContent/AircraftShop/purchase_confirmation_panel.tscn" id="9_wmtap"]
 [ext_resource type="AudioStream" uid="uid://2824wndol588" path="res://Assets/Audio/SFX/UI/click_2.wav" id="13_wwhnu"]
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wmtap"]
-bg_color = Color(0.20871, 0.20871, 0.20871, 1)
-border_color = Color(0.34, 0.34, 0.34, 1)
-corner_radius_top_left = 10
-corner_radius_bottom_left = 10
 
 [sub_resource type="Animation" id="Animation_7byfo"]
 length = 0.001
@@ -141,7 +133,7 @@ tracks/9/keys = {
 tracks/10/type = "value"
 tracks/10/imported = false
 tracks/10/enabled = true
-tracks/10/path = NodePath("Overlay/PanelContainer:anchor_bottom")
+tracks/10/path = NodePath("Overlay/ConfirmationPanel:anchor_bottom")
 tracks/10/interp = 1
 tracks/10/loop_wrap = true
 tracks/10/keys = {
@@ -153,7 +145,7 @@ tracks/10/keys = {
 tracks/11/type = "value"
 tracks/11/imported = false
 tracks/11/enabled = true
-tracks/11/path = NodePath("Overlay/PanelContainer:anchor_top")
+tracks/11/path = NodePath("Overlay/ConfirmationPanel:anchor_top")
 tracks/11/interp = 1
 tracks/11/loop_wrap = true
 tracks/11/keys = {
@@ -193,7 +185,7 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("Overlay/PanelContainer:anchor_top")
+tracks/2/path = NodePath("Overlay/ConfirmationPanel:anchor_top")
 tracks/2/interp = 2
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -205,7 +197,7 @@ tracks/2/keys = {
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("Overlay/PanelContainer:anchor_bottom")
+tracks/3/path = NodePath("Overlay/ConfirmationPanel:anchor_bottom")
 tracks/3/interp = 2
 tracks/3/loop_wrap = true
 tracks/3/keys = {
@@ -341,7 +333,7 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("Overlay/PanelContainer:anchor_bottom")
+tracks/2/path = NodePath("Overlay/ConfirmationPanel:anchor_bottom")
 tracks/2/interp = 2
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -353,7 +345,7 @@ tracks/2/keys = {
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("Overlay/PanelContainer:anchor_top")
+tracks/3/path = NodePath("Overlay/ConfirmationPanel:anchor_top")
 tracks/3/interp = 2
 tracks/3/loop_wrap = true
 tracks/3/keys = {
@@ -616,110 +608,14 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = ExtResource("8_wmtap")
 
-[node name="PanelContainer" type="PanelContainer" parent="Overlay"]
+[node name="ConfirmationPanel" parent="Overlay" instance=ExtResource("9_wmtap")]
 layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.5
-anchor_top = 1.5
-anchor_right = 0.5
-anchor_bottom = 1.5
-offset_left = -800.0
-offset_top = -450.0
-offset_right = 800.0
-offset_bottom = 450.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_styles/panel = ExtResource("8_6o8bo")
-
-[node name="HBoxContainer" type="HBoxContainer" parent="Overlay/PanelContainer"]
-layout_mode = 2
-theme_override_constants/separation = 0
-
-[node name="LeftPanel" type="ScrollContainer" parent="Overlay/PanelContainer/HBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
-
-[node name="PanelContainer" type="PanelContainer" parent="Overlay/PanelContainer/HBoxContainer/LeftPanel"]
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-theme_override_styles/panel = SubResource("StyleBoxFlat_wmtap")
-
-[node name="MarginContainer" type="MarginContainer" parent="Overlay/PanelContainer/HBoxContainer/LeftPanel/PanelContainer"]
-layout_mode = 2
-theme_override_constants/margin_left = 30
-theme_override_constants/margin_top = 30
-theme_override_constants/margin_right = 30
-theme_override_constants/margin_bottom = 30
-
-[node name="VBoxContainer" type="VBoxContainer" parent="Overlay/PanelContainer/HBoxContainer/LeftPanel/PanelContainer/MarginContainer"]
-layout_mode = 2
-
-[node name="RightPanel" type="MarginContainer" parent="Overlay/PanelContainer/HBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
-theme_override_constants/margin_left = 30
-theme_override_constants/margin_top = 30
-theme_override_constants/margin_right = 30
-theme_override_constants/margin_bottom = 30
-
-[node name="VBoxContainer" type="VBoxContainer" parent="Overlay/PanelContainer/HBoxContainer/RightPanel"]
-layout_mode = 2
-theme_override_constants/separation = 8
-
-[node name="TotalSectionLabel" parent="Overlay/PanelContainer/HBoxContainer/RightPanel/VBoxContainer" instance=ExtResource("10_5romj")]
-layout_mode = 2
-text = "TOTAL"
-
-[node name="TotalLabel" type="Label" parent="Overlay/PanelContainer/HBoxContainer/RightPanel/VBoxContainer"]
-custom_minimum_size = Vector2(200, 0)
-layout_mode = 2
-text = "$1,000,000"
-label_settings = ExtResource("4_wmtap")
-autowrap_mode = 3
-
-[node name="BalanceSectionLabel" parent="Overlay/PanelContainer/HBoxContainer/RightPanel/VBoxContainer" instance=ExtResource("10_5romj")]
-layout_mode = 2
-text = "CURRENT BALANCE"
-
-[node name="BalanceLabel" type="Label" parent="Overlay/PanelContainer/HBoxContainer/RightPanel/VBoxContainer"]
-custom_minimum_size = Vector2(200, 0)
-layout_mode = 2
-text = "$0"
-label_settings = ExtResource("6_600bd")
-autowrap_mode = 3
-
-[node name="BalanceAfterPurchaseSectionLabel" parent="Overlay/PanelContainer/HBoxContainer/RightPanel/VBoxContainer" instance=ExtResource("10_5romj")]
-layout_mode = 2
-text = "BALANCE AFTER PURCHASE"
-
-[node name="BalanceAfterPurchase" type="Label" parent="Overlay/PanelContainer/HBoxContainer/RightPanel/VBoxContainer"]
-custom_minimum_size = Vector2(200, 0)
-layout_mode = 2
-text = "$-1,000,000"
-label_settings = ExtResource("6_600bd")
-autowrap_mode = 3
-
-[node name="Spacer" type="Control" parent="Overlay/PanelContainer/HBoxContainer/RightPanel/VBoxContainer"]
-layout_mode = 2
-size_flags_vertical = 3
-
-[node name="ButtonBox" type="HBoxContainer" parent="Overlay/PanelContainer/HBoxContainer/RightPanel/VBoxContainer"]
-layout_mode = 2
-theme_override_constants/separation = 16
-
-[node name="CancelButton" parent="Overlay/PanelContainer/HBoxContainer/RightPanel/VBoxContainer/ButtonBox" instance=ExtResource("9_6k018")]
-layout_mode = 2
-size_flags_horizontal = 3
-tr_text = "CANCEL"
-button_type = 1
-
-[node name="ConfirmButton" parent="Overlay/PanelContainer/HBoxContainer/RightPanel/VBoxContainer/ButtonBox" instance=ExtResource("9_6k018")]
-layout_mode = 2
-size_flags_horizontal = 3
-tr_text = "CONFIRM_PURCHASE"
-button_type = 2
-highlight_color = 4
+anchor_left = 0.2
+anchor_right = 0.8
+offset_left = 0.0
+offset_top = 0.0
+offset_right = 0.0
+offset_bottom = 0.0
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {

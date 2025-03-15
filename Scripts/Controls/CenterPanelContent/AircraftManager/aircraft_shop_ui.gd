@@ -26,6 +26,9 @@ const aircraft_shop_list_item = preload("res://Scenes/Objects/UI/FullscreenBoxCo
 # Purchase button
 @onready var purchase_button: TextButton = %PurchaseButton
 
+# Confirmation Panel
+@onready var confirmation_panel: PanelContainer = $Overlay/ConfirmationPanel
+
 var aircraft_data: Array[AircraftVariant]
 var filtered_aircraft: Array[AircraftVariant]
 var selected_aircraft: AircraftVariant
@@ -166,3 +169,6 @@ func update_aircraft_list():
 
 func _on_purchase_button_pressed() -> void:
 	animation_player.play("show_confirmation")
+
+func _on_cancel_purchase() -> void:
+	animation_player.play("hide_confirmation")

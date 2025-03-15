@@ -14,7 +14,7 @@ const green_color = Color("1aa617", 1.0)
 @export var button_type: ButtonType = ButtonType.NORMAL
 ## Color for hover
 @export var highlight_color: HighlightColor = HighlightColor.DEFAULT
-@export var corner_radius := 10
+@export var corner_radius := 5
 
 @export var border: bool = true
 
@@ -64,11 +64,11 @@ func update() -> void:
 		text = tr(tr_text)
 
 func adjust_button_size():
-	var min_width = 20
+	var min_width = 10
 
 	# If the button type is ONLY_TEXT, add no margin.
 	if button_type == ButtonType.ONLY_TEXT:
-		min_width = 12
+		min_width = 6
 
 	# Calculate the text width (32 is a horizontal content margin defined below)
 	var font: Font = get_theme_font("font")
@@ -78,12 +78,12 @@ func adjust_button_size():
 	if icon:
 		var icon_ratio = float(icon.get_width()) / icon.get_height()
 		# Calculate the height of the icon (16 is a vertical content margin defined below)
-		var icon_width = (size.y - 16) * icon_ratio
+		var icon_width = (size.y - 8) * icon_ratio
 		min_width += icon_width
 
 	# Add a space between text and the icon
 	if not text.is_empty():
-		min_width += 8
+		min_width += 4
 
 	custom_minimum_size.x = min_width
 
@@ -92,10 +92,10 @@ func update_button_color(type: ButtonType) -> void:
 	var normal_style_box = StyleBoxFlat.new()
 	# Set the corner radius.
 	normal_style_box.set_corner_radius_all(corner_radius)
-	normal_style_box.content_margin_top = 8
-	normal_style_box.content_margin_left = 16
-	normal_style_box.content_margin_bottom = 8
-	normal_style_box.content_margin_right = 16
+	normal_style_box.content_margin_top = 4
+	normal_style_box.content_margin_left = 8
+	normal_style_box.content_margin_bottom = 4
+	normal_style_box.content_margin_right = 8
 
 	# Set the button color based on button type.
 	match type:
