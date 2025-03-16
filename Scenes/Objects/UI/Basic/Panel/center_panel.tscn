@@ -296,10 +296,10 @@ theme_override_constants/separation = 0
 
 [node name="MarginContainer" type="MarginContainer" parent="CenterPanelContainer/VBoxContainer/Header/VBoxContainer"]
 layout_mode = 2
-theme_override_constants/margin_left = 16
-theme_override_constants/margin_top = 8
-theme_override_constants/margin_right = 16
-theme_override_constants/margin_bottom = 6
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 4
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 3
 
 [node name="HBoxContainer" type="HBoxContainer" parent="CenterPanelContainer/VBoxContainer/Header/VBoxContainer/MarginContainer"]
 layout_mode = 2
@@ -311,7 +311,7 @@ button_type = 3
 
 [node name="TitleLabel" type="Label" parent="CenterPanelContainer/VBoxContainer/Header/VBoxContainer/MarginContainer/HBoxContainer"]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(300, 0)
+custom_minimum_size = Vector2(150, 0)
 layout_mode = 2
 size_flags_horizontal = 3
 text = "Title Label"
@@ -321,7 +321,7 @@ vertical_alignment = 1
 autowrap_mode = 2
 
 [node name="HideButton" type="TextureButton" parent="CenterPanelContainer/VBoxContainer/Header/VBoxContainer/MarginContainer/HBoxContainer"]
-custom_minimum_size = Vector2(34, 0)
+custom_minimum_size = Vector2(17, 0)
 layout_mode = 2
 texture_normal = ExtResource("5_o7ev2")
 texture_pressed = ExtResource("6_j5j1j")

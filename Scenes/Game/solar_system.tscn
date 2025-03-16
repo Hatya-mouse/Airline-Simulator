@@ -247,7 +247,7 @@ is_hidden = true
 
 [node name="TopPanel" type="Panel" parent="HUD"]
 material = ExtResource("6_rtyom")
-custom_minimum_size = Vector2(0, 110)
+custom_minimum_size = Vector2(0, 55)
 anchors_preset = 10
 anchor_right = 1.0
 grow_horizontal = 2
@@ -261,15 +261,15 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_constants/margin_left = 30
-theme_override_constants/margin_top = 20
-theme_override_constants/margin_right = 30
-theme_override_constants/margin_bottom = 20
+theme_override_constants/margin_left = 15
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 15
+theme_override_constants/margin_bottom = 10
 
 [node name="HBoxContainer" type="HBoxContainer" parent="HUD/TopPanel/MarginContainer"]
 layout_mode = 2
 theme = ExtResource("7_56s7v")
-theme_override_constants/separation = 20
+theme_override_constants/separation = 10
 
 [node name="MoneyPanel" type="PanelContainer" parent="HUD/TopPanel/MarginContainer/HBoxContainer"]
 material = ExtResource("29_r15ql")
@@ -278,9 +278,9 @@ theme_override_styles/panel = ExtResource("29_j5vt3")
 
 [node name="MoneyLabelMargin" type="MarginContainer" parent="HUD/TopPanel/MarginContainer/HBoxContainer/MoneyPanel"]
 layout_mode = 2
-theme_override_constants/margin_left = 16
+theme_override_constants/margin_left = 8
 theme_override_constants/margin_top = 0
-theme_override_constants/margin_right = 16
+theme_override_constants/margin_right = 8
 theme_override_constants/margin_bottom = 0
 
 [node name="MoneyLabel" type="Label" parent="HUD/TopPanel/MarginContainer/HBoxContainer/MoneyPanel/MoneyLabelMargin"]
@@ -290,14 +290,14 @@ label_settings = ExtResource("33_wmgir")
 vertical_alignment = 1
 
 [node name="CreateAirlineButton" parent="HUD/TopPanel/MarginContainer/HBoxContainer" instance=ExtResource("32_2rw4x")]
-custom_minimum_size = Vector2(0, 70)
+custom_minimum_size = Vector2(0, 35)
 layout_mode = 2
 focus_neighbor_right = NodePath("../AircraftButton")
 theme_override_constants/icon_max_width = 48
 icon = ExtResource("33_paedu")
 tr_text = "CREATE_AIRLINE"
 highlight_color = 2
-corner_radius = 16
+corner_radius = 8
 border = false
 
 [node name="CreateAirlineHintBox" parent="HUD/TopPanel/MarginContainer/HBoxContainer/CreateAirlineButton" node_paths=PackedStringArray("collider") instance=ExtResource("10_pxk6u")]
@@ -311,7 +311,7 @@ collider = NodePath("..")
 offset = Vector2(0, 40)
 
 [node name="AircraftButton" parent="HUD/TopPanel/MarginContainer/HBoxContainer" instance=ExtResource("39_ybso5")]
-custom_minimum_size = Vector2(70, 70)
+custom_minimum_size = Vector2(35, 35)
 layout_mode = 2
 focus_neighbor_left = NodePath("../CreateAirlineButton")
 focus_neighbor_right = NodePath("../AirportVisibilityButtonGroup/LargeAirportVisibility")
@@ -329,7 +329,7 @@ description_key = "MANAGE_AIRCRAFT_DESCRIPTION"
 offset = Vector2(0, 40)
 
 [node name="Spacer" type="Control" parent="HUD/TopPanel/MarginContainer/HBoxContainer"]
-custom_minimum_size = Vector2(100, 60)
+custom_minimum_size = Vector2(50, 30)
 layout_mode = 2
 size_flags_horizontal = 3
 
@@ -337,6 +337,7 @@ size_flags_horizontal = 3
 layout_mode = 2
 
 [node name="LargeAirportVisibility" parent="HUD/TopPanel/MarginContainer/HBoxContainer/AirportVisibilityButtonGroup" instance=ExtResource("9_fwkja")]
+custom_minimum_size = Vector2(35, 35)
 layout_mode = 2
 focus_neighbor_left = NodePath("../../AircraftButton")
 focus_neighbor_right = NodePath("../MediumAirportVisibility")
@@ -357,6 +358,7 @@ collider = NodePath("..")
 offset = Vector2(0, 40)
 
 [node name="MediumAirportVisibility" parent="HUD/TopPanel/MarginContainer/HBoxContainer/AirportVisibilityButtonGroup" instance=ExtResource("9_fwkja")]
+custom_minimum_size = Vector2(35, 35)
 layout_mode = 2
 focus_neighbor_left = NodePath("../LargeAirportVisibility")
 focus_neighbor_right = NodePath("../SmallAirportVisibility")
@@ -377,6 +379,7 @@ collider = NodePath("..")
 offset = Vector2(0, 40)
 
 [node name="SmallAirportVisibility" parent="HUD/TopPanel/MarginContainer/HBoxContainer/AirportVisibilityButtonGroup" instance=ExtResource("9_fwkja")]
+custom_minimum_size = Vector2(35, 35)
 layout_mode = 2
 focus_neighbor_left = NodePath("../MediumAirportVisibility")
 focus_neighbor_right = NodePath("../../RouteVisibility")
@@ -397,6 +400,7 @@ collider = NodePath("..")
 offset = Vector2(0, 40)
 
 [node name="RouteVisibility" parent="HUD/TopPanel/MarginContainer/HBoxContainer" instance=ExtResource("9_fwkja")]
+custom_minimum_size = Vector2(35, 35)
 layout_mode = 2
 focus_neighbor_left = NodePath("../AirportVisibilityButtonGroup/SmallAirportVisibility")
 default_texture = ExtResource("43_pv3qt")

@@ -5,4 +5,4 @@
 [resource]
 line_spacing = 0.0
 font = ExtResource("1_t1tkr")
-font_size = 48
+font_size = 24

@@ -5,5 +5,4 @@
 [resource]
 line_spacing = 0.0
 font = ExtResource("1_44n3g")
-font_size = 32
 font_color = Color(0.741385, 0.741385, 0.741385, 1)

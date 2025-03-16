@@ -13,5 +13,4 @@ base_font = ExtResource("1_0y062")
 [resource]
 line_spacing = 0.0
 font = SubResource("FontVariation_jmhjl")
-font_size = 32
 font_color = Color(0.75, 0.75, 0.75, 1)
