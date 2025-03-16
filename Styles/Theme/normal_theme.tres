@@ -2,9 +2,9 @@
 
 [ext_resource type="FontVariation" uid="uid://cltucxgwyjki3" path="res://Styles/Fonts/normal_font.tres" id="1_3jimq"]
 [ext_resource type="FontVariation" uid="uid://bun4qhcccla0f" path="res://Styles/Fonts/bold_font.tres" id="2_ldjyw"]
-[ext_resource type="Texture2D" uid="uid://2hxfmavtgsaw" path="res://Assets/Textures/Icon/Basic/dropdown_chevron.png" id="2_tencb"]
-[ext_resource type="Texture2D" uid="uid://wndggk2j14nx" path="res://Assets/Textures/Icon/Basic/check.png" id="3_3r3ql"]
+[ext_resource type="Texture2D" uid="uid://bch6e0u3abd23" path="res://Assets/Textures/Icon/Basic/dropdown_chevron.svg" id="3_jr1w5"]
 [ext_resource type="FontFile" uid="uid://e28utwkubie0" path="res://Assets/Fonts/IBMPlexMono/IBMPlexMono-Regular.ttf" id="5_lwvuw"]
+[ext_resource type="Texture2D" uid="uid://q5vv556jf7ds" path="res://Assets/Textures/Icon/Basic/check.svg" id="5_qntyg"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wx5uu"]
 content_margin_left = 6.0
@@ -295,7 +295,7 @@ OptionButton/constants/modulate_arrow = 0
 OptionButton/constants/outline_size = 0
 OptionButton/font_sizes/font_size = 16
 OptionButton/fonts/font = ExtResource("1_3jimq")
-OptionButton/icons/arrow = ExtResource("2_tencb")
+OptionButton/icons/arrow = ExtResource("3_jr1w5")
 OptionButton/styles/disabled = SubResource("StyleBoxFlat_tmsoi")
 OptionButton/styles/disabled_mirrored = SubResource("StyleBoxFlat_43sp3")
 OptionButton/styles/focus = SubResource("StyleBoxFlat_d2vyw")
@@ -318,11 +318,11 @@ PopupMenu/colors/font_separator_outline_color = Color(0, 0, 0, 1)
 PopupMenu/constants/h_separation = 2
 PopupMenu/constants/icon_max_width = 0
 PopupMenu/constants/indent = 0
-PopupMenu/constants/item_end_padding = 8
-PopupMenu/constants/item_start_padding = 8
+PopupMenu/constants/item_end_padding = 4
+PopupMenu/constants/item_start_padding = 4
 PopupMenu/constants/outline_size = 0
 PopupMenu/constants/separator_outline_size = 0
-PopupMenu/constants/v_separation = 8
+PopupMenu/constants/v_separation = 4
 PopupMenu/font_sizes/font_separator_size = 16
 PopupMenu/font_sizes/font_size = 16
 PopupMenu/font_sizes/title_font_size = 16
@@ -331,8 +331,8 @@ PopupMenu/fonts/font_separator = ExtResource("1_3jimq")
 PopupMenu/fonts/title_font = ExtResource("2_ldjyw")
 PopupMenu/icons/checked = null
 PopupMenu/icons/checked_disabled = null
-PopupMenu/icons/radio_checked = ExtResource("3_3r3ql")
-PopupMenu/icons/radio_checked_disabled = ExtResource("3_3r3ql")
+PopupMenu/icons/radio_checked = ExtResource("5_qntyg")
+PopupMenu/icons/radio_checked_disabled = ExtResource("5_qntyg")
 PopupMenu/icons/radio_unchecked = SubResource("PortableCompressedTexture2D_nq2ul")
 PopupMenu/icons/radio_unchecked_disabled = SubResource("PortableCompressedTexture2D_yj0gr")
 PopupMenu/icons/submenu = null

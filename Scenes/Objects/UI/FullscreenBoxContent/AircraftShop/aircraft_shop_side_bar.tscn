@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://c762wp6rqe4ej" path="res://Scripts/Controls/FullscreenBoxContent/AircraftShop/aircraft_shop_side_bar.gd" id="1_68esf"]
 [ext_resource type="Theme" uid="uid://drekqoieprg23" path="res://Styles/Theme/normal_theme.tres" id="1_th1yt"]
 [ext_resource type="FontVariation" uid="uid://cltucxgwyjki3" path="res://Styles/Fonts/normal_font.tres" id="2_68esf"]
-[ext_resource type="Texture2D" uid="uid://ih3tuvvkor8c" path="res://Assets/Textures/Icon/Basic/magnifying_glass_gray.png" id="3_3oga5"]
+[ext_resource type="Texture2D" uid="uid://1xhidtaxpag6" path="res://Assets/Textures/Icon/Basic/magnifying_glass.svg" id="4_68esf"]
 [ext_resource type="PackedScene" uid="uid://dxexvip67vw1x" path="res://Scenes/Objects/UI/Basic/InfoBox/info_box_spacer.tscn" id="4_hnbxk"]
 [ext_resource type="PackedScene" uid="uid://dmr4h12uwgh7m" path="res://Scenes/Objects/UI/Basic/Label/section_label.tscn" id="5_q30sf"]
 [ext_resource type="PackedScene" uid="uid://che3u5j56ymei" path="res://Scenes/Objects/UI/Basic/Button/check_box.tscn" id="6_m82uj"]
@@ -48,7 +48,7 @@ size_flags_horizontal = 3
 theme = ExtResource("1_th1yt")
 theme_override_fonts/font = ExtResource("2_68esf")
 placeholder_text = "Search"
-right_icon = ExtResource("3_3oga5")
+right_icon = ExtResource("4_68esf")
 
 [node name="SortingSpacer" parent="HBoxContainer/ScrollContainer/MarginContainer/VBoxContainer" instance=ExtResource("4_hnbxk")]
 layout_mode = 2

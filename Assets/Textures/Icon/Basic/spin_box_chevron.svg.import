@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cbedteqylnb8l"
-path="res://.godot/imported/spin_box_chevron.png-6d82f6f51f05187f82df5b423e54bed7.ctex"
+uid="uid://dplqb8d6omgpq"
+path="res://.godot/imported/spin_box_chevron.svg-2878bd78f4958c367574a6cc1044440b.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Textures/Icon/Basic/spin_box_chevron.png"
-dest_files=["res://.godot/imported/spin_box_chevron.png-6d82f6f51f05187f82df5b423e54bed7.ctex"]
+source_file="res://Assets/Textures/Icon/Basic/spin_box_chevron.svg"
+dest_files=["res://.godot/imported/spin_box_chevron.svg-2878bd78f4958c367574a6cc1044440b.ctex"]
 
 [params]
 
@@ -32,3 +32,6 @@ process/hdr_as_srgb=false
 process/hdr_clamp_exposure=false
 process/size_limit=0
 detect_3d/compress_to=1
+svg/scale=1.0
+editor/scale_with_editor_scale=false
+editor/convert_colors_with_editor_theme=false

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ih3tuvvkor8c"
-path="res://.godot/imported/magnifying_glass_gray.png-ca5e031d6b487f4be0b0407730aa1178.ctex"
+uid="uid://bch6e0u3abd23"
+path="res://.godot/imported/dropdown_chevron.svg-e585970bd7f9454b4a6190cbf059d72b.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Textures/Icon/Basic/magnifying_glass_gray.png"
-dest_files=["res://.godot/imported/magnifying_glass_gray.png-ca5e031d6b487f4be0b0407730aa1178.ctex"]
+source_file="res://Assets/Textures/Icon/Basic/dropdown_chevron.svg"
+dest_files=["res://.godot/imported/dropdown_chevron.svg-e585970bd7f9454b4a6190cbf059d72b.ctex"]
 
 [params]
 
@@ -32,3 +32,6 @@ process/hdr_as_srgb=false
 process/hdr_clamp_exposure=false
 process/size_limit=0
 detect_3d/compress_to=1
+svg/scale=1.0
+editor/scale_with_editor_scale=false
+editor/convert_colors_with_editor_theme=false
