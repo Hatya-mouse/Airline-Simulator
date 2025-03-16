@@ -192,7 +192,7 @@ tracks/2/keys = {
 "times": PackedFloat32Array(0, 0.3),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [0.5, 1.5]
+"values": [0.3, 1.3]
 }
 tracks/3/type = "value"
 tracks/3/imported = false
@@ -204,7 +204,7 @@ tracks/3/keys = {
 "times": PackedFloat32Array(0, 0.3),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [0.5, 1.5]
+"values": [0.7, 1.7]
 }
 
 [sub_resource type="Animation" id="Animation_jehoo"]
@@ -340,7 +340,7 @@ tracks/2/keys = {
 "times": PackedFloat32Array(0, 0.3),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [1.5, 0.5]
+"values": [1.7, 0.7]
 }
 tracks/3/type = "value"
 tracks/3/imported = false
@@ -352,7 +352,7 @@ tracks/3/keys = {
 "times": PackedFloat32Array(0, 0.3),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [1.5, 0.5]
+"values": [1.3, 0.3]
 }
 
 [sub_resource type="Animation" id="Animation_7hfto"]

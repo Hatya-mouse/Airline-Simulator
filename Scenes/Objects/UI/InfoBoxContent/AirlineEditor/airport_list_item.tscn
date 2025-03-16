@@ -11,17 +11,17 @@
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kbfbd"]
 bg_color = Color(1, 1, 1, 1)
-corner_radius_top_left = 10
-corner_radius_top_right = 10
-corner_radius_bottom_right = 10
-corner_radius_bottom_left = 10
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
 
 [node name="InfoAirportList" type="MarginContainer"]
 offset_left = 378.0
 offset_right = 378.0
 offset_bottom = 96.0
-theme_override_constants/margin_top = 10
-theme_override_constants/margin_bottom = 10
+theme_override_constants/margin_top = 4
+theme_override_constants/margin_bottom = 4
 script = ExtResource("1_8oscd")
 
 [node name="PreviewBackground" type="PanelContainer" parent="."]
@@ -37,11 +37,11 @@ layout_mode = 2
 
 [node name="HStack" type="HBoxContainer" parent="PreviewMargin"]
 layout_mode = 2
-theme_override_constants/separation = 12
+theme_override_constants/separation = 6
 
 [node name="RemoveButton" type="Button" parent="PreviewMargin/HStack"]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(25, 0)
+custom_minimum_size = Vector2(16, 0)
 layout_mode = 2
 theme_override_styles/focus = ExtResource("7_lxdq1")
 theme_override_styles/disabled = ExtResource("7_lxdq1")
@@ -60,8 +60,8 @@ mouse_filter = 2
 
 [node name="NumberMargin" type="MarginContainer" parent="PreviewMargin/HStack/ColorPanel"]
 layout_mode = 2
-theme_override_constants/margin_left = 8
-theme_override_constants/margin_right = 8
+theme_override_constants/margin_left = 4
+theme_override_constants/margin_right = 4
 
 [node name="NumberLabel" type="Label" parent="PreviewMargin/HStack/ColorPanel/NumberMargin"]
 unique_name_in_owner = true

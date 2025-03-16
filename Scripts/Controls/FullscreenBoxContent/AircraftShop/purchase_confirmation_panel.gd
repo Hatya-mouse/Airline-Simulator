@@ -1,5 +1,8 @@
 extends PanelContainer
 
+signal cancelled
+signal confirmed
+
 @onready var total_section_label: Label = $HBoxContainer/RightPanel/VBoxContainer/TotalSectionLabel
 @onready var total_label: Label = $HBoxContainer/RightPanel/VBoxContainer/TotalLabel
 @onready var balance_section_label: Label = $HBoxContainer/RightPanel/VBoxContainer/BalanceSectionLabel
@@ -14,3 +17,9 @@ func _ready() -> void:
 	total_section_label.text = tr("TOTAL")
 	balance_section_label.text = tr("CURRENT_BALANCE")
 	balance_after_purchase_section_label.text = tr("BALANCE_AFTER_PURCHASE")
+
+func _on_cancel_button_pressed() -> void:
+	cancelled.emit()
+
+func _on_confirm_button_pressed() -> void:
+	confirmed.emit()

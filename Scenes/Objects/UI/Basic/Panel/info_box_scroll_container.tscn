@@ -133,10 +133,10 @@ script = ExtResource("1_nml8d")
 [node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 2
 size_flags_horizontal = 3
-theme_override_constants/margin_left = 10
-theme_override_constants/margin_top = 6
-theme_override_constants/margin_right = 10
-theme_override_constants/margin_bottom = 8
+theme_override_constants/margin_left = 15
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 15
+theme_override_constants/margin_bottom = 10
 
 [node name="VStack" type="VBoxContainer" parent="MarginContainer"]
 layout_mode = 2
@@ -146,7 +146,7 @@ layout_mode = 2
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
-"": SubResource("AnimationLibrary_g1na5")
+&"": SubResource("AnimationLibrary_g1na5")
 }
 
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_finished"]

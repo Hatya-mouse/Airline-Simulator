@@ -49,13 +49,13 @@ var route_visible := true:
 func _ready() -> void:
 	camera = get_viewport().get_camera_3d()
 	money_label.text = "$%s" % utils.add_commas(money)
-
+	
 	# Set the tick duration
 	timer.wait_time = GameConfig.game_tick_duration
 
 	%AirportController.large_airport_button.grab_focus()
 
-	get_tree().root.content_scale_factor = 2.0
+	get_tree().root.content_scale_factor = 1.0
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:

@@ -102,10 +102,10 @@ func setup_preview() -> void:
 	is_editing = true
 	# Add background
 	preview_background.show()
-	preview_margin.add_theme_constant_override("margin_right", 10)
+	preview_margin.add_theme_constant_override("margin_right", 5)
 	# Set the corner radius of color panel
-	color_bar_style_box.corner_radius_top_left = 10
-	color_bar_style_box.corner_radius_bottom_left = 10
+	color_bar_style_box.corner_radius_top_left = 5
+	color_bar_style_box.corner_radius_bottom_left = 5
 	# Hide remove button
 	remove_button.hide()
 

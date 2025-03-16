@@ -117,3 +117,6 @@ size_flags_horizontal = 3
 tr_text = "CONFIRM_PURCHASE"
 button_type = 2
 highlight_color = 4
+
+[connection signal="pressed" from="HBoxContainer/RightPanel/VBoxContainer/ButtonBox/CancelButton" to="." method="_on_cancel_button_pressed"]
+[connection signal="pressed" from="HBoxContainer/RightPanel/VBoxContainer/ButtonBox/ConfirmButton" to="." method="_on_confirm_button_pressed"]
