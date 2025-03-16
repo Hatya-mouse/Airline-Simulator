@@ -6,7 +6,8 @@
 [ext_resource type="LabelSettings" uid="uid://dyj2tynbd73n7" path="res://Styles/LabelSettings/money_mono.tres" id="3_awhao"]
 
 [node name="ShopFilterGroup" type="VBoxContainer"]
-theme_override_constants/separation = 8
+size_flags_horizontal = 3
+theme_override_constants/separation = 4
 script = ExtResource("1_evsia")
 
 [node name="FilterCheckbox" parent="." instance=ExtResource("1_kpeck")]
@@ -16,7 +17,7 @@ text = "Price"
 
 [node name="InputGroup" type="VBoxContainer" parent="."]
 layout_mode = 2
-theme_override_constants/separation = 12
+theme_override_constants/separation = 6
 
 [node name="Line1" type="HBoxContainer" parent="InputGroup"]
 layout_mode = 2

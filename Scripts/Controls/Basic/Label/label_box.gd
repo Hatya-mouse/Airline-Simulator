@@ -11,7 +11,7 @@ class_name LabelBox
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	label.text = tr(text) if translate else text
-	size.x = label.size.x + 12
+	size.x = label.size.x + 8
 	material = material.duplicate()
 	# Set the visibility.
 	visible = not is_hidden
@@ -19,7 +19,7 @@ func _ready() -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:
 	label.text = tr(text) if translate else text
-	size.x = label.size.x + 12
+	size.x = label.size.x + 8
 
 func show_animation() -> void:
 	if is_hidden:

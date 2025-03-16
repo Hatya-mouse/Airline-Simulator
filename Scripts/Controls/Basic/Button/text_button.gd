@@ -64,11 +64,11 @@ func update() -> void:
 		text = tr(tr_text)
 
 func adjust_button_size():
-	var min_width = 10
+	var min_width = 12
 
-	# If the button type is ONLY_TEXT, add no margin.
+	# If the button type is ONLY_TEXT, add no space between icon.
 	if button_type == ButtonType.ONLY_TEXT:
-		min_width = 6
+		min_width = 8
 
 	# Calculate the text width (32 is a horizontal content margin defined below)
 	var font: Font = get_theme_font("font")
@@ -77,13 +77,13 @@ func adjust_button_size():
 
 	if icon:
 		var icon_ratio = float(icon.get_width()) / icon.get_height()
-		# Calculate the height of the icon (16 is a vertical content margin defined below)
+		# Calculate the height of the icon (8 is a vertical content margin defined below)
 		var icon_width = (size.y - 8) * icon_ratio
 		min_width += icon_width
 
 	# Add a space between text and the icon
 	if not text.is_empty():
-		min_width += 4
+		min_width += 6
 
 	custom_minimum_size.x = min_width
 
@@ -93,9 +93,9 @@ func update_button_color(type: ButtonType) -> void:
 	# Set the corner radius.
 	normal_style_box.set_corner_radius_all(corner_radius)
 	normal_style_box.content_margin_top = 4
-	normal_style_box.content_margin_left = 8
+	normal_style_box.content_margin_left = 6
 	normal_style_box.content_margin_bottom = 4
-	normal_style_box.content_margin_right = 8
+	normal_style_box.content_margin_right = 6
 
 	# Set the button color based on button type.
 	match type:
@@ -139,7 +139,7 @@ func update_button_color(type: ButtonType) -> void:
 	focus_style_box.bg_color = Color(0, 0, 0, 0)
 	focus_style_box.set_corner_radius_all(corner_radius)
 	focus_style_box.border_color = Color(1, 1, 1)
-	focus_style_box.set_border_width_all(5)
+	focus_style_box.set_border_width_all(3)
 
 	# Set the theme box.
 	add_theme_stylebox_override("focus", focus_style_box)

@@ -78,7 +78,7 @@ theme_override_constants/separation = 0
 
 [node name="NameLabel" type="Label" parent="PreviewMargin/HStack/AirportInfo"]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(300, 0)
+custom_minimum_size = Vector2(150, 0)
 layout_mode = 2
 text = "Gibraltar Airport"
 label_settings = ExtResource("1_gxx4w")

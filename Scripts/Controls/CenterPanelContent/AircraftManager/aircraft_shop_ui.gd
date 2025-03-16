@@ -1,5 +1,7 @@
 extends Control
 
+const GRID_ITEM_WIDTH = 300
+
 const aircraft_shop_list_item = preload("res://Scenes/Objects/UI/FullscreenBoxContent/AircraftShop/aircraft_shop_list_item.tscn")
 
 @onready var browser: HBoxContainer = $Browser
@@ -53,6 +55,9 @@ func _ready() -> void:
 
 	# Show all aircraft.
 	apply_filters()
+
+func _process(_delta: float) -> void:
+	pass
 
 func _on_show_info(aircraft: AircraftVariant):
 	# Set the selected aircraft.

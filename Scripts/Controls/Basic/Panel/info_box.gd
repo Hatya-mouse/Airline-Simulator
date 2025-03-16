@@ -119,7 +119,7 @@ func get_hint_box(title_key: String, description_key: String) -> HintBox:
 	hint_box.description_key = description_key
 	hint_box.change_anchor_x = true
 	hint_box.anchor_x = global_position.x + info_box.size.x / 2
-	hint_box.offset = Vector2(size.x / 2.0 + 20.0, 0.0)
+	hint_box.offset = Vector2(size.x / 2.0 + 10.0, 0.0)
 	hint_box.anchor = HintBox.HintAnchor.LEFT
 	return hint_box
 

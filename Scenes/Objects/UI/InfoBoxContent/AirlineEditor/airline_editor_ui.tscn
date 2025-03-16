@@ -9,6 +9,7 @@
 [node name="AirlineEditorUI" type="VBoxContainer"]
 offset_right = 150.0
 offset_bottom = 164.0
+theme_override_constants/separation = 4
 script = ExtResource("1_7bbn0")
 
 [node name="ClickLabel" parent="." instance=ExtResource("2_vt3gv")]

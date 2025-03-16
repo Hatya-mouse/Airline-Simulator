@@ -245,17 +245,17 @@ theme_override_constants/separation = 0
 
 [node name="MarginContainer" type="MarginContainer" parent="InfoBox/VBoxContainer/PanelContainer/VBoxContainer"]
 layout_mode = 2
-theme_override_constants/margin_left = 8
-theme_override_constants/margin_top = 4
-theme_override_constants/margin_right = 8
-theme_override_constants/margin_bottom = 3
+theme_override_constants/margin_left = 4
+theme_override_constants/margin_top = 2
+theme_override_constants/margin_right = 4
+theme_override_constants/margin_bottom = 1
 
 [node name="HBoxContainer" type="HBoxContainer" parent="InfoBox/VBoxContainer/PanelContainer/VBoxContainer/MarginContainer"]
 layout_mode = 2
 
 [node name="TitleLabel" type="Label" parent="InfoBox/VBoxContainer/PanelContainer/VBoxContainer/MarginContainer/HBoxContainer"]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(150, 0)
+custom_minimum_size = Vector2(75, 0)
 layout_mode = 2
 size_flags_horizontal = 3
 text = "Title Label"

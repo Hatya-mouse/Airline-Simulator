@@ -241,8 +241,6 @@ unique_name_in_owner = true
 [node name="HUD" type="CanvasLayer" parent="."]
 
 [node name="AirportNameLabel" parent="HUD" instance=ExtResource("19_wai4l")]
-offset_right = 216.0
-offset_bottom = 58.0
 is_hidden = true
 
 [node name="TopPanel" type="Panel" parent="HUD"]
@@ -254,7 +252,7 @@ grow_horizontal = 2
 focus_neighbor_bottom = NodePath("../InfoBox")
 
 [node name="MarginContainer" type="MarginContainer" parent="HUD/TopPanel"]
-custom_minimum_size = Vector2(800, 0)
+custom_minimum_size = Vector2(400, 0)
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -308,7 +306,7 @@ offset_right = -1556.0
 title_key = "CREATE_AIRLINE"
 description_key = "CREATE_AIRLINE_DESCRIPTION"
 collider = NodePath("..")
-offset = Vector2(0, 40)
+offset = Vector2(0, 20)
 
 [node name="AircraftButton" parent="HUD/TopPanel/MarginContainer/HBoxContainer" instance=ExtResource("39_ybso5")]
 custom_minimum_size = Vector2(35, 35)
@@ -326,7 +324,7 @@ offset_left = -1820.0
 offset_right = -1556.0
 title_key = "MANAGE_AIRCRAFT"
 description_key = "MANAGE_AIRCRAFT_DESCRIPTION"
-offset = Vector2(0, 40)
+offset = Vector2(0, 20)
 
 [node name="Spacer" type="Control" parent="HUD/TopPanel/MarginContainer/HBoxContainer"]
 custom_minimum_size = Vector2(50, 30)
@@ -355,7 +353,7 @@ offset_right = -1356.0
 title_key = "LARGE_AIRPORT_VISIBILITY"
 description_key = "LARGE_AIRPORT_VISIBILITY_DESCRIPTION"
 collider = NodePath("..")
-offset = Vector2(0, 40)
+offset = Vector2(0, 20)
 
 [node name="MediumAirportVisibility" parent="HUD/TopPanel/MarginContainer/HBoxContainer/AirportVisibilityButtonGroup" instance=ExtResource("9_fwkja")]
 custom_minimum_size = Vector2(35, 35)
@@ -376,7 +374,7 @@ offset_right = -1456.0
 title_key = "MEDIUM_AIRPORT_VISIBILITY"
 description_key = "MEDIUM_AIRPORT_VISIBILITY_DESCRIPTION"
 collider = NodePath("..")
-offset = Vector2(0, 40)
+offset = Vector2(0, 20)
 
 [node name="SmallAirportVisibility" parent="HUD/TopPanel/MarginContainer/HBoxContainer/AirportVisibilityButtonGroup" instance=ExtResource("9_fwkja")]
 custom_minimum_size = Vector2(35, 35)
@@ -397,7 +395,7 @@ offset_right = -1556.0
 title_key = "SMALL_AIRPORT_VISIBILITY"
 description_key = "SMALL_AIRPORT_VISIBILITY_DESCRIPTION"
 collider = NodePath("..")
-offset = Vector2(0, 40)
+offset = Vector2(0, 20)
 
 [node name="RouteVisibility" parent="HUD/TopPanel/MarginContainer/HBoxContainer" instance=ExtResource("9_fwkja")]
 custom_minimum_size = Vector2(35, 35)
@@ -415,7 +413,7 @@ offset_right = -1556.0
 title_key = "ROUTE_VISIBILITY"
 description_key = "ROUTE_VISIBILITY_DESCRIPTION"
 collider = NodePath("..")
-offset = Vector2(0, 40)
+offset = Vector2(0, 20)
 
 [node name="HSeparator" type="HSeparator" parent="HUD/TopPanel"]
 layout_mode = 1
@@ -429,9 +427,9 @@ grow_vertical = 0
 
 [node name="InfoBox" parent="HUD" instance=ExtResource("18_dbcpe")]
 anchors_preset = -1
-offset_left = 20.0
-offset_top = 130.0
-offset_bottom = -20.0
+offset_left = 10.0
+offset_top = 65.0
+offset_bottom = -10.0
 
 [node name="CenterPanel" parent="HUD" instance=ExtResource("41_s7tbf")]
 

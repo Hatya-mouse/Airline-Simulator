@@ -2,8 +2,8 @@ extends VBoxContainer
 
 const tab_button_group: ButtonGroup = preload("res://Styles/ButtonGroups/airport_info_panel_tab_view.tres")
 
-@onready var basic_airport_info_button: BasicTextureButton = $TabPanelContainer/VBoxContainer/MarginContainer/TabButtonGroup/BasicAirportInfoButton
-@onready var airline_list_button: BasicTextureButton = $TabPanelContainer/VBoxContainer/MarginContainer/TabButtonGroup/AirlineListButton
+@onready var basic_airport_info_button: BasicTextureButton = $VBoxContainer/MarginContainer/TabButtonGroup/BasicAirportInfoButton
+@onready var airline_list_button: BasicTextureButton = $VBoxContainer/MarginContainer/TabButtonGroup/AirlineListButton
 
 @onready var basic_info_ui: HBoxContainer = $BasicAirportInfoUI
 

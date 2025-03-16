@@ -1,4 +1,5 @@
 extends PanelContainer
+class_name AircraftShopListItem
 
 signal show_info(aircraft: AircraftVariant)
 

@@ -1,7 +1,7 @@
 extends PanelContainer
 class_name HintBox
 
-const screen_margin = 20
+const screen_margin = 10
 
 @onready var title_label: Label = $HintBox/TitlePanel/VBoxContainer/TitleContainer/TitleLabel
 @onready var description_label: Label = $HintBox/DescriptionContainer/DescriptionLabel
