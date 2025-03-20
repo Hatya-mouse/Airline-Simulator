@@ -1,8 +1,6 @@
 extends Resource
 class_name AircraftVariant
 
-## Unique ID of the aircraft.
-@export var id: String = ""
 ## Name of the aircraft.
 @export var name: String = ""
 ## Manufacturer of the aircraft.
@@ -15,9 +13,22 @@ class_name AircraftVariant
 @export var fuel_consumption: float = 0.0
 ## Max speed in knots.
 @export var speed: float = 0
-## Base price of the aircraft.
-@export var price: int = 0
-## Pictures of this aircraft.
-@export var images: Array[Texture2D] = []
 ## Scene of the aircraft.
 @export var aircraft_scene: PackedScene
+
+var utils = Utils.new()
+
+func _get_data() -> Array[ShopItemData]:
+	return [
+		ShopItemData.new("AIRCRAFT_TYPE", name),
+		ShopItemData.new("RANGE", tr("%s nm (%s km)") % [
+			utils.add_commas(flight_range),
+			utils.add_commas(utils.nm_to_km(flight_range))
+		]),
+		ShopItemData.new("CAPACITY", utils.add_commas(capacity)),
+		ShopItemData.new("FUEL_CONSUMPTION", "%s L/100km" % utils.add_commas(fuel_consumption)),
+		ShopItemData.new("MAX_SPEED", tr("%s kt (%s km/h)") % [
+			utils.add_commas(speed),
+			utils.add_commas(utils.kt_to_kmph(speed))
+		])
+	]

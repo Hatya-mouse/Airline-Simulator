@@ -1,0 +1,118 @@
+[gd_scene load_steps=8 format=3 uid="uid://baof6m2kpn4gx"]
+
+[ext_resource type="Script" uid="uid://dc32b2kn4h2cl" path="res://Scripts/Controls/FullscreenBoxContent/ItemShop/shop_detail_view_controller.gd" id="1_x6lps"]
+[ext_resource type="LabelSettings" uid="uid://3mppycugrfbn" path="res://Styles/LabelSettings/extra_large_label.tres" id="2_lkaen"]
+[ext_resource type="LabelSettings" uid="uid://bp2o3apcufnt" path="res://Styles/LabelSettings/mono_large.tres" id="3_mvkf0"]
+[ext_resource type="StyleBox" uid="uid://cxcttot0r2nuf" path="res://Styles/StyleBox/floating_box_background_dark.tres" id="4_i2lw0"]
+[ext_resource type="PackedScene" uid="uid://ccc3cg3iby6sp" path="res://Scenes/Objects/UI/Basic/Button/text_button.tscn" id="5_2ygla"]
+[ext_resource type="Theme" uid="uid://drekqoieprg23" path="res://Styles/Theme/normal_theme.tres" id="5_lkaen"]
+[ext_resource type="LabelSettings" uid="uid://cen8j3djydtij" path="res://Styles/LabelSettings/normal_label.tres" id="5_mvkf0"]
+
+[node name="ItemShopDetailView" type="ScrollContainer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_x6lps")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_right = 16
+theme_override_constants/margin_bottom = 16
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="TopDetail" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/separation = 12
+
+[node name="Carousel" type="ScrollContainer" parent="MarginContainer/VBoxContainer/TopDetail"]
+layout_mode = 2
+size_flags_horizontal = 3
+vertical_scroll_mode = 0
+
+[node name="CarouselHBox" type="HBoxContainer" parent="MarginContainer/VBoxContainer/TopDetail/Carousel"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/VBoxContainer/TopDetail"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_right = 16
+theme_override_constants/margin_bottom = 16
+
+[node name="InfoVBox" type="VBoxContainer" parent="MarginContainer/VBoxContainer/TopDetail/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 0
+theme_override_constants/separation = 16
+
+[node name="PriceAndName" type="VBoxContainer" parent="MarginContainer/VBoxContainer/TopDetail/MarginContainer/InfoVBox"]
+layout_mode = 2
+
+[node name="NameLabel" type="Label" parent="MarginContainer/VBoxContainer/TopDetail/MarginContainer/InfoVBox/PriceAndName"]
+unique_name_in_owner = true
+layout_mode = 2
+label_settings = ExtResource("2_lkaen")
+
+[node name="PriceLabel" type="Label" parent="MarginContainer/VBoxContainer/TopDetail/MarginContainer/InfoVBox/PriceAndName"]
+unique_name_in_owner = true
+layout_mode = 2
+label_settings = ExtResource("3_mvkf0")
+
+[node name="AircraftInfoPanel" type="PanelContainer" parent="MarginContainer/VBoxContainer/TopDetail/MarginContainer/InfoVBox"]
+layout_mode = 2
+theme_override_styles/panel = ExtResource("4_i2lw0")
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/VBoxContainer/TopDetail/MarginContainer/InfoVBox/AircraftInfoPanel"]
+layout_mode = 2
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 12
+theme_override_constants/margin_right = 16
+theme_override_constants/margin_bottom = 12
+
+[node name="AircraftInfoVBox" type="VBoxContainer" parent="MarginContainer/VBoxContainer/TopDetail/MarginContainer/InfoVBox/AircraftInfoPanel/MarginContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="AmountBox" type="HBoxContainer" parent="MarginContainer/VBoxContainer/TopDetail/MarginContainer/InfoVBox"]
+layout_mode = 2
+
+[node name="AmountLabel" type="Label" parent="MarginContainer/VBoxContainer/TopDetail/MarginContainer/InfoVBox/AmountBox"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Amount"
+label_settings = ExtResource("5_mvkf0")
+
+[node name="AmountSpinBox" type="SpinBox" parent="MarginContainer/VBoxContainer/TopDetail/MarginContainer/InfoVBox/AmountBox"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+theme = ExtResource("5_lkaen")
+min_value = 1.0
+max_value = 1e+06
+value = 1.0
+rounded = true
+custom_arrow_step = 1.0
+
+[node name="PurchaseOption" type="HBoxContainer" parent="MarginContainer/VBoxContainer/TopDetail/MarginContainer/InfoVBox"]
+layout_mode = 2
+
+[node name="PurchaseButton" parent="MarginContainer/VBoxContainer/TopDetail/MarginContainer/InfoVBox/PurchaseOption" instance=ExtResource("5_2ygla")]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+button_type = 2
+highlight_color = 4

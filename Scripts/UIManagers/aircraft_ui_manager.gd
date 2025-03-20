@@ -1,7 +1,7 @@
 extends Node
 
 const aircraft_list_ui_scene = preload("res://Scenes/Objects/UI/CenterPanelContent/AircraftManager/aircraft_list_ui.tscn")
-const aircraft_shop_ui_scene = preload("res://Scenes/Objects/UI/FullscreenBoxContent/AircraftShop/aircraft_shop_ui.tscn")
+const item_shop_ui_scene = preload("res://Scenes/Objects/UI/FullscreenBoxContent/ItemShop/item_shop_ui.tscn")
 const aircraft_data = preload("res://Resources/Aircraft/aircraft.tres")
 
 @onready var game_controller: GameController = %GameController
@@ -44,13 +44,14 @@ func init_aircraft_list_ui() -> void:
 
 func _on_open_shop() -> void:
 	# Instantiate the aircraft shop ui.
-	var aircraft_shop_ui = aircraft_shop_ui_scene.instantiate()
+	var shop_ui = item_shop_ui_scene.instantiate()
+	shop_ui.game_controller = game_controller
 	# Pass the aircraft controller and aircraft data.
-	aircraft_shop_ui.aircraft_data = aircraft_data.aircraft
+	shop_ui.items = aircraft_data.aircraft
 	# Set the fullscreen box title.
 	fullscreen_box.set_title(tr("PURCHASE_AIRCRAFT"))
 	# Show the shop on the fullscreen box.
-	fullscreen_box.set_content(aircraft_shop_ui)
+	fullscreen_box.set_content(shop_ui)
 	fullscreen_box.show_animation()
 
 func _on_shop_back_pressed() -> void:

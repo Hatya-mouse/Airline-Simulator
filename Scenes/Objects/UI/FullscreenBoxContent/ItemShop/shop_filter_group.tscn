@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://cf3ndgsnx5hap"]
 
-[ext_resource type="Script" uid="uid://bsi3c8n0knt3q" path="res://Scripts/Controls/FullscreenBoxContent/AircraftShop/shop_filter_group.gd" id="1_evsia"]
+[ext_resource type="Script" uid="uid://bsi3c8n0knt3q" path="res://Scripts/Controls/FullscreenBoxContent/ItemShop/shop_filter_group.gd" id="1_evsia"]
 [ext_resource type="PackedScene" uid="uid://che3u5j56ymei" path="res://Scenes/Objects/UI/Basic/Button/check_box.tscn" id="1_kpeck"]
 [ext_resource type="Theme" uid="uid://drekqoieprg23" path="res://Styles/Theme/normal_theme.tres" id="2_tohmr"]
 [ext_resource type="LabelSettings" uid="uid://dyj2tynbd73n7" path="res://Styles/LabelSettings/money_mono.tres" id="3_awhao"]

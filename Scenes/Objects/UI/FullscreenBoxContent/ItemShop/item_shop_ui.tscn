@@ -1,16 +1,12 @@
-[gd_scene load_steps=18 format=3 uid="uid://bhn4p2cfg71g2"]
+[gd_scene load_steps=14 format=3 uid="uid://bhn4p2cfg71g2"]
 
-[ext_resource type="Script" uid="uid://cjkvbtqk6f43m" path="res://Scripts/Controls/CenterPanelContent/AircraftManager/aircraft_shop_ui.gd" id="1_mbfu4"]
-[ext_resource type="PackedScene" uid="uid://bgyw5njg6spmd" path="res://Scenes/Objects/UI/FullscreenBoxContent/AircraftShop/aircraft_shop_side_bar.tscn" id="2_86byi"]
-[ext_resource type="LabelSettings" uid="uid://bp2o3apcufnt" path="res://Styles/LabelSettings/mono_large.tres" id="4_wmtap"]
-[ext_resource type="LabelSettings" uid="uid://3mppycugrfbn" path="res://Styles/LabelSettings/extra_large_label.tres" id="5_4vo8t"]
-[ext_resource type="Script" uid="uid://xg12270o0lm1" path="res://Scripts/Controller/utils.gd" id="7_akjsh"]
-[ext_resource type="StyleBox" uid="uid://cxcttot0r2nuf" path="res://Styles/StyleBox/floating_box_background_dark.tres" id="7_co1cd"]
-[ext_resource type="PackedScene" uid="uid://5d2xph2krmch" path="res://Scenes/Objects/UI/Basic/Label/property_label.tscn" id="8_vi1au"]
-[ext_resource type="StyleBox" uid="uid://cu8avulf4vehy" path="res://Styles/StyleBox/opaque_black_background.tres" id="8_wmtap"]
-[ext_resource type="PackedScene" uid="uid://ccc3cg3iby6sp" path="res://Scenes/Objects/UI/Basic/Button/text_button.tscn" id="9_6k018"]
-[ext_resource type="PackedScene" uid="uid://dnw2tomovvkry" path="res://Scenes/Objects/UI/FullscreenBoxContent/AircraftShop/purchase_confirmation_panel.tscn" id="9_wmtap"]
-[ext_resource type="AudioStream" uid="uid://2824wndol588" path="res://Assets/Audio/SFX/UI/click_2.wav" id="13_wwhnu"]
+[ext_resource type="Script" uid="uid://cjkvbtqk6f43m" path="res://Scripts/Controls/FullscreenBoxContent/ItemShop/item_shop_ui.gd" id="1_u5fiv"]
+[ext_resource type="PackedScene" uid="uid://bgyw5njg6spmd" path="res://Scenes/Objects/UI/FullscreenBoxContent/ItemShop/item_shop_side_bar.tscn" id="2_o7ut3"]
+[ext_resource type="PackedScene" uid="uid://baof6m2kpn4gx" path="res://Scenes/Objects/UI/FullscreenBoxContent/ItemShop/item_shop_detail_view.tscn" id="3_7ehn7"]
+[ext_resource type="StyleBox" uid="uid://cu8avulf4vehy" path="res://Styles/StyleBox/opaque_black_background.tres" id="8_vd2r8"]
+[ext_resource type="PackedScene" uid="uid://dnw2tomovvkry" path="res://Scenes/Objects/UI/FullscreenBoxContent/ItemShop/purchase_confirmation_panel.tscn" id="9_24h7t"]
+[ext_resource type="Script" uid="uid://xg12270o0lm1" path="res://Scripts/Controller/utils.gd" id="10_a5fpl"]
+[ext_resource type="AudioStream" uid="uid://2824wndol588" path="res://Assets/Audio/SFX/UI/click_2.wav" id="11_bckyb"]
 
 [sub_resource type="Animation" id="Animation_7byfo"]
 length = 0.001
@@ -140,7 +136,7 @@ tracks/10/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [1.5]
+"values": [0.8]
 }
 tracks/11/type = "value"
 tracks/11/imported = false
@@ -152,7 +148,7 @@ tracks/11/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [1.5]
+"values": [0.2]
 }
 
 [sub_resource type="Animation" id="Animation_5romj"]
@@ -192,7 +188,7 @@ tracks/2/keys = {
 "times": PackedFloat32Array(0, 0.3),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [0.3, 1.3]
+"values": [0.2, 1.2]
 }
 tracks/3/type = "value"
 tracks/3/imported = false
@@ -204,7 +200,7 @@ tracks/3/keys = {
 "times": PackedFloat32Array(0, 0.3),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [0.7, 1.7]
+"values": [0.8, 1.8]
 }
 
 [sub_resource type="Animation" id="Animation_jehoo"]
@@ -340,7 +336,7 @@ tracks/2/keys = {
 "times": PackedFloat32Array(0, 0.3),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [1.7, 0.7]
+"values": [1.8, 0.8]
 }
 tracks/3/type = "value"
 tracks/3/imported = false
@@ -352,7 +348,7 @@ tracks/3/keys = {
 "times": PackedFloat32Array(0, 0.3),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [1.3, 0.3]
+"values": [1.2, 0.2]
 }
 
 [sub_resource type="Animation" id="Animation_7hfto"]
@@ -438,14 +434,14 @@ _data = {
 &"show_detail": SubResource("Animation_7hfto")
 }
 
-[node name="AircraftShopUI" type="Control"]
+[node name="ItemShopUI" type="Control"]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_mbfu4")
+script = ExtResource("1_u5fiv")
 
 [node name="Browser" type="HBoxContainer" parent="."]
 layout_mode = 1
@@ -456,7 +452,7 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/separation = 0
 
-[node name="SideBar" parent="Browser" instance=ExtResource("2_86byi")]
+[node name="SideBar" parent="Browser" instance=ExtResource("2_o7ut3")]
 layout_mode = 2
 
 [node name="GridScroller" type="ScrollContainer" parent="Browser"]
@@ -475,127 +471,16 @@ theme_override_constants/margin_top = 15
 theme_override_constants/margin_right = 15
 theme_override_constants/margin_bottom = 15
 
-[node name="AircraftList" type="GridContainer" parent="Browser/GridScroller/ListMarginContainer"]
+[node name="ItemList" type="GridContainer" parent="Browser/GridScroller/ListMarginContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 columns = 2
 
-[node name="Detail" type="ScrollContainer" parent="."]
+[node name="Detail" parent="." instance=ExtResource("3_7ehn7")]
+unique_name_in_owner = true
 visible = false
 modulate = Color(1, 1, 1, 0)
 layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 1000.0
-offset_right = 1000.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="MarginContainer" type="MarginContainer" parent="Detail"]
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-theme_override_constants/margin_left = 16
-theme_override_constants/margin_top = 16
-theme_override_constants/margin_right = 16
-theme_override_constants/margin_bottom = 16
-
-[node name="VBoxContainer" type="VBoxContainer" parent="Detail/MarginContainer"]
-layout_mode = 2
-
-[node name="TopDetail" type="HBoxContainer" parent="Detail/MarginContainer/VBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-theme_override_constants/separation = 12
-
-[node name="Carousel" type="ScrollContainer" parent="Detail/MarginContainer/VBoxContainer/TopDetail"]
-layout_mode = 2
-size_flags_horizontal = 3
-vertical_scroll_mode = 0
-
-[node name="CarouselHBox" type="HBoxContainer" parent="Detail/MarginContainer/VBoxContainer/TopDetail/Carousel"]
-unique_name_in_owner = true
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-
-[node name="MarginContainer" type="MarginContainer" parent="Detail/MarginContainer/VBoxContainer/TopDetail"]
-layout_mode = 2
-size_flags_horizontal = 3
-theme_override_constants/margin_left = 16
-theme_override_constants/margin_top = 16
-theme_override_constants/margin_right = 16
-theme_override_constants/margin_bottom = 16
-
-[node name="InfoVBox" type="VBoxContainer" parent="Detail/MarginContainer/VBoxContainer/TopDetail/MarginContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 0
-theme_override_constants/separation = 16
-
-[node name="PriceAndName" type="VBoxContainer" parent="Detail/MarginContainer/VBoxContainer/TopDetail/MarginContainer/InfoVBox"]
-layout_mode = 2
-
-[node name="NameLabel" type="Label" parent="Detail/MarginContainer/VBoxContainer/TopDetail/MarginContainer/InfoVBox/PriceAndName"]
-unique_name_in_owner = true
-layout_mode = 2
-label_settings = ExtResource("5_4vo8t")
-
-[node name="PriceLabel" type="Label" parent="Detail/MarginContainer/VBoxContainer/TopDetail/MarginContainer/InfoVBox/PriceAndName"]
-unique_name_in_owner = true
-layout_mode = 2
-label_settings = ExtResource("4_wmtap")
-
-[node name="AircraftInfoPanel" type="PanelContainer" parent="Detail/MarginContainer/VBoxContainer/TopDetail/MarginContainer/InfoVBox"]
-layout_mode = 2
-theme_override_styles/panel = ExtResource("7_co1cd")
-
-[node name="MarginContainer" type="MarginContainer" parent="Detail/MarginContainer/VBoxContainer/TopDetail/MarginContainer/InfoVBox/AircraftInfoPanel"]
-layout_mode = 2
-theme_override_constants/margin_left = 16
-theme_override_constants/margin_top = 12
-theme_override_constants/margin_right = 16
-theme_override_constants/margin_bottom = 12
-
-[node name="AircraftInfoVBox" type="VBoxContainer" parent="Detail/MarginContainer/VBoxContainer/TopDetail/MarginContainer/InfoVBox/AircraftInfoPanel/MarginContainer"]
-layout_mode = 2
-
-[node name="NamePropLabel" parent="Detail/MarginContainer/VBoxContainer/TopDetail/MarginContainer/InfoVBox/AircraftInfoPanel/MarginContainer/AircraftInfoVBox" instance=ExtResource("8_vi1au")]
-unique_name_in_owner = true
-layout_mode = 2
-align_content_text_to_right = true
-
-[node name="RangePropLabel" parent="Detail/MarginContainer/VBoxContainer/TopDetail/MarginContainer/InfoVBox/AircraftInfoPanel/MarginContainer/AircraftInfoVBox" instance=ExtResource("8_vi1au")]
-unique_name_in_owner = true
-layout_mode = 2
-align_content_text_to_right = true
-
-[node name="CapacityPropLabel" parent="Detail/MarginContainer/VBoxContainer/TopDetail/MarginContainer/InfoVBox/AircraftInfoPanel/MarginContainer/AircraftInfoVBox" instance=ExtResource("8_vi1au")]
-unique_name_in_owner = true
-layout_mode = 2
-align_content_text_to_right = true
-
-[node name="FuelPropLabel" parent="Detail/MarginContainer/VBoxContainer/TopDetail/MarginContainer/InfoVBox/AircraftInfoPanel/MarginContainer/AircraftInfoVBox" instance=ExtResource("8_vi1au")]
-unique_name_in_owner = true
-layout_mode = 2
-align_content_text_to_right = true
-
-[node name="SpeedPropLabel" parent="Detail/MarginContainer/VBoxContainer/TopDetail/MarginContainer/InfoVBox/AircraftInfoPanel/MarginContainer/AircraftInfoVBox" instance=ExtResource("8_vi1au")]
-unique_name_in_owner = true
-layout_mode = 2
-align_content_text_to_right = true
-
-[node name="PurchaseOption" type="HBoxContainer" parent="Detail/MarginContainer/VBoxContainer/TopDetail/MarginContainer/InfoVBox"]
-layout_mode = 2
-
-[node name="PurchaseButton" parent="Detail/MarginContainer/VBoxContainer/TopDetail/MarginContainer/InfoVBox/PurchaseOption" instance=ExtResource("9_6k018")]
-unique_name_in_owner = true
-layout_mode = 2
-size_flags_horizontal = 3
-button_type = 2
-highlight_color = 4
 
 [node name="Overlay" type="Panel" parent="."]
 visible = false
@@ -606,24 +491,32 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_styles/panel = ExtResource("8_wmtap")
+theme_override_styles/panel = ExtResource("8_vd2r8")
 
-[node name="ConfirmationPanel" parent="Overlay" instance=ExtResource("9_wmtap")]
+[node name="ConfirmationPanel" parent="Overlay" instance=ExtResource("9_24h7t")]
+unique_name_in_owner = true
 layout_mode = 1
 anchor_left = 0.2
+anchor_top = 0.2
 anchor_right = 0.8
+anchor_bottom = 0.8
 offset_left = 0.0
 offset_top = 0.0
 offset_right = 0.0
 offset_bottom = 0.0
 
+[node name="Utils" type="Node" parent="."]
+unique_name_in_owner = true
+script = ExtResource("10_a5fpl")
+
+[node name="ClickSoundStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("11_bckyb")
+
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+unique_name_in_owner = true
 libraries = {
 &"": SubResource("AnimationLibrary_eqjog")
 }
 
-[node name="Utils" type="Node" parent="."]
-script = ExtResource("7_akjsh")
-
-[node name="ClickSoundStreamPlayer" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("13_wwhnu")
+[connection signal="cancelled" from="Overlay/ConfirmationPanel" to="." method="_on_cancel_purchase"]
+[connection signal="confirmed" from="Overlay/ConfirmationPanel" to="." method="_on_confirm_purchase"]

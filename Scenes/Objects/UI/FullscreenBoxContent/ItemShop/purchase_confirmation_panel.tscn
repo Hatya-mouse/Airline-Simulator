@@ -1,17 +1,19 @@
-[gd_scene load_steps=8 format=3 uid="uid://dnw2tomovvkry"]
+[gd_scene load_steps=10 format=3 uid="uid://dnw2tomovvkry"]
 
 [ext_resource type="StyleBox" uid="uid://c8gp5ws08rk22" path="res://Styles/StyleBox/floating_box_background.tres" id="1_c81nm"]
 [ext_resource type="PackedScene" uid="uid://dmr4h12uwgh7m" path="res://Scenes/Objects/UI/Basic/Label/section_label.tscn" id="2_dj8tl"]
-[ext_resource type="Script" uid="uid://duw3j4fa2xli3" path="res://Scripts/Controls/FullscreenBoxContent/AircraftShop/purchase_confirmation_panel.gd" id="2_fuvig"]
+[ext_resource type="Script" uid="uid://duw3j4fa2xli3" path="res://Scripts/Controls/FullscreenBoxContent/ItemShop/purchase_confirmation_panel.gd" id="2_fuvig"]
+[ext_resource type="LabelSettings" uid="uid://c88bauj8uwi8e" path="res://Styles/LabelSettings/bold_big.tres" id="3_2aohg"]
 [ext_resource type="LabelSettings" uid="uid://bp2o3apcufnt" path="res://Styles/LabelSettings/mono_large.tres" id="3_fuvig"]
 [ext_resource type="LabelSettings" uid="uid://dyj2tynbd73n7" path="res://Styles/LabelSettings/money_mono.tres" id="4_mr7en"]
+[ext_resource type="LabelSettings" uid="uid://dyn75pi86acbl" path="res://Styles/LabelSettings/normal_label_bold.tres" id="5_7cy21"]
 [ext_resource type="PackedScene" uid="uid://ccc3cg3iby6sp" path="res://Scenes/Objects/UI/Basic/Button/text_button.tscn" id="5_7rbdi"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wmtap"]
 bg_color = Color(0.20871, 0.20871, 0.20871, 1)
 border_color = Color(0.34, 0.34, 0.34, 1)
-corner_radius_top_left = 10
-corner_radius_bottom_left = 10
+corner_radius_top_left = 5
+corner_radius_bottom_left = 5
 
 [node name="ConfirmationPanel" type="PanelContainer"]
 anchors_preset = -1
@@ -52,6 +54,40 @@ theme_override_constants/margin_bottom = 15
 [node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer/LeftPanel/PanelContainer/MarginContainer"]
 layout_mode = 2
 
+[node name="ItemNameLabel" type="Label" parent="HBoxContainer/LeftPanel/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Skyliner 7X"
+label_settings = ExtResource("3_2aohg")
+
+[node name="ItemPriceLabel" type="Label" parent="HBoxContainer/LeftPanel/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "$500,000"
+label_settings = ExtResource("4_mr7en")
+
+[node name="AmountSectionLabel" type="Label" parent="HBoxContainer/LeftPanel/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Amount"
+label_settings = ExtResource("5_7cy21")
+
+[node name="AmountLabel" type="Label" parent="HBoxContainer/LeftPanel/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "2"
+label_settings = ExtResource("4_mr7en")
+
+[node name="HSeparator" type="HSeparator" parent="HBoxContainer/LeftPanel/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="LeftTotalSectionLabel" parent="HBoxContainer/LeftPanel/PanelContainer/MarginContainer/VBoxContainer" instance=ExtResource("2_dj8tl")]
+layout_mode = 2
+text = "Total"
+
+[node name="LeftTotalLabel" type="Label" parent="HBoxContainer/LeftPanel/PanelContainer/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+text = "$1,000,000"
+label_settings = ExtResource("3_fuvig")
+autowrap_mode = 3
+
 [node name="RightPanel" type="MarginContainer" parent="HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
@@ -64,16 +100,19 @@ theme_override_constants/margin_bottom = 15
 layout_mode = 2
 theme_override_constants/separation = 8
 
-[node name="TotalSectionLabel" parent="HBoxContainer/RightPanel/VBoxContainer" instance=ExtResource("2_dj8tl")]
+[node name="RightTotalSectionLabel" parent="HBoxContainer/RightPanel/VBoxContainer" instance=ExtResource("2_dj8tl")]
 layout_mode = 2
 text = "Total"
 
-[node name="TotalLabel" type="Label" parent="HBoxContainer/RightPanel/VBoxContainer"]
+[node name="RightTotalLabel" type="Label" parent="HBoxContainer/RightPanel/VBoxContainer"]
 custom_minimum_size = Vector2(200, 0)
 layout_mode = 2
 text = "$1,000,000"
 label_settings = ExtResource("3_fuvig")
 autowrap_mode = 3
+
+[node name="HSeparator" type="HSeparator" parent="HBoxContainer/RightPanel/VBoxContainer"]
+layout_mode = 2
 
 [node name="BalanceSectionLabel" parent="HBoxContainer/RightPanel/VBoxContainer" instance=ExtResource("2_dj8tl")]
 layout_mode = 2

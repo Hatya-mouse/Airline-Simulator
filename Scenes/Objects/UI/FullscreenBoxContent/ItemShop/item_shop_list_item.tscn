@@ -2,7 +2,7 @@
 
 [ext_resource type="StyleBox" uid="uid://cxcttot0r2nuf" path="res://Styles/StyleBox/floating_box_background_dark.tres" id="1_pdv3b"]
 [ext_resource type="LabelSettings" uid="uid://3mppycugrfbn" path="res://Styles/LabelSettings/extra_large_label.tres" id="2_l1ewx"]
-[ext_resource type="Script" uid="uid://k0sqspv7qxwm" path="res://Scripts/Controls/CenterPanelContent/AircraftManager/aircraft_shop_list_item.gd" id="3_13kin"]
+[ext_resource type="Script" uid="uid://k0sqspv7qxwm" path="res://Scripts/Controls/FullscreenBoxContent/ItemShop/item_shop_list_item.gd" id="3_13kin"]
 [ext_resource type="LabelSettings" uid="uid://dyj2tynbd73n7" path="res://Styles/LabelSettings/money_mono.tres" id="3_luioq"]
 [ext_resource type="Texture2D" uid="uid://cnogpjpnxlqi8" path="res://Assets/Textures/Aircraft/Skyliner_7X/skyliner_7x_top.png" id="5_0l3yl"]
 [ext_resource type="PackedScene" uid="uid://ccc3cg3iby6sp" path="res://Scenes/Objects/UI/Basic/Button/text_button.tscn" id="5_3rhfm"]

@@ -1,7 +1,7 @@
 extends Node
 class_name AircraftController
 
-const aircraft_type_data: AircraftList = preload("res://Resources/Aircraft/aircraft.tres")
+const aircraft_type_data: ShopItemList = preload("res://Resources/Aircraft/aircraft.tres")
 
 @onready var game_controller: GameController = %GameController
 

@@ -40,9 +40,17 @@ const airport_scene = preload("res://Scenes/Objects/Objects/airport.tscn")
 @export var small_airport_button: TextureButton
 @export var airport_name_label: LabelBox
 
+# Get the main camera.
+@onready var camera: Camera3D = %MainCamera
+
 var large_airport_visibility := false
 var medium_airport_visibility := false
 var small_airport_visibility := false
+
+var airport_nodes: Array[Airport] = []
+
+static var camera_position := Vector3.ZERO
+static var camera_basis := Basis()
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -54,6 +62,9 @@ func _ready() -> void:
 	small_airport_button.pressed.connect(_small_airport_button_pressed)
 	medium_airport_button.pressed.connect(_medium_airport_button_pressed)
 	large_airport_button.pressed.connect(_large_airport_button_pressed)
+
+func _process(_delta: float) -> void:
+	pass
 
 func _small_airport_button_pressed() -> void:
 	small_airport_visibility = not small_airport_button.button_pressed
@@ -127,6 +138,7 @@ func spawn_airport(airport: Dictionary) -> void:
 		airport_node.pressed_with_airline_icon = large_airport_with_airline_pressed_icon
 
 	airport_parent.add_child(airport_node)
+	airport_nodes.append(airport_node)
 
 func _on_airport_clicked(airport_data: AirportData) -> void:
 	if game_controller.mode == GameController.InGameMode.NORMAL:

@@ -19,6 +19,8 @@ signal clicked(airport_data: AirportData)
 
 @export var texture_click_mask: BitMap
 
+@onready var multi_mesh_instance: MultiMeshInstance3D = $MultiMeshInstance
+
 var airport_controller: Node
 var game_controller: GameController
 var camera: Camera3D
@@ -81,8 +83,7 @@ func _process(_delta: float) -> void:
 func _physics_process(_delta: float) -> void:
 	if is_airport_visible or should_update_airport():
 		should_update_visibility = false
-		_update_position()
-
+		update_position()
 		var camera_vector = to_local(camera.global_position)
 		_update_visibility(camera_vector)
 
@@ -150,9 +151,13 @@ func _update_visibility(camera_vector: Vector3):
 			tween.tween_property(icon_control, "visible", false, 0.1)
 	old_visibility = visibility
 
-func _update_position():
-	# Set position
-	icon_control.position = camera.unproject_position(global_position) - Vector2(50, 50)
+## Called from the Airport Controller.
+func update_position():
+	icon_control.global_position = _calculate_position()
+
+func _calculate_position() -> Vector2:
+	var center = icon_control.custom_minimum_size / 2
+	return camera.unproject_position(global_position) - center
 
 ## Make brighter (which means selected) if this airport is a part of the airline(s).
 func _airline_state_changed() -> void:
@@ -172,7 +177,7 @@ func _airline_state_changed() -> void:
 func _on_mouse_entered() -> void:
 	if not camera.is_position_behind(global_position):
 		label.text = airport_data.name
-		label.position = camera.unproject_position(global_position) + Vector2(50, -30)
+		label.position = camera.unproject_position(global_position) + Vector2(25, -15)
 		label.show_animation()
 
 func _on_mouse_exited() -> void:

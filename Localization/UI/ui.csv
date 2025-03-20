@@ -74,4 +74,8 @@ FILTER,"Filter","フィルター"
 nm,"nm","海里"
 kt,"kt","ノット"
 
+TOTAL,"Total","合計"
+AMOUNT,"Amount","個数"
+CURRENT_BALANCE,"Current Balance","現在の所持金"
+BALANCE_AFTER_PURCHASE,"Balance After Purchase","購入後の所持金"
 CONFIRM_PURCHASE,"Confirm Purchase","購入を確定"
