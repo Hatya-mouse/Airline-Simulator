@@ -92,7 +92,7 @@ func _physics_process(_delta: float) -> void:
 ## Check if visibility needs to be updated based on various conditions.
 func should_update_airport() -> bool:
 	return (
-		should_update_visibility or 
+		should_update_visibility or
 		(is_airport_visible and should_update_due_to_camera())
 	)
 

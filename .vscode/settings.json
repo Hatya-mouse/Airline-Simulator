@@ -10,5 +10,6 @@
         "randf",
         "Reparent",
         "tscn"
-    ]
+    ],
+    "godotTools.editorPath.godot4": "c:\\Users\\Public\\Applications\\Godot_v4.4-stable_win64.exe"
 }

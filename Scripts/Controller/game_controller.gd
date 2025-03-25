@@ -92,16 +92,3 @@ func format_money(value: float) -> String:
 		value /= 1000.0
 		unit_index += 1
 	return "$" + str(snapped(value, 0.1)) + units[unit_index]
-
-func add_commas(value: int) -> String:
-	var str_value := str(value)
-	var result := ""
-	var count := 0
-	
-	for i in range(str_value.length() - 1, -1, -1):
-		result = str_value[i] + result
-		count += 1
-		if count % 3 == 0 and i != 0:
-			result = "," + result
-
-	return result

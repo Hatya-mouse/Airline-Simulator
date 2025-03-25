@@ -1,4 +1,4 @@
-[gd_scene load_steps=62 format=3 uid="uid://cgk540t4auo0p"]
+[gd_scene load_steps=56 format=3 uid="uid://cgk540t4auo0p"]
 
 [ext_resource type="PackedScene" uid="uid://wjce8al7mtv2" path="res://Scenes/Objects/Planet/earth.tscn" id="1_hlgix"]
 [ext_resource type="PackedScene" uid="uid://boc8olnjbkk4r" path="res://Scenes/Objects/Planet/sun.tscn" id="2_7vqee"]
@@ -17,26 +17,20 @@
 [ext_resource type="PackedScene" uid="uid://bbmofpjeuig28" path="res://Scenes/Objects/UI/Basic/Button/texture_toggle_button.tscn" id="9_fwkja"]
 [ext_resource type="AudioStream" uid="uid://nui4utagj265" path="res://Assets/Audio/SFX/Game/airway_complete.wav" id="9_of5ne"]
 [ext_resource type="Texture2D" uid="uid://du8yq74suaot0" path="res://Assets/Textures/Icon/Airport/small_airport.png" id="9_sgeam"]
-[ext_resource type="Texture2D" uid="uid://jpfedyac8lng" path="res://Assets/Textures/Icon/Airport/small_airport_pressed.png" id="10_hw3rj"]
 [ext_resource type="PackedScene" uid="uid://c13yba8b6c7cx" path="res://Scenes/Objects/UI/Basic/Panel/hint_box.tscn" id="10_pxk6u"]
 [ext_resource type="Texture2D" uid="uid://djuk5npx1qpby" path="res://Assets/Textures/Icon/Airport/large_airport_button.png" id="11_4nhsm"]
-[ext_resource type="Texture2D" uid="uid://bj50xbx6uqsyf" path="res://Assets/Textures/Icon/Airport/large_airport_with_airline_pressed.png" id="11_po2iw"]
-[ext_resource type="Texture2D" uid="uid://hqi2nlrslne2" path="res://Assets/Textures/Icon/Airport/small_airport_with_airline.png" id="11_poobi"]
 [ext_resource type="Texture2D" uid="uid://cv7t0gv48mx31" path="res://Assets/Textures/Icon/Airport/large_airport_button_pressed.png" id="12_1ikr6"]
+[ext_resource type="Texture2D" uid="uid://behyyb85w0w20" path="res://Assets/Textures/Icon/Airport/large_airport_with_airline.png" id="12_idrxv"]
 [ext_resource type="Texture2D" uid="uid://d3pb4tnnq0uld" path="res://Assets/Textures/Icon/Airport/medium_airport.png" id="12_qspcu"]
-[ext_resource type="Texture2D" uid="uid://bq0fvriqjlsds" path="res://Assets/Textures/Icon/Airport/medium_airport_pressed.png" id="13_pcfqi"]
-[ext_resource type="Texture2D" uid="uid://dv7x23hsl0ne0" path="res://Assets/Textures/Icon/Airport/medium_airport_with_airline.png" id="14_0sy8h"]
+[ext_resource type="Texture2D" uid="uid://dv7x23hsl0ne0" path="res://Assets/Textures/Icon/Airport/medium_airport_with_airline.png" id="13_5yjht"]
 [ext_resource type="Texture2D" uid="uid://w7txf38k4th" path="res://Assets/Textures/Icon/Airport/medium_airport_button.png" id="14_c4du8"]
+[ext_resource type="Texture2D" uid="uid://hqi2nlrslne2" path="res://Assets/Textures/Icon/Airport/small_airport_with_airline.png" id="14_ry5p3"]
 [ext_resource type="Texture2D" uid="uid://1h8x4rvu3osu" path="res://Assets/Textures/Icon/Airport/large_airport.png" id="15_a0k3u"]
 [ext_resource type="Texture2D" uid="uid://xmqp3ra5482u" path="res://Assets/Textures/Icon/Airport/medium_airport_button_pressed.png" id="15_ke3lb"]
-[ext_resource type="Texture2D" uid="uid://dy6yo6mxckmq" path="res://Assets/Textures/Icon/Airport/medium_airport_with_airline_pressed.png" id="16_bbbel"]
-[ext_resource type="Texture2D" uid="uid://dnqag1xfvhtwr" path="res://Assets/Textures/Icon/Airport/large_airport_pressed.png" id="16_qpjcd"]
-[ext_resource type="Texture2D" uid="uid://behyyb85w0w20" path="res://Assets/Textures/Icon/Airport/large_airport_with_airline.png" id="17_20tkx"]
 [ext_resource type="Texture2D" uid="uid://1g57fv72jkts" path="res://Assets/Textures/Icon/Airport/small_airport_button.png" id="17_v6pip"]
 [ext_resource type="PackedScene" uid="uid://doajni6v2crx0" path="res://Scenes/Objects/UI/Basic/Panel/info_box.tscn" id="18_dbcpe"]
 [ext_resource type="Texture2D" uid="uid://djfx75vp7r8pa" path="res://Assets/Textures/Icon/Airport/small_airport_button_pressed.png" id="18_xm5er"]
 [ext_resource type="PackedScene" uid="uid://b8tyc1r6evk1s" path="res://Scenes/Objects/UI/Basic/Label/label_box.tscn" id="19_wai4l"]
-[ext_resource type="Texture2D" uid="uid://0jd2dsja4bak" path="res://Assets/Textures/Icon/Airport/small_airport_with_airline_pressed.png" id="20_v5bvg"]
 [ext_resource type="PackedScene" uid="uid://c1xc0vb5rp5od" path="res://Scenes/Objects/Editors/airline_editor.tscn" id="23_qwg2y"]
 [ext_resource type="Script" uid="uid://dt4ht0ghrpjb" path="res://Scripts/UIManagers/airport_ui_manager.gd" id="26_nrlui"]
 [ext_resource type="Script" uid="uid://lmtd5c4gmh7f" path="res://Scripts/UIManagers/aircraft_ui_manager.gd" id="26_vr1jx"]
@@ -152,17 +146,11 @@ unique_name_in_owner = true
 script = ExtResource("3_pkbvg")
 airport_parent = NodePath("../../../Objects/Airports")
 large_airport_icon = ExtResource("15_a0k3u")
-large_airport_pressed_icon = ExtResource("16_qpjcd")
-large_airport_with_airline_icon = ExtResource("17_20tkx")
-large_airport_with_airline_pressed_icon = ExtResource("11_po2iw")
 medium_airport_icon = ExtResource("12_qspcu")
-medium_airport_pressed_icon = ExtResource("13_pcfqi")
-medium_airport_with_airline_icon = ExtResource("14_0sy8h")
-medium_airport_with_airline_pressed_icon = ExtResource("16_bbbel")
 small_airport_icon = ExtResource("9_sgeam")
-small_airport_pressed_icon = ExtResource("10_hw3rj")
-small_airport_with_airline_icon = ExtResource("11_poobi")
-small_airport_with_airline_pressed_icon = ExtResource("20_v5bvg")
+large_airport_selected_icon = ExtResource("12_idrxv")
+medium_airport_selected_icon = ExtResource("13_5yjht")
+small_airport_selected_icon = ExtResource("14_ry5p3")
 large_airport_button = NodePath("../../../HUD/TopPanel/MarginContainer/HBoxContainer/AirportVisibilityButtonGroup/LargeAirportVisibility")
 medium_airport_button = NodePath("../../../HUD/TopPanel/MarginContainer/HBoxContainer/AirportVisibilityButtonGroup/MediumAirportVisibility")
 small_airport_button = NodePath("../../../HUD/TopPanel/MarginContainer/HBoxContainer/AirportVisibilityButtonGroup/SmallAirportVisibility")
@@ -230,11 +218,11 @@ aircraft_manager_button = NodePath("../../HUD/TopPanel/MarginContainer/HBoxConta
 [node name="Objects" type="Node3D" parent="."]
 unique_name_in_owner = true
 
+[node name="Airports" type="Node3D" parent="Objects"]
+
 [node name="Airlines" type="Node3D" parent="Objects"]
 
 [node name="PreviewAirlines" type="Node3D" parent="Objects"]
-
-[node name="Airports" type="Node3D" parent="Objects"]
 
 [node name="Airplanes" type="Node3D" parent="Objects"]
 
